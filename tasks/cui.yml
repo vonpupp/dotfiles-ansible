@@ -1,0 +1,89 @@
+# Missing:
+# exuberant-ctags
+# fasd
+# fortune
+# gcalcli
+# kpcli
+# lm-sensors
+# spell-pt
+# alsamixer
+
+- name: install utilities
+  pacman: name={{ item }} state=present
+  with_items:
+    - abook
+    - ack
+    - alsa-utils
+    - aria2
+    - aspell
+    - aspell-en
+    - aspell-es
+    - aspell-fr
+    - aspell-it
+    - atop
+    - autoconf
+    - autofs
+    - bc
+    - bitlbee
+    - cmake
+    - colordiff
+    - curl
+    - dnsutils
+    - dosfstools
+    - elinks
+    - git
+    - gnupg
+    - gparted
+    - htop
+    - iftop
+    - imagemagick
+    - iptraf-ng
+    - irssi
+    - ispell
+    - isync
+    - lftp
+    - lsof
+    - lynx
+    - mc
+    - mpd
+    - mpv
+    - mutt
+    - ncmpcpp
+    - newsbeuter
+    - nfs-utils
+    - nmap
+    - nodejs
+    - notmuch
+    - ntfsprogs
+    - ntp
+    - offlineimap
+    - p7zip
+    - parted
+    - perl-datetime
+    - perl-image-exiftool
+    - pinentry
+    - polipo
+    - procmail
+    - pulseaudio
+    - pydf
+    - python2
+    - python2-pip
+    - ranger
+    - rsync
+    - rtorrent
+    - screen
+    - scrot
+    - smplayer
+    - sudo
+    - task
+    - tmux
+    - tree
+    - unrar
+    - unzip
+    - vim
+    - wget
+    - wicd
+    - zsh
+    - zsh-syntax-highlighting
+  sudo: true
+  sudo_user: "{{ ansible_user_id }}"

@@ -1,0 +1,27 @@
+---
+- name: Create local user for makepkg
+  user: name=makepkg shell=/bin/sh
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Copy aur script
+  copy: src=files/bin/aur dest=/usr/local/bin/aur mode=755
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Install package-query dependency (yajl)
+  pacman: name=yajl state=present
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Install yaourt dependency (package-query)
+  command: aur package-query
+  when: "'package-query' not in installed_packages.stdout_lines"
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Install yaourt
+  command: aur yaourt
+  when: "'yaourt' not in installed_packages.stdout_lines"
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"

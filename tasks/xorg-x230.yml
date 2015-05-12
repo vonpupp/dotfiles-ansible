@@ -1,0 +1,25 @@
+---
+- name: Blacklist nouveau Xorg driver
+  kernel_blacklist: name=nouveau state=present
+  when: model == "Vostro 3700"
+
+- name: Set up Xorg for Vostro 3700
+  pacman: name={{ item }} state=present
+  with_items:
+    - xf86-video-intel
+    - xf86-input-synaptics
+  when: model == "Vostro 3700"
+
+- name: Set up Xorg for XPS 8500
+  pacman: name={{ item }} state=present
+  with_items:
+    - xf86-video-nouveau
+  when: model == "XPS 8500"
+
+- name: Set up Xorg for Parallels
+  pacman: name=xf86-video-vesa state=present
+  when: model == "Parallels"
+
+- name: Depmod
+  command: depmod
+  changed_when: false

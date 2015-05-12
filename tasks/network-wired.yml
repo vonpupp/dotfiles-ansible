@@ -1,0 +1,25 @@
+---
+- name: Automatically get DHCP lease
+  service: name=dhcpcd state=started enabled=yes
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Install dnsmasq for DNS caching
+  pacman: name=dnsmasq state=present
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Set up DNS caching
+  copy: src=files/network/dnsmasq.conf dest=/etc/dnsmasq.conf
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Start and enable dnsmasq
+  service: name=dnsmasq state=started enabled=yes
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Set up DNS resolvers
+  copy: src=files/network/resolv.conf.head dest=/etc/resolv.conf.head
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"

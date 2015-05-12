@@ -1,0 +1,10 @@
+---
+- name: Install NTP daemon
+  pacman: name=ntp state=present
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Enable NTP daemon
+  service: name=ntpd state=started enabled=yes
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"

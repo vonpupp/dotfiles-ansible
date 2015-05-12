@@ -1,0 +1,7 @@
+- name: Install java devel env
+  pacman: name={{ item }} state=present
+  with_items:
+    - base-devel
+    - android-tools
+    - android-udev
+  sudo: true

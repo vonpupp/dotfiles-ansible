@@ -1,0 +1,62 @@
+---
+- name: Install zsh for {{ user }}
+  sudo: yes
+  sudo_user: "{{ user }}"
+  pacman: name=zsh state=present
+
+- name: Set shell for root to zsh
+  user: name={{ ansible_user_id }} shell=/bin/zsh
+
+- shell: mkdir -p ~/.homesick/repos
+
+- name: Clone homeshick
+  git: repo=https://github.com/andsens/homeshick.git dest=~/.homesick/repos/homeshick
+
+  # FASD
+- name: Clone fasd
+  git: repo=https://github.com/clvv/fasd.git dest=/tmp/fasd
+
+- name: Install fasd
+  shell:
+    cd /tmp/fasd
+    PREFIX=~ make install
+    cd ..
+    rm -rf /tmp/fasd
+
+  # FZF
+- name: Clone fzf
+  git: repo=https://github.com/junegunn/fzf.git dest=~/.fzf
+
+- name: Install fzf
+  shell:
+    ~/.fzf/install
+
+  # BASE16
+- name: Clone base16-shell
+  git: repo=https://github.com/chriskempson/base16-shell.git dest=~/.config/base16-shell
+
+  # CREATE_AP
+- name: Clone create_ap
+  git: repo=https://github.com/oblique/create_ap.git dest=~/bin/create_ap
+
+  # GITFLOW
+- name: Download gitflow
+  command: "{{ item }}"
+  with_items:
+    - wget -c https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh -P /tmp
+    - chmod +x /tmp/gitflow-installer.sh
+
+- name: Install gitflow
+  shell:
+    INSTALL_PREFIX=~/bin /tmp/gitflow-installer.sh
+    rm /tmp/gitflow-installer.sh
+
+  # ZSH
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
+
+- name: Link castle
+  shell:
+    git clone https://github.com/vonpupp/{{ item }} ~/.homesick/repos/{{ item }} && source ~/.homesick/repos/homeshick/homeshick.sh && homeshick link {{ item }}
+  with_items:
+    - zsh.castle

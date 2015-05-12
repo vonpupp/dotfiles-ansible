@@ -1,0 +1,19 @@
+---
+- name: Install VirtualBox guest utilities
+  pacman: name=virtualbox-guest-utils
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Set up autoloading of VirtualBox modules
+  copy: src=files/virtualbox/guest-modules dest=/etc/modules-load.d/virtualbox-guest.conf
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Configure vboxservice
+  service: name=vboxservice state=started enabled=yes
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Depmod
+  command: depmod
+  changed_when: false

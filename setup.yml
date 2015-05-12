@@ -1,0 +1,51 @@
+  #vars_prompt:
+  #  - name: config_file
+  #    prompt: "Which vars should I load?"
+  #    private: no
+
+  # vars_files:
+  #  - vars/{{ config_file }}.yml
+
+---
+- hosts: localhost
+  connection: local
+
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+    - name: Get size of long to determine architecture
+      command: getconf LONG_BIT
+      register: long_bit
+      changed_when: false
+
+    # Used, hackily, to not reinstall AUR packages
+    - name: Get list of installed packages
+      command: pacman -Qq
+      register: installed_packages
+      changed_when: false
+
+    # Service related
+    #- include: tasks/pacman.yml
+    #- include: tasks/aur.yml
+    #- include: tasks/ntp.yml
+    #- include: tasks/network-wired.yml
+    #- include: tasks/network-wifi.yml
+    #- include: tasks/ssh.yml
+
+    # Packages
+    #- include: tasks/cui.yml
+    #- include: tasks/devel-python.yml
+    #- include: tasks/gui.yml
+
+    #- include: tasks/cron.yml
+    #- include: tasks/systemd.yml
+    #- include: tasks/xorg-virtualbox.yml
+    #- include: tasks/zsh.yml
+    #- include: tasks/vim.yml
+    - include: tasks/tmux.yml user=root
+    - include: tasks/tmux.yml user=afu
+
+    #- include: tasks/dotfiles.yml user=root
+    #- include: tasks/dotfiles.yml user=afu
+    #- include: tasks/dotfiles.yml user=lin

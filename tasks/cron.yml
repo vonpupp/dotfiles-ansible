@@ -1,0 +1,18 @@
+---
+- name: Install cronie
+  pacman: name=cronie state=present
+
+- name: Enable cronie
+  service: name=cronie state=started enabled=yes
+
+- name: Cron to download updates
+  template: src=cron/download-updates dest=/etc/cron.d/download-updates
+
+- name: Install reflector for mirror list autoupdate
+  pacman: name=reflector state=present
+
+- name: Cron to update mirror list
+  template: src=cron/reflector dest=/etc/cron.d/reflector
+
+- name: Cron to clear corrupted journals
+  template: src=files/cron/clear-corrupt-journals dest=/etc/cron.d/clear-corrupt-journals

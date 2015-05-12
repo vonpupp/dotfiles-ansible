@@ -1,0 +1,87 @@
+---
+- name: Install xorg
+  pacman: name={{ item }} state=present
+  with_items:
+    - xorg-server
+    - xorg-server-utils
+    - xorg-server-xephyr
+    - xorg-xmodmap
+    - xorg-xrandr
+    - xorg-xinit
+    - xorg-xset
+    - xorg-xrdb
+    - mesa
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Install windows manager
+  pacman: name={{ item }} state=present
+  with_items:
+    - slim
+    - slock
+    - awesome
+    - vicious
+    - xscreensaver
+    - wmname
+    - xterm
+    - xclip
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+- name: Enable slim
+  service: name=slim state=started enabled=yes
+
+# intel graphics
+# $ pacman -S xf86-video-intel libva-intel-driver
+#
+# # laptop touchpad
+# $ pacman -S xf86-input-synaptics
+
+- name: Install X tools
+  pacman: name={{ item }} state=present
+  with_items:
+    - feh
+    - firefox
+    - keepassx
+    - lilyterm
+    - mkvtoolnix
+    - pcmanfm
+    - qmmp
+    - seahorse
+    - shotwell
+    - vlc
+    - wicd-gtk
+    - wmctrl
+    - zathura
+    - zathura-pdf-poppler
+    - zathura-pdf-mupdf
+    - imagemagick
+    - ghostscript
+    - rxvt-unicode
+    - alsa-utils
+    - libnotify
+    - xfce4-notifyd
+    - dmenu
+  sudo: yes
+  sudo_user: "{{ ansible_user_id }}"
+
+#- name: Install urxvt Perl extensions
+#  yaourt: name=urxvt-perls
+#  sudo: yes
+#  sudo_user: makepkg
+#
+#- name: Set up terminal fonts
+#  pacman: name={{ item }}
+#  with_items:
+#    - terminus-font
+#    - ttf-inconsolata
+#
+#- name: Install Hangouts video plugin
+#  yaourt: name=google-talkplugin
+#  sudo: yes
+#  sudo_user: makepkg
+#
+#- name: Install Google Chrome
+#  yaourt: name=google-chrome
+#  sudo: yes
+#  sudo_user: makepkg
