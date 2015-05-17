@@ -70,6 +70,7 @@
     - python2
     - python2-pip
     - ranger
+    - reflector
     - rsync
     - rtorrent
     - screen

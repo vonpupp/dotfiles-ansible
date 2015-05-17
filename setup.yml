@@ -36,16 +36,23 @@
     # Packages
     #- include: tasks/cui.yml
     #- include: tasks/devel-python.yml
-    #- include: tasks/gui.yml
+    #- include: tasks/devel-ruby.yml user=afu
+    #- include: tasks/devel-java.yml
+    - include: tasks/gui.yml
 
+    # System configs
     #- include: tasks/cron.yml
     #- include: tasks/systemd.yml
     #- include: tasks/xorg-virtualbox.yml
-    #- include: tasks/zsh.yml
-    #- include: tasks/vim.yml
-    - include: tasks/tmux.yml user=root
-    - include: tasks/tmux.yml user=afu
+    #- include: tasks/shared.yml
+    - include: tasks/pkgfile.yml
 
-    #- include: tasks/dotfiles.yml user=root
-    #- include: tasks/dotfiles.yml user=afu
-    #- include: tasks/dotfiles.yml user=lin
+    # Dotfiles (root)
+    #- include: tasks/zsh.yml user=root
+    #- include: tasks/vim.yml user=root
+    #- include: tasks/tmux.yml user=root
+
+    # Dotfiles (user)
+    #- include: tasks/zsh.yml user=afu
+    #- include: tasks/vim.yml user=afu
+    #- include: tasks/tmux.yml user=afu

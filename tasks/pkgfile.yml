@@ -1,11 +1,14 @@
 ---
 - name: Install pkgfile
+  sudo: yes
   pacman: name=pkgfile state=present
   register: pkgfile_installed
 
 - name: Update database
+  sudo: yes
   command: pkgfile --update
   when: pkgfile_installed.changed
 
 - name: Cron to update pkgfile database
-  copy: src=files/cron/pkgfile dest=/etc/cron.d/pkgfile
+  sudo: yes
+  copy: src=templates/cron/pkgfile dest=/etc/cron.d/pkgfile
