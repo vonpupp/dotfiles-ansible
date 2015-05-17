@@ -1,6 +1,5 @@
 - name: Install python devel env
   sudo: yes
-  #sudo_user: "{{ ansible_user_id }}"
   pacman: name={{ item }} state=present
   with_items:
     - base-devel
@@ -14,8 +13,7 @@
 
 - name: Install python pip env
   sudo: yes
-  #sudo_user: "{{ user }}"
-  pip: name={{ item }}
+  pip: name={{ item }} executable=pip2
   with_items:
     - envdir
     - autoenv
