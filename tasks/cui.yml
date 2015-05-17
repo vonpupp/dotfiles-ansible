@@ -9,6 +9,7 @@
 # alsamixer
 
 - name: install utilities
+  sudo: yes
   pacman: name={{ item }} state=present
   with_items:
     - abook
@@ -85,5 +86,5 @@
     - wicd
     - zsh
     - zsh-syntax-highlighting
-  sudo: true
-  sudo_user: "{{ ansible_user_id }}"
+
+# Failing packages: lynx, mpv, offlineimap, smplayer

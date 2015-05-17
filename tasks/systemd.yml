@@ -1,6 +1,8 @@
 ---
 - name: Create journald.conf.d dir
+  sudo: yes
   file: path=/etc/journald.conf.d state=directory
 
 - name: Install journald config
+  sudo: yes
   copy: src=files/journald.conf dest=/etc/journald.conf.d/local.conf

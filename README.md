@@ -14,7 +14,8 @@ generate the password at the password prompt.
 
 ## Inspiration
 
-https://github.com/cdown/ansible-personal
-https://github.com/augustl/ansible-playbooks
-https://github.com/resmo/ansible-role-sshd
-https://github.com/ajsalminen/ansible-role-cheat
+* https://github.com/cdown/ansible-personal
+* https://github.com/augustl/ansible-playbooks
+* https://github.com/vvo/ansible-archee/tree/master/roles/user/tasks
+* https://github.com/resmo/ansible-role-sshd
+* https://github.com/ajsalminen/ansible-role-cheat

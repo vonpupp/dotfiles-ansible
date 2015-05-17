@@ -1,5 +1,6 @@
 ---
 - name: Install xorg
+  sudo: yes
   pacman: name={{ item }} state=present
   with_items:
     - xorg-server
@@ -11,10 +12,9 @@
     - xorg-xset
     - xorg-xrdb
     - mesa
-  sudo: yes
-  sudo_user: "{{ ansible_user_id }}"
 
 - name: Install windows manager
+  sudo: yes
   pacman: name={{ item }} state=present
   with_items:
     - slim
@@ -25,10 +25,9 @@
     - wmname
     - xterm
     - xclip
-  sudo: yes
-  sudo_user: "{{ ansible_user_id }}"
 
 - name: Enable slim
+  sudo: yes
   service: name=slim state=started enabled=yes
 
 # intel graphics
@@ -38,6 +37,7 @@
 # $ pacman -S xf86-input-synaptics
 
 - name: Install X tools
+  sudo: yes
   pacman: name={{ item }} state=present
   with_items:
     - feh
@@ -54,7 +54,6 @@
     - wmctrl
     - zathura
     - zathura-pdf-poppler
-    - zathura-pdf-mupdf
     - imagemagick
     - ghostscript
     - rxvt-unicode
@@ -62,8 +61,7 @@
     - libnotify
     - xfce4-notifyd
     - dmenu
-  sudo: yes
-  sudo_user: "{{ ansible_user_id }}"
+    #- zathura-pdf-mupdf
 
 #- name: Install urxvt Perl extensions
 #  yaourt: name=urxvt-perls
