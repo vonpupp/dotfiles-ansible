@@ -26,8 +26,9 @@
       changed_when: false
 
     # Service related
+    #- include: tasks/update-packages.yml
     #- include: tasks/pacman.yml
-    #- include: tasks/aur.yml
+    - include: tasks/aur.yml
     #- include: tasks/ntp.yml
     #- include: tasks/network-wired.yml
     #- include: tasks/network-wifi.yml
@@ -38,14 +39,14 @@
     #- include: tasks/devel-python.yml
     #- include: tasks/devel-ruby.yml user=afu
     #- include: tasks/devel-java.yml
-    - include: tasks/gui.yml
+    #- include: tasks/gui.yml
 
     # System configs
     #- include: tasks/cron.yml
     #- include: tasks/systemd.yml
     #- include: tasks/xorg-virtualbox.yml
     #- include: tasks/shared.yml
-    - include: tasks/pkgfile.yml
+    #- include: tasks/pkgfile.yml
 
     # Dotfiles (root)
     #- include: tasks/zsh.yml user=root

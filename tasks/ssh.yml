@@ -1,10 +1,8 @@
 ---
 - name: Start sshd service
-  service: name=sshd state=started enabled=yes
   sudo: yes
-  sudo_user: "{{ ansible_user_id }}"
+  service: name=sshd state=started enabled=yes
 
 - name: Install mosh
-  pacman: name=mosh state=present
   sudo: yes
-  sudo_user: "{{ ansible_user_id }}"
+  pacman: name=mosh state=present
