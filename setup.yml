@@ -25,10 +25,11 @@
       register: installed_packages
       changed_when: false
 
-    # Service related
-    #- include: tasks/update-packages.yml
+    # Base configs
+    # OK
+    #- include: tasks/update-packages-cache.yml
     #- include: tasks/pacman.yml
-    - include: tasks/aur.yml
+    #- include: tasks/aur.yml
     #- include: tasks/ntp.yml
     #- include: tasks/network-wired.yml
     #- include: tasks/network-wifi.yml
@@ -42,6 +43,7 @@
     #- include: tasks/gui.yml
 
     # System configs
+    # OK
     #- include: tasks/cron.yml
     #- include: tasks/systemd.yml
     #- include: tasks/xorg-virtualbox.yml
@@ -49,11 +51,15 @@
     #- include: tasks/pkgfile.yml
 
     # Dotfiles (root)
+    # OK
+    #- include: tasks/user.yml user=afu
     #- include: tasks/zsh.yml user=root
     #- include: tasks/vim.yml user=root
     #- include: tasks/tmux.yml user=root
 
     # Dotfiles (user)
+    # OK
+    #- include: tasks/user.yml user=afu
     #- include: tasks/zsh.yml user=afu
     #- include: tasks/vim.yml user=afu
     #- include: tasks/tmux.yml user=afu

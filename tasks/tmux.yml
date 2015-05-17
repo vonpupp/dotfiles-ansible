@@ -1,21 +1,7 @@
 ---
 - name: Install tmux for {{ user }}
   sudo: yes
-  sudo_user: "{{ user }}"
   pacman: name=tmux state=present
-
-- name: Create homesick repos folder for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  command: mkdir -p "~{{ user }}/.homesick/repos"
-#  shell: mkdir -p ~/.homesick/repos
-#  git: repo=git://github.com/cdown/dotfiles.git dest=~{{ user }}/git/dotfiles accept_hostkey=yes
-#  command: ./setup chdir="~{{ user }}/git/dotfiles"
-
-- name: Clone homeshick for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  git: repo=https://github.com/andsens/homeshick.git dest=~{{ user }}/.homesick/repos/homeshick
 
   # TMUX
 - name: Link castle for {{ user }}

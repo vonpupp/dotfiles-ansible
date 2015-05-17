@@ -1,24 +1,13 @@
 ---
 - name: Install vim for {{ user }}
   sudo: yes
-  sudo_user: "{{ user }}"
   pacman: name=vim state=present
-
-- name: Create homesick repos folder for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  command: mkdir -p "~{{ user }}/.homesick/repos"
-
-- name: Clone homeshick for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  git: repo=https://github.com/andsens/homeshick.git dest=~{{ user }}/.homesick/repos/homeshick
 
   # VIM
 - name: Clone vundle for {{ user }}
   sudo: yes
   sudo_user: "{{ user }}"
-  git: repo=https://github.com/gmariK/vundle.git dest={{ user }}/.vim/bundle/vundle
+  git: repo=https://github.com/gmariK/vundle.git dest=~{{ user }}/.vim/bundle/vundle
 
 - name: Configure vim for {{ user }}
   sudo: yes
@@ -33,8 +22,10 @@
 
   # VIM Castle
 - name: Link castle
+  sudo: yes
+  sudo_user: "{{ user }}"
   shell:
-    git clone https://github.com/vonpupp/{{ item }} ~/.homesick/repos/{{ item }} && source {{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link {{ item }}
+    git clone https://github.com/vonpupp/{{ item }} ~{{ user }}/.homesick/repos/{{ item }} && source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link {{ item }}
   with_items:
     - vim.castle
 

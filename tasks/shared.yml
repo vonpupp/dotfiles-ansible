@@ -13,9 +13,9 @@
   register: gid
   changed_when: false
 
-- name: Set up shared directory entry in fstab
-  sudo: yes
-  mount: name=/mnt/shared src=Shared fstype=vboxsf opts="gid={{ gid.stdout }},dmode=770,fmode=660" state=present
+#- name: Set up shared directory entry in fstab
+#  sudo: yes
+#  mount: name=/mnt/shared src=Shared fstype=vboxsf opts="gid={{ gid.stdout }},dmode=770,fmode=660" state=present
 
 - name: Create /mnt/shared
   sudo: yes
