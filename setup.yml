@@ -10,8 +10,11 @@
 - hosts: localhost
   connection: local
 
-  vars_files:
-    - vars/main.yml
+  #vars_files:
+  #  - vars/main.yml
+
+  vars:
+    - ansible_python_interpreter: /usr/bin/python2
 
   tasks:
     - name: Get size of long to determine architecture
@@ -44,7 +47,7 @@
 
     # System configs
     # OK
-    #- include: tasks/cron.yml
+    - include: tasks/cron.yml
     #- include: tasks/systemd.yml
     #- include: tasks/xorg-virtualbox.yml
     #- include: tasks/shared.yml
@@ -52,7 +55,7 @@
 
     # Dotfiles (root)
     # OK
-    #- include: tasks/user.yml user=afu
+    #- include: tasks/user.yml user=root
     #- include: tasks/zsh.yml user=root
     #- include: tasks/vim.yml user=root
     #- include: tasks/tmux.yml user=root
