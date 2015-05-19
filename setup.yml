@@ -30,6 +30,7 @@
 
     # Base configs
     # OK
+    - include: tasks/mount-nfs-cache.yml
     #- include: tasks/update-packages-cache.yml
     #- include: tasks/pacman.yml
     #- include: tasks/aur.yml
@@ -47,7 +48,7 @@
 
     # System configs
     # OK
-    - include: tasks/cron.yml
+    #- include: tasks/cron.yml
     #- include: tasks/systemd.yml
     #- include: tasks/xorg-virtualbox.yml
     #- include: tasks/shared.yml

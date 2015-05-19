@@ -1,0 +1,21 @@
+---
+- name: Update package lists
+  sudo: yes
+  pacman: name=nfs-utils
+
+#- name: Mounting /var/lib/pacman/sync on {{ long_bit }}
+#  sudo: yes
+#  #mount: name=/var/lib/pacman/sync src=nas:/share/cache/arch/$(uname -m)/var/lib/pacman/sync fstype=nfs opts=nolock state=present
+#  mount: name=/var/lib/pacman/sync src=nas:/share/cache/arch/x86_64/var/lib/pacman/sync fstype=nfs opts=nolock state=present
+
+#- name: Mounting /var/cache/pacman/pkg
+#  sudo: yes
+#  mount: name=/var/cache/pacman/pkg src=nas:/share/cache/arch/x86_64/var/cache/pacman/pkg fstype=nfs opts=nolock state=present
+
+
+- name: Mounting pacman cache
+  sudo: yes
+  command: "{{ item }}"
+  with_items:
+    - mount -t nfs -o nolock nas:/share/cache/arch/x86_64/var/lib/pacman/sync /var/lib/pacman/sync
+    - mount -t nfs -o nolock nas:/share/cache/arch/x86_64/var/cache/pacman/pkg /var/cache/pacman/pkg
