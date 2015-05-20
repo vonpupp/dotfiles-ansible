@@ -19,3 +19,13 @@ generate the password at the password prompt.
 * https://github.com/vvo/ansible-archee/tree/master/roles/user/tasks
 * https://github.com/resmo/ansible-role-sshd
 * https://github.com/ajsalminen/ansible-role-cheat
+
+
+## Roles to be included
+* https://github.com/Stouts/Stouts.users
+* https://github.com/Stouts/Stouts.sudo
+* https://github.com/Stouts/Stouts.ntp
+* https://github.com/Stouts/Stouts.openssh
+* https://github.com/Stouts/Stouts.python
+* https://github.com/Stouts/Stouts.locale
+* https://github.com/Stouts/Stouts.hostname

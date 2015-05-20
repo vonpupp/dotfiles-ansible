@@ -30,7 +30,8 @@
 
     # Base configs
     # OK
-    - include: tasks/mount-nfs-cache.yml
+    #- include: tasks/mount-nfs-cache.yml
+    #- include: tasks/upgrade-distro.yml
     #- include: tasks/update-packages-cache.yml
     #- include: tasks/pacman.yml
     #- include: tasks/aur.yml
@@ -40,8 +41,8 @@
     #- include: tasks/ssh.yml
 
     # Packages
-    #- include: tasks/cui.yml
-    #- include: tasks/devel-python.yml
+    - include: tasks/cui.yml
+    - include: tasks/devel-python.yml
     #- include: tasks/devel-ruby.yml user=afu
     #- include: tasks/devel-java.yml
     #- include: tasks/gui.yml

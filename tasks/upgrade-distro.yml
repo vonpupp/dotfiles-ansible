@@ -1,0 +1,11 @@
+---
+- name: Install archlinux-keyring
+  sudo: yes
+  pacman: name=archlinux-keyring
+
+- name: Upgrading archlinux
+  sudo: yes
+  command: "{{ item }}"
+  with_items:
+    - pacman -Su
+    - pacman-db-upgrade
