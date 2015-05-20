@@ -67,18 +67,18 @@
 
 - name: Install urxvt Perl extensions
   yaourt: name=urxvt-perls
-  sudo: yes
-  sudo_user: makepkg
+#  sudo: yes
+#  sudo_user: makepkg
 
 - name: Install Google Chrome
   yaourt: name=google-chrome
-  sudo: yes
-  sudo_user: makepkg
+#  sudo: yes
+#  sudo_user: makepkg
 
 - name: Install Hangouts video plugin
   yaourt: name=google-talkplugin
-  sudo: yes
-  sudo_user: makepkg
+#  sudo: yes
+#  sudo_user: makepkg
 
 # intel graphics
 # $ pacman -S xf86-video-intel libva-intel-driver

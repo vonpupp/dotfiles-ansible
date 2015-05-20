@@ -41,8 +41,9 @@
     #- include: tasks/ssh.yml
 
     # Packages
-    - include: tasks/cui.yml
-    - include: tasks/devel-python.yml
+    # OK
+    #- include: tasks/cui.yml
+    #- include: tasks/devel-python.yml
     #- include: tasks/devel-ruby.yml user=afu
     #- include: tasks/devel-java.yml
     #- include: tasks/gui.yml

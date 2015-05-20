@@ -1,11 +1,12 @@
 ---
 - name: Install rbenv
   sudo: yes
+  #sudo_user: makepkg
+  sudo_user: "{{ user }}"
   yaourt: 'name={{ item }}'
   with_items:
     - rbenv
     - ruby-build
-  sudo_user: makepkg
 
 - name: Check if ruby is installed in rbenv
   sudo: yes
