@@ -76,7 +76,7 @@
 
     # Dotfiles (user)
     # OK
-    - include: tasks/user.yml user=afu
+    #- include: tasks/user.yml user=afu
     - include: tasks/zsh.yml  user=afu
     - include: tasks/tmux.yml user=afu
     #- include: tasks/vim.yml  user=afu

@@ -10,13 +10,36 @@
 - hosts: localhost
   connection: local
 
-  vars:
-    users:
-      - afu
+#    users:
+#      - afu
 
-    users_inc_super:
-      - afu
-      - root
+#    users_inc_super:
+#      - afu
+#      - root
+
+  vars:
+    # users
+    - users_groups: [sudo]
+    - users_users: [afu, vagrant]
+    #users_ssh_keys:
+    #- name: afu
+    #  authorized: 
+    #  - ssh-rsa KEY-HERE
+    
+    # sudo
+    - sudo_users: [afu, vagrant]
+
+    # locales
+    - locale_locales:
+      - en_US.UTF-8
+      - es_ES.UTF-8
+      - pt_BR.UTF-8
+      - fr_FR.UTF-8
+
+  roles:
+    - Stouts.users
+    - Stouts.sudo
+    - Stouts.locale
 
   tasks:
     - name: Get size of long to determine architecture
@@ -31,8 +54,8 @@
       changed_when: false
 
     # Vagrant like environment
-    - include: tasks/sudo.yml
-    - include: tasks/users.yml
+    #- include: tasks/sudo.yml
+    #- include: tasks/users.yml
 
     # Root configs
     #- include: tasks/network-wired.yml
