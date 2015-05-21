@@ -7,5 +7,5 @@
   sudo: yes
   command: "{{ item }}"
   with_items:
-    - pacman -Su
+    - pacman -Su --noconfirm
     - pacman-db-upgrade

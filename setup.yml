@@ -16,6 +16,17 @@
   vars:
     - ansible_python_interpreter: /usr/bin/python2
 
+    # users
+    - users_groups: [sudo]
+    - users_users: [afu]
+    #users_ssh_keys:
+    #- name: afu
+    #  authorized: 
+    #  - ssh-rsa KEY-HERE
+
+  roles:
+    - Stouts.users
+
   tasks:
     - name: Get size of long to determine architecture
       command: getconf LONG_BIT
@@ -32,29 +43,29 @@
     # OK
     #- include: tasks/mount-nfs-cache.yml
     #- include: tasks/upgrade-distro.yml
-    #- include: tasks/update-packages-cache.yml
-    #- include: tasks/pacman.yml
-    #- include: tasks/aur.yml
-    #- include: tasks/ntp.yml
-    #- include: tasks/network-wired.yml
-    #- include: tasks/network-wifi.yml
-    #- include: tasks/ssh.yml
+    - include: tasks/update-packages-cache.yml
+    - include: tasks/pacman.yml
+    - include: tasks/aur.yml
+    - include: tasks/ntp.yml
+    - include: tasks/network-wired.yml
+    - include: tasks/network-wifi.yml
+    - include: tasks/ssh.yml
 
     # Packages
     # OK
-    #- include: tasks/cui.yml
-    #- include: tasks/devel-python.yml
-    #- include: tasks/devel-ruby.yml user=afu
-    #- include: tasks/devel-java.yml
-    #- include: tasks/gui.yml
+    - include: tasks/cui.yml
+    - include: tasks/devel-python.yml
+    - include: tasks/devel-ruby.yml user=vagrant
+    - include: tasks/devel-java.yml
+    - include: tasks/gui.yml
 
     # System configs
     # OK
-    #- include: tasks/cron.yml
-    #- include: tasks/systemd.yml
-    #- include: tasks/xorg-virtualbox.yml
-    #- include: tasks/shared.yml
-    #- include: tasks/pkgfile.yml
+    - include: tasks/cron.yml
+    - include: tasks/systemd.yml
+    - include: tasks/xorg-virtualbox.yml
+    - include: tasks/shared.yml
+    - include: tasks/pkgfile.yml
 
     # Dotfiles (root)
     # OK
@@ -65,7 +76,7 @@
 
     # Dotfiles (user)
     # OK
-    #- include: tasks/user.yml user=afu
-    #- include: tasks/zsh.yml user=afu
-    #- include: tasks/vim.yml user=afu
-    #- include: tasks/tmux.yml user=afu
+    - include: tasks/user.yml user=afu
+    - include: tasks/zsh.yml  user=afu
+    - include: tasks/tmux.yml user=afu
+    #- include: tasks/vim.yml  user=afu
