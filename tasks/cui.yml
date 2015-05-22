@@ -89,4 +89,4 @@
     - zsh-syntax-highlighting
 
 # Failing packages: lynx, mpv, offlineimap, smplayer
-# To test: elinks, finch, cmus, cmatrix, sc, teapot, calcurse, cal, cone, cortex
+# To test: finch, cmus, cmatrix, sc, teapot, calcurse, cal, cone, cortex

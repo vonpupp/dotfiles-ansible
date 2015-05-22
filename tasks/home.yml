@@ -4,7 +4,7 @@
   sudo_user: "{{ user }}"
   command: mkdir -p "~{{ user }}/bin"
 
-- name: Create bin folder for {{ user }}
+- name: Create tmp folder for {{ user }}
   sudo: yes
   sudo_user: "{{ user }}"
   command: mkdir -p "~{{ user }}/tmp"

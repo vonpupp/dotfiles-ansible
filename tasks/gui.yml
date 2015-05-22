@@ -65,6 +65,9 @@
     - dmenu
     #- zathura-pdf-mupdf
 
+- name: Copy .xinitrc
+  copy: src=files/.xinitrc dest=~{{ username }}/.xinitrc
+
 - name: Install urxvt Perl extensions
   yaourt: name=urxvt-perls
 #  sudo: yes
