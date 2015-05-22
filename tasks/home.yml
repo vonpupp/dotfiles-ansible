@@ -9,6 +9,10 @@
   sudo_user: "{{ user }}"
   command: mkdir -p "~{{ user }}/tmp"
 
+  # .xinitrc
+- name: Copy .xinitrc
+  copy: src=files/.xinitrc dest=~{{ user }}/.xinitrc
+
 - name: Create homesick repos folder for {{ user }}
   sudo: yes
   sudo_user: "{{ user }}"
