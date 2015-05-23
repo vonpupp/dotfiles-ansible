@@ -9,6 +9,21 @@
   sudo_user: "{{ user }}"
   command: mkdir -p "~{{ user }}/tmp"
 
+- name: Create .venv folder for {{ user }}
+  sudo: yes
+  sudo_user: "{{ user }}"
+  command: mkdir -p "~{{ user }}/.venv"
+
+- name: Install requirements2.txt for {{ user }}
+  sudo: yes
+  sudo_user: "{{ user }}"
+  pip: requirements=~{{ user }}/{{ lookup('pipe','pwd')|dirname|basename }}/files/requirements2.txt virtualenv=~{{ user }}/.venv/bin2 virtualenv_command=virtualenv2 executable=pip2
+
+- name: Install requirements3.txt for {{ user }}
+  sudo: yes
+  sudo_user: "{{ user }}"
+  pip: requirements=~{{ user }}/{{ lookup('pipe','pwd')|dirname|basename }}/files/requirements3.txt virtualenv=~{{ user }}/.venv/bin3 virtualenv_command=virtualenv3 executable=pip3
+
   # .xinitrc
 - name: Copy .xinitrc
   sudo: yes
