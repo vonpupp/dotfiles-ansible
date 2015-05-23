@@ -3,14 +3,7 @@
   sudo: yes
   pacman: name=tmux state=present
 
-  # TMUX
-- name: Link castle for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  shell:
-    git clone https://github.com/vonpupp/{{ item }} ~{{ user }}/.homesick/repos/{{ item }} && source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link {{ item }}
-  with_items:
-    - tmux.castle
+- include: homeshick-dotfile.yml
 
 - name: Clone tpm for {{ user }}
   sudo: yes

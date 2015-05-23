@@ -3,37 +3,43 @@
   sudo: yes
   pacman: name=vim state=present
 
-  # VIM
+- include: homeshick-dotfile.yml
+
 - name: Clone vundle for {{ user }}
   sudo: yes
   sudo_user: "{{ user }}"
   git: repo=https://github.com/gmariK/vundle.git dest=~{{ user }}/.vim/bundle/vundle
 
-- name: Configure vim for {{ user }}
+- name: Create vim folders {{ user }}
   sudo: yes
   sudo_user: "{{ user }}"
   command: "{{ item }}"
   with_items:
     #- mkdir -p ~/.vim/bundle
-    - mkdir -p {{ user }}/.vim/colors
-    - mkdir -p {{ user }}/.vim/config
-    - mkdir -p {{ user }}/.vim/spell
-    - mkdir -p {{ user }}/.vim/syntax
+    - mkdir -p ~{{ user }}/.vim/colors
+    - mkdir -p ~{{ user }}/.vim/config
+    - mkdir -p ~{{ user }}/.vim/spell
+    - mkdir -p ~{{ user }}/.vim/syntax
 
   # VIM Castle
-- name: Link castle
-  sudo: yes
-  sudo_user: "{{ user }}"
-  shell:
-    git clone https://github.com/vonpupp/{{ item }} ~{{ user }}/.homesick/repos/{{ item }} && source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link {{ item }}
-  with_items:
-    - vim.castle
+#- name: Link castle
+#  sudo: yes
+#  sudo_user: "{{ user }}"
+#  shell:
+#    git clone https://github.com/vonpupp/{{ item }} ~{{ user }}/.homesick/repos/{{ item }} && source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link {{ item }}
+#  with_items:
+#    - vim.castle
 
 #- name: Clone youcompleteme
 #  shell:
 #    git clone --depth 1 https://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe && cd ~/.vim/bundle/YouCompleteMe && git submodule init && git submodule update --depth 1
 
-- name: Bundle vim for {{ user }}
+- name: Clone YouCompleteMe for {{ user }}
+  sudo: yes
+  sudo_user: "{{ user }}"
+  git: repo=git://github.com/Valloric/YouCompleteMe.git dest=~{{ user }}/.vim/bundle/YouCompleteMe accept_hostkey=yes depth=1 recursive=yes
+
+- name: Init vim bundles {{ user }}
   sudo: yes
   sudo_user: "{{ user }}"
   command: "{{ item }}"

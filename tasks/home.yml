@@ -1,5 +1,5 @@
 ---
-- name: Create bin folder for {{ user }}
+- name: Create bin folder for "{{ user }}"
   sudo: yes
   sudo_user: "{{ user }}"
   command: mkdir -p "~{{ user }}/bin"
@@ -11,6 +11,8 @@
 
   # .xinitrc
 - name: Copy .xinitrc
+  sudo: yes
+  sudo_user: "{{ user }}"
   copy: src=files/.xinitrc dest=~{{ user }}/.xinitrc
 
 - name: Create homesick repos folder for {{ user }}
@@ -37,6 +39,7 @@
     PREFIX=~{{ user }} make install
     cd ..
     rm -rf ~{{ user }}/tmp/fasd
+    rm -rf ~{{ user }}/.zshrc
 
   # FZF
 - name: Clone fzf for {{ user }}
