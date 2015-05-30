@@ -54,8 +54,8 @@
       changed_when: false
 
     # Vagrant like environment
-    - include: tasks/sudo.yml
-    - include: tasks/users.yml
+    #- include: tasks/sudo.yml
+    #- include: tasks/users.yml
 
     # Root configs
     - include: tasks/network-wired.yml
