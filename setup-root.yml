@@ -54,11 +54,11 @@
       changed_when: false
 
     # Vagrant like environment
-    #- include: tasks/sudo.yml
-    #- include: tasks/users.yml
+    - include: tasks/sudo.yml
+    - include: tasks/users.yml
 
     # Root configs
-    #- include: tasks/network-wired.yml
-    #- include: tasks/pacman.yml
-    #- include: tasks/aur.yml
-    #- include: tasks/ntp.yml
+    - include: tasks/network-wired.yml
+    - include: tasks/pacman.yml
+    - include: tasks/aur.yml
+    - include: tasks/ntp.yml

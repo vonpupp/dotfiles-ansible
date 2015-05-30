@@ -10,6 +10,32 @@ generate the password at the password prompt.
 
 ## Usage
 
+### Mounting a local NFS packages cache (optional)
+
+To save time and bandwidth a NFS packages cache can be optionally mounted with
+(assuming root):
+
+```bash
+pacman -Sy --noconfirm nfs-utils
+mount -t nfs -o nolock,vers=3 nas:/share/cache/arch/$(uname -m)/var/lib/pacman/sync /var/lib/pacman/sync
+mount -t nfs -o nolock,vers=3 nas:/share/cache/arch/$(uname -m)/var/cache/pacman/pkg /var/cache/pacman/pkg
+```
+
+### Bootstrapping dependencies
+
+The dependencies are: [Ansible][], [Python][], [Git][] and some Ansible
+playbooks from galaxy
+
+```bash
+pacman -Sy --noconfirm ansible git
+git clone --recursive https://github.com/vonpupp/ansible-personal
+cd ansible-personal
+ansible-galaxy -p roles install Stouts.users Stouts.sudo Stouts.locale Stouts.hostname
+
+bootstrap-root.sh
+
+```
+
     ansible-playbook -i localhost, setup.yml
 
 ## Inspiration
