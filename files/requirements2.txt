@@ -4,3 +4,4 @@ envdir
 autoenv
 cheat
 #beets
+turses
