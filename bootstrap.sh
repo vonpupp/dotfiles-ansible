@@ -1,10 +1,8 @@
+pacman -Sy --noconfirm ansible git
+git clone --recursive https://github.com/vonpupp/ansible-personal
+cd ansible-personal
+ansible-galaxy -p roles install Stouts.users Stouts.sudo Stouts.locale
+Stouts.hostname
 
-#git submodule init
-#git submodule update
-#sudo pacman -Sy --noconfirm ansible
-
-#ansible-galaxy -p roles install Stouts.users Stouts.sudo Stouts.locale Stouts.hostname
-
-#ansible-playbook setup.yml -i "local," --extra-vars "makepkg_user=afu" $@
-#ansible-playbook setup.yml -i "local," --extra-vars "makepkg_user=afu, user_email=asf@mail.com" --ask-become-pass $@
-ansible-playbook setup.yml -i "local," --extra-vars "username=afu user_email=asf@mail.com" --ask-become-pass $@
+bootstrap-root.sh
+bootstrap-user.sh
