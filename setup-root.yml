@@ -20,14 +20,14 @@
   vars:
     # users
     - users_groups: [sudo]
-    - users_users: [afu, vagrant]
+    - users_users: [av]
     #users_ssh_keys:
     #- name: afu
-    #  authorized: 
+    #  authorized:
     #  - ssh-rsa KEY-HERE
-    
+
     # sudo
-    - sudo_users: [afu, vagrant]
+    - sudo_users: [av]
 
     # locales
     - locale_locales:
