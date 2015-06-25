@@ -1,6 +1,4 @@
 # Missing:
-# exuberant-ctags
-# fasd
 # fortune
 # gcalcli
 # kpcli
@@ -8,7 +6,7 @@
 # spell-pt
 # alsamixer
 
-- name: install utilities
+- name: Install utilities
   sudo: yes
   pacman: name={{ item }} state=present
   with_items:
@@ -28,9 +26,11 @@
     - bitlbee
     - cmake
     - colordiff
+    - ctags
     - curl
     - dnsutils
     - dosfstools
+    - docker
     - elinks
     - git
     - gnupg
@@ -44,12 +44,13 @@
     - isync
     - lftp
     - lsof
+    - lxc
     - lynx
     - mc
     - mpd
     - mpv
     - mutt
-    - ncmpcpp
+    #- ncmpcpp
     - newsbeuter
     - nfs-utils
     - nmap
@@ -69,8 +70,9 @@
     - pydf
     - python2
     - python2-pip
+    - qemu
     - ranger
-    #- reflector
+    - reflector
     - rsync
     - rtorrent
     - screen
@@ -80,9 +82,14 @@
     - task
     - tmux
     - tree
+    - ufw
+    - ufw-extras
     - unrar
     - unzip
     - vim
+    - virtualbox
+    - virtualbox-guest-iso
+    - virtualbox-ext-vnc
     - wget
     - wicd
     - zsh
@@ -90,3 +97,17 @@
 
 # Failing packages: lynx, mpv, offlineimap, smplayer
 # To test: finch, cmus, cmatrix, sc, teapot, calcurse, cal, cone, cortex
+- name: Start and enable services
+  sudo: yes
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - wicd
+    - libvirtd
+
+- name: Install fasd
+  yaourt: name={{ item }}
+  with_items:
+    - fasd
+    - dropbox
+    - vagrant
+    - sublime-text-dev # sublime-text

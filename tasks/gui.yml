@@ -49,6 +49,7 @@
     - mkvtoolnix
     - pcmanfm
     - qmmp
+    - qt4
     - seahorse
     - shotwell
     - vlc
@@ -62,6 +63,7 @@
     - alsa-utils
     - libnotify
     - xfce4-notifyd
+    - virt-manager
     - dmenu
     #- zathura-pdf-mupdf
 
