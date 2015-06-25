@@ -5,4 +5,4 @@
 
 #ansible-galaxy -p roles install Stouts.users Stouts.sudo Stouts.locale Stouts.hostname
 
-ansible-playbook setup-root.yml -i "local,"
+ansible-playbook setup-root.yml -i "local," --extra-vars "param_hostname=lex.flp.lan"
