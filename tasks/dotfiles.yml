@@ -1,27 +1,10 @@
 ---
-#- name: Clone dotfiles for {{ user }}
-#  sudo: yes
-#  sudo_user: "{{ user }}"
-#  git: repo=git://github.com/cdown/dotfiles.git dest=~{{ user }}/git/dotfiles accept_hostkey=yes
-#
-#- name: Set up dotfiles for {{ user }}
-#  sudo: yes
-#  sudo_user: "{{ user }}"
-#  command: ./setup chdir="~{{ user }}/git/dotfiles"
-#  changed_when: false
-#
-#- name: "Set {{ user }}'s dotfiles to push using ssh"
-#  sudo: yes
-#  sudo_user: "{{ user }}"
-#  command: git remote set-url --push origin git@github.com:cdown/dotfiles.git chdir=~{{ user }}/git/dotfiles
-#  changed_when: false
-
-- name: Create homesick repos folder for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  shell: mkdir -p ~/.homesick/repos
-
-- name: Clone homeshick for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  git: repo=https://github.com/andsens/homeshick.git dest=~/.homesick/repos/homeshick
+    # Dotfiles (user)
+    # OK
+    #- include: tasks/user.yml user=av
+    #- include: tasks/home.yml user="{{ username }}"
+    - include: home.yml
+    - include: dotfiles-apps.yml  base_config_repo_url="https://vonpupp@github.com/vonpupp" config_repo=dotfiles-apps
+    #- include: tasks/zsh.yml  user="{{ username }}" base_config_repo_url="https://github.com/vonpupp" config_repo=zsh.castle
+    #- include: tasks/tmux.yml user="{{ username }}" base_config_repo_url="https://github.com/vonpupp" config_repo=tmux.castle
+    #- include: tasks/vim.yml  user="{{ username }}" base_config_repo_url="https://github.com/vonpupp" config_repo=vim.castle

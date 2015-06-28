@@ -10,4 +10,4 @@
   sudo_user: "{{ user }}"
   shell:
     #~{{ user }}/.homesick/repos/{{ config_repo }}/setup.sh
-    source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link {{ config_repo }}
+    source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link -f {{ config_repo }}
