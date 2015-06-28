@@ -50,7 +50,7 @@
     - mpd
     - mpv
     - mutt
-    #- ncmpcpp
+    - ncmpcpp
     - newsbeuter
     - nfs-utils
     - nmap
@@ -86,12 +86,14 @@
     - ufw-extras
     - unrar
     - unzip
+    - vagrant
     - vim
     - virtualbox
     - virtualbox-guest-iso
     - virtualbox-ext-vnc
     - wget
-    - wicd
+    #- wicd
+    - networkmanager
     - zsh
     - zsh-syntax-highlighting
 
@@ -109,5 +111,5 @@
   with_items:
     - fasd
     - dropbox
-    - vagrant
+    - dropbox-cli
     - sublime-text-dev # sublime-text
