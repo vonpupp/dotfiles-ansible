@@ -1,0 +1,6 @@
+---
+#- name: Install vim for {{ user }}
+#  sudo: yes
+#  pacman: name=vim state=present
+
+- include: homeshick-dotfile.yml

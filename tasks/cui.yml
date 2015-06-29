@@ -70,6 +70,7 @@
     - pydf
     - python2
     - python2-pip
+    - pwgen
     - qemu
     - ranger
     - reflector

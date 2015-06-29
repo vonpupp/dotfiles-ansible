@@ -51,7 +51,7 @@
     - pcmanfm
     - qmmp
     - qt4
-    - seahorse
+    #- seahorse
     - shotwell
     - vlc
     - wicd-gtk
@@ -85,6 +85,9 @@
   yaourt: name=google-talkplugin
 #  sudo: yes
 #  sudo_user: makepkg
+
+- name: Install kbdd
+  yaourt: name=kbdd
 
 # intel graphics
 # $ pacman -S xf86-video-intel libva-intel-driver

@@ -1,6 +1,6 @@
 ---
   # CONFIG
-- name: Clone {{ config_repo }} for {{ user }}
+- name: Clone {{ config_repo }} for {{user}}
   sudo: yes
   sudo_user: "{{ user }}"
   git: repo={{ base_config_repo_url }}/{{ config_repo }} dest=~{{ user }}/.homesick/repos/{{ config_repo }}
@@ -9,5 +9,4 @@
   sudo: yes
   sudo_user: "{{ user }}"
   shell:
-    #~{{ user }}/.homesick/repos/{{ config_repo }}/setup.sh
-    source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link -f {{ config_repo }}
+    source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link -f {{ config_repo }} && ~{{ user }}/.homesick/repos/{{ config_repo }}/bootstrap.sh
