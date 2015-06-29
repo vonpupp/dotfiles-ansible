@@ -15,6 +15,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |v|
         v.gui = true
   end
+  #config.vm.network "private_network", ip: "192.168.50.5"
+  #config.vm.synced_folder ".", "/vagrant"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
