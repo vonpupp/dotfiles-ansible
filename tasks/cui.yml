@@ -22,6 +22,7 @@
     - atop
     - autoconf
     - autofs
+    - autofs
     - bc
     - bitlbee
     - cmake
@@ -29,8 +30,8 @@
     - ctags
     - curl
     - dnsutils
-    - dosfstools
     - docker
+    - dosfstools
     - elinks
     - git
     - gnupg
@@ -51,6 +52,7 @@
     - mpv
     - mutt
     - ncmpcpp
+    - networkmanager
     - newsbeuter
     - nfs-utils
     - nmap
@@ -67,10 +69,10 @@
     - polipo
     - procmail
     - pulseaudio
+    - pwgen
     - pydf
     - python2
     - python2-pip
-    - pwgen
     - qemu
     - ranger
     - reflector
@@ -90,11 +92,10 @@
     - vagrant
     - vim
     - virtualbox
-    - virtualbox-guest-iso
     - virtualbox-ext-vnc
+    - virtualbox-guest-iso
     - wget
     #- wicd
-    - networkmanager
     - zsh
     - zsh-syntax-highlighting
 
@@ -104,8 +105,10 @@
   sudo: yes
   service: name={{ item }} state=started enabled=yes
   with_items:
-    - wicd
+    - autofs
     - libvirtd
+    - networkmanager
+    #- wicd
 
 - name: Install fasd
   yaourt: name={{ item }}
