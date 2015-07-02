@@ -56,18 +56,6 @@
     #- include: tasks/shared.yml
     #- include: tasks/pkgfile.yml
 
-    # Dotfiles (root)
-    # OK
-    #- include: tasks/dotfiles.yml  user="root"
-    #- include: tasks/user.yml user=root
-    #- include: tasks/home.yml user=root
-    #- include: tasks/zsh.yml user=root
-    #- include: tasks/vim.yml user=root
-    #- include: tasks/tmux.yml user=root
-
-    # Dotfiles (user)
-    - include: tasks/dotfiles.yml  user="{{username}}"
-
 #TODO:
 # yaourt -S vim-youcompleteme-git
 # yaourt -S hopenpgp-tools-git

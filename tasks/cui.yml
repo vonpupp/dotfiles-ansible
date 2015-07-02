@@ -36,6 +36,7 @@
     - git
     - gnupg
     - gparted
+    - hostapd
     - htop
     - iftop
     - imagemagick

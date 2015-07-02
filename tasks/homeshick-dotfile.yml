@@ -9,4 +9,10 @@
   sudo: yes
   sudo_user: "{{ user }}"
   shell:
-    source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link -f {{ config_repo }} && ~{{ user }}/.homesick/repos/{{ config_repo }}/bootstrap.sh
+    source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link -f {{ config_repo }}
+
+- name: Run bootstrap.sh on {{ config_repo }} for {{ user }}
+  sudo: yes
+  sudo_user: "{{ user }}"
+  shell:
+    ~{{ user }}/.homesick/repos/{{ config_repo }}/bootstrap.sh

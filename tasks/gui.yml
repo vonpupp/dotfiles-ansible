@@ -3,28 +3,30 @@
   sudo: yes
   pacman: name={{ item }} state=present
   with_items:
+    - mesa
     - xorg-server
     - xorg-server-utils
     - xorg-server-xephyr
+    - xorg-xinit
     - xorg-xmodmap
     - xorg-xrandr
-    - xorg-xinit
-    - xorg-xset
     - xorg-xrdb
-    - mesa
+    - xorg-xset
 
 - name: Install windows manager
   sudo: yes
   pacman: name={{ item }} state=present
   with_items:
-    - slim
-    - slock
+    #- slock
     - awesome
+    - i3lock
+    - slim
     - vicious
-    - xscreensaver
     - wmname
-    - xterm
+    - xautolock
     - xclip
+    - xscreensaver
+    - xterm
 
 - name: Enable slim
   sudo: yes
