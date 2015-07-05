@@ -20,6 +20,7 @@
     - aspell-fr
     - aspell-it
     - atop
+    - atool
     - autoconf
     - autofs
     - autofs
@@ -36,6 +37,7 @@
     - git
     - gnupg
     - gparted
+    - highlight
     - hostapd
     - htop
     - iftop
@@ -95,8 +97,10 @@
     - virtualbox
     - virtualbox-ext-vnc
     - virtualbox-guest-iso
+    - w3m
     - wget
     #- wicd
+    - zip
     - zsh
     - zsh-syntax-highlighting
 
