@@ -4,10 +4,13 @@
   pacman: name={{ item }} state=present
   with_items:
     - mesa
+    - redshift
     - xorg-server
     - xorg-server-utils
     - xorg-server-xephyr
+    - xorg-xev
     - xorg-xinit
+    - xorg-xkill
     - xorg-xmodmap
     - xorg-xrandr
     - xorg-xrdb
@@ -18,6 +21,7 @@
   pacman: name={{ item }} state=present
   with_items:
     #- slock
+    - archlinux-xdg-menu
     - awesome
     - i3lock
     - slim
