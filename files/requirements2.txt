@@ -6,3 +6,8 @@ cheat
 #beets
 turses
 github-cli
+
+# django-productivity
+# dookiecutter-django   # Project templates
+# autoenv
+# konch                 # Autoimport modules and functions into shell sessions
