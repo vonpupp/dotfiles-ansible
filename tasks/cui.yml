@@ -28,6 +28,7 @@
     - bitlbee
     - cmake
     - colordiff
+    - cpio
     - ctags
     - curl
     - dnsutils
@@ -114,11 +115,3 @@
     - libvirtd
     - networkmanager
     #- wicd
-
-- name: Install fasd
-  yaourt: name={{ item }}
-  with_items:
-    - fasd
-    - dropbox
-    - dropbox-cli
-    - sublime-text-dev # sublime-text
