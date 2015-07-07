@@ -95,3 +95,11 @@
   shell:
     INSTALL_PREFIX=~{{ user }}/bin ~{{ user }}/tmp/gitflow-installer.sh
     rm ~{{ user }}/tmp/gitflow-installer.sh
+
+- name: Install yaourt tools
+  yaourt: name={{ item }}
+  with_items:
+    - fasd
+    - dropbox
+    - dropbox-cli
+    - sublime-text # sublime-text-dev
