@@ -25,6 +25,7 @@
     - awesome
     - i3lock
     - slim
+    - udisks
     - vicious
     - wmname
     - xautolock
@@ -48,30 +49,31 @@
   sudo: yes
   pacman: name={{ item }} state=present
   with_items:
+    #- seahorse
+    - alsa-utils
+    - dmenu
     - feh
     - firefox
+    - ghostscript
     - gparted
+    - imagemagick
     - keepassx
+    - libnotify
     - lilyterm
     - mkvtoolnix
     - pcmanfm
     - qmmp
     - qt4
-    #- seahorse
+    - rxvt-unicode
     - shotwell
+    - virt-manager
     - vlc
     - wicd-gtk
     - wmctrl
+    - xarchiver
+    - xfce4-notifyd
     - zathura
     - zathura-pdf-poppler
-    - imagemagick
-    - ghostscript
-    - rxvt-unicode
-    - alsa-utils
-    - libnotify
-    - xfce4-notifyd
-    - virt-manager
-    - dmenu
     #- zathura-pdf-mupdf
 
 - name: Copy .xinitrc
@@ -94,6 +96,9 @@
 
 - name: Install kbdd
   yaourt: name=kbdd
+
+- name: Install cairo-compmgr
+  yaourt: name=cairo-compmgr
 
 # intel graphics
 # $ pacman -S xf86-video-intel libva-intel-driver
