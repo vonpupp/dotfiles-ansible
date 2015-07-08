@@ -57,7 +57,6 @@
     - ghostscript
     - gparted
     - imagemagick
-    - keepassx
     - libnotify
     - lilyterm
     - mkvtoolnix
@@ -80,25 +79,20 @@
   copy: src=files/.xinitrc dest=~{{ username }}/.xinitrc
 
 - name: Install urxvt Perl extensions
-  yaourt: name=urxvt-perls
 #  sudo: yes
 #  sudo_user: makepkg
+  yaourt: name={{ item }}
+  with_items:
+    - urxvt-perls
+    - kbdd
+    - keepassx-git
+    - cairo-compmgr
 
 - name: Install Google Chrome
   yaourt: name=google-chrome
-#  sudo: yes
-#  sudo_user: makepkg
 
 - name: Install Hangouts video plugin
   yaourt: name=google-talkplugin
-#  sudo: yes
-#  sudo_user: makepkg
-
-- name: Install kbdd
-  yaourt: name=kbdd
-
-- name: Install cairo-compmgr
-  yaourt: name=cairo-compmgr
 
 # intel graphics
 # $ pacman -S xf86-video-intel libva-intel-driver
