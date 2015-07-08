@@ -112,6 +112,15 @@
   service: name={{ item }} state=started enabled=yes
   with_items:
     - autofs
+    - docker
     - libvirtd
     - networkmanager
     #- wicd
+
+- name: Install yaourt packages
+  yaourt: name={{ item }}
+  with_items:
+    - archey
+    - dropbox
+    - dropbox-cli
+    - sublime-text # sublime-text-dev
