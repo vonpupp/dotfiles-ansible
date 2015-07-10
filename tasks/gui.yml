@@ -86,7 +86,7 @@
     - urxvt-perls
     - kbdd
     - keepassx-git
-    - cairo-compmgr
+    - unagi
 
 - name: Install Google Chrome
   yaourt: name=google-chrome
