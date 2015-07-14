@@ -68,7 +68,9 @@
     - shotwell
     - virt-manager
     - vlc
-    - wicd-gtk
+    #- wicd-gtk
+    - wine
+    # Add multilib repo
     - wmctrl
     - xarchiver
     - xfce4-notifyd
