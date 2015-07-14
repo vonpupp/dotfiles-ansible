@@ -23,7 +23,8 @@
     - hostname_hostname: "{{param_hostname}}"   # Set hostname
     - hostname_hostname_short: "{{hostname_hostname.split('.')[:-1]|join('.')}}" # Set short hostname
     # users
-    - users_groups: [sudo docker]
+    #- users_groups: [sudo docker]
+    - users_groups: [sudo]
     - users_users: [av]
     #users_ssh_keys:
     #- name: afu
