@@ -48,6 +48,7 @@
     - ispell
     - isync
     - lftp
+    - lm_sensors
     - lsof
     - lxc
     - lynx
@@ -88,6 +89,8 @@
     - smplayer
     - sudo
     - task
+    - telegram-git
+    - telegram-purple-git
     - tmux
     - tree
     - ufw
