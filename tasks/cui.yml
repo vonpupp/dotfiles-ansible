@@ -12,6 +12,7 @@
   with_items:
     - abook
     - ack
+    - acpi
     - alsa-plugins
     - alsa-utils
     - aria2
@@ -106,6 +107,7 @@
     - virtualbox-guest-iso
     - w3m
     - wget
+    - whois
     #- wicd
     - zip
     - zsh
