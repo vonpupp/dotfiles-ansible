@@ -12,6 +12,7 @@
   with_items:
     - abook
     - ack
+    - alsa-plugins
     - alsa-utils
     - aria2
     - aspell
@@ -27,6 +28,7 @@
     - bc
     - bitlbee
     - cmake
+    - curl
     - colordiff
     - cpio
     - ctags
@@ -50,6 +52,7 @@
     - lftp
     - lm_sensors
     - lsof
+    - libvirt
     - lxc
     - lynx
     - mc
@@ -88,9 +91,8 @@
     - scrot
     - smplayer
     - sudo
+    - tar
     - task
-    - telegram-git
-    - telegram-purple-git
     - tmux
     - tree
     - ufw
@@ -118,14 +120,20 @@
     - autofs
     - docker
     - libvirtd
-    - networkmanager
+    - NetworkManager
+    - rpcbind.service
+    - nfs-client.target
+    - remote-fs.target
+    - autofs.service
     #- wicd
 
 - name: Install yaourt packages
   yaourt: name={{ item }}
   with_items:
-    - archey
+    #- archey
     - dropbox
     - dropbox-cli
     - kpcli
     - sublime-text # sublime-text-dev
+    #- telegram-git
+    #- telegram-purple-git
