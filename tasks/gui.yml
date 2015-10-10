@@ -12,6 +12,7 @@
     - xorg-xinit
     - xorg-xkill
     - xorg-xmodmap
+    - xorg-xprop
     - xorg-xrandr
     - xorg-xrdb
     - xorg-xset
@@ -45,7 +46,7 @@
     - ttf-inconsolata
     - ttf-droid
 
-- name: Install X tools
+- name: Install X apps
   sudo: yes
   pacman: name={{ item }} state=present
   with_items:
@@ -61,12 +62,15 @@
     - imagemagick
     - libnotify
     - lilyterm
+    - meld
     - mkvtoolnix
     - pcmanfm
+    - pidgin
     - qmmp
     - qt4
     - rxvt-unicode
     - shotwell
+    - telegram-purple-git
     - virt-manager
     - vlc
     #- wicd-gtk
@@ -75,6 +79,7 @@
     - wmctrl
     - xarchiver
     - xfce4-notifyd
+    - xiphos
     - zathura
     - zathura-pdf-poppler
     #- zathura-pdf-mupdf
