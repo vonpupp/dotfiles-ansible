@@ -76,6 +76,7 @@
     - perl-datetime
     - perl-image-exiftool
     - pinentry
+    - pm-utils
     - polipo
     - procmail
     - pulseaudio
