@@ -1,18 +1,15 @@
 ---
-- name: Create bin folder for "{{ user }}"
+- name: Create "{{ item }}" folder for "{{ user }}"
   sudo: yes
   sudo_user: "{{ user }}"
-  command: mkdir -p "~{{ user }}/bin"
-
-- name: Create tmp folder for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  command: mkdir -p "~{{ user }}/tmp"
-
-- name: Create .venv folder for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  command: mkdir -p "~{{ user }}/.venv"
+  command: mkdir -p "~{{ user }}/{{ item }}"
+  with_items:
+    - bin
+    - tmp
+    - .venv
+    - .homesick/repos
+    - Music
+    - Pictures
 
 - name: Install requirements2.txt for {{ user }}
   sudo: yes
@@ -29,11 +26,6 @@
   sudo: yes
   sudo_user: "{{ user }}"
   copy: src=files/.xinitrc dest=~{{ user }}/.xinitrc
-
-- name: Create homesick repos folder for {{ user }}
-  sudo: yes
-  sudo_user: "{{ user }}"
-  command: mkdir -p "~{{ user }}/.homesick/repos"
 
 - name: Clone homeshick for {{ user }}
   sudo: yes
