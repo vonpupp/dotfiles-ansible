@@ -22,8 +22,9 @@
     - hostname_enabled: yes                     # Enable module
     - hostname_hostname: "{{param_hostname}}"   # Set hostname
     - hostname_hostname_short: "{{hostname_hostname.split('.')[:-1]|join('.')}}" # Set short hostname
+
     # users
-    #- users_groups: [sudo docker]
+    #- users_groups: [sudo kvm vboxusers docker]
     - users_groups: [sudo]
     - users_users: [av]
     #users_ssh_keys:
@@ -43,9 +44,9 @@
 
   roles:
     - Stouts.hostname
-    - Stouts.users
-    - Stouts.sudo
-    - Stouts.locale
+    #- Stouts.users
+    #- Stouts.sudo
+    #- Stouts.locale
 
   tasks:
     - name: Get size of long to determine architecture
