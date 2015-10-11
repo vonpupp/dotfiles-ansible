@@ -54,11 +54,13 @@
     - alsa-utils
     - dmenu
     - feh
+    - file-roller
     - firefox
     - flashplayer
     - gedit
     - ghostscript
     - gparted
+    - gvfs
     - imagemagick
     - libnotify
     - lilyterm
