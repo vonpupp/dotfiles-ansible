@@ -138,5 +138,6 @@
     - dropbox-cli
     - kpcli
     - sublime-text # sublime-text-dev
+    - virtualbox-ext-oracle
     #- telegram-git
     #- telegram-purple-git
