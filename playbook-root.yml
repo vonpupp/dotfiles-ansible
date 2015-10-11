@@ -24,7 +24,7 @@
     - hostname_hostname_short: "{{hostname_hostname.split('.')[:-1]|join('.')}}" # Set short hostname
 
     # users
-    #- users_groups: [sudo kvm vboxusers docker]
+    #- users_groups: [sudo wheel optical storage power users av wireshark kvm vboxusers docker]
     - users_groups: [sudo]
     - users_users: [av]
     #users_ssh_keys:
