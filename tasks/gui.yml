@@ -65,23 +65,17 @@
     - libnotify
     - lilyterm
     - meld
-    - mkvtoolnix
     - pcmanfm
     - pidgin
     - qmmp
     - qt4
     - rxvt-unicode
     - shotwell
-    - telegram-purple-git
-    - virt-manager
     - vlc
     #- wicd-gtk
-    - wine
     # Add multilib repo
     - wmctrl
-    - xarchiver
     - xfce4-notifyd
-    - xiphos
     - zathura
     - zathura-pdf-poppler
     #- zathura-pdf-mupdf
@@ -94,10 +88,16 @@
 #  sudo_user: makepkg
   yaourt: name={{ item }}
   with_items:
-    - urxvt-perls
     - kbdd
     - keepassx-git
+    - mkvtoolnix
+    - telegram-purple-git
     - unagi
+    - urxvt-perls
+    - virt-manager
+    - wine
+    - xarchiver
+    - xiphos
 
 - name: Install Google Chrome
   yaourt: name=google-chrome
