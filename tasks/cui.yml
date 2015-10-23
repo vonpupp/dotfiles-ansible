@@ -62,6 +62,7 @@
     - mpv
     - mutt
     - ncmpcpp
+    - net-tools
     - networkmanager
     - newsbeuter
     - nfs-utils
