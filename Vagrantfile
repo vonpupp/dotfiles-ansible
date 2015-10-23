@@ -1,6 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'rbconfig'
+
+HOST_NAME = 'ansible-personal'
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -12,6 +16,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   #config.vm.box = "jfredett/arch-chef"
   config.vm.box = "terrywang/archlinux"
+  #config.vm.network "private_network", ip: "192.168.50.5"
+  config.vm.network "public_network", bridge: "eth0"
+
+  config.vm.define HOST_NAME do |node|
+    node.vm.hostname = HOST_NAME
+    # node.vm.network :forwarded_port,  guest: 80, host: 8080
+    #node.vm.network "internal_network", ip: "192.168.56.1"
+    node.vm.network "private_network", ip: "192.168.56.5" # vboxnet9
+    #node.vm.network "private_network", ip: "192.168.60.5" # vboxnet4
+#    node.vm.provision 'ansible' do |ansible|
+#      ansible.playbook = 'test.yml'
+#      ansible.verbose = "vvv"
+#    end
+  end
+
   config.vm.provider "virtualbox" do |v|
         v.gui = true
   end
@@ -46,6 +65,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "/home/av/pkg", "/vagrant_pkg"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
