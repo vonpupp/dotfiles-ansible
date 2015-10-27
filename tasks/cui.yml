@@ -33,6 +33,7 @@
     - colordiff
     - cpio
     - ctags
+    - cups
     - curl
     - dnsutils
     - docker
