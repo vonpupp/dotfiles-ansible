@@ -105,6 +105,9 @@
 - name: Install Hangouts video plugin
   yaourt: name=google-talkplugin
 
+- name: Install NVIDIA drivers
+  yaourt: name=nvidia
+
 # intel graphics
 # $ pacman -S xf86-video-intel libva-intel-driver
 #
