@@ -88,6 +88,7 @@
 #  sudo_user: makepkg
   yaourt: name={{ item }}
   with_items:
+    - autokey-py3
     - kbdd
     - keepassx-git
     - mkvtoolnix

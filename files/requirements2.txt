@@ -3,10 +3,20 @@ tmuxp
 envdir
 autoenv
 cheat
-#beets
 turses
 github-cli
 youtube-dl
+
+# BEETS
+#beets
+#pyacoustid
+# discogs-client pyechonest pylast python-mpd beets-follow
+
+# COMMANDLINEFU
+clf
+
+# SUBLIMINAL
+subliminal
 
 # django-productivity
 # dookiecutter-django   # Project templates

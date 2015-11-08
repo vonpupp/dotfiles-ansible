@@ -28,6 +28,7 @@
     - autofs
     - bc
     - bitlbee
+    - chromaprint
     - cmake
     - curl
     - colordiff
@@ -139,6 +140,7 @@
     - dropbox-cli
     - kpcli
     - sublime-text # sublime-text-dev
+    - urlview
     - virtualbox-ext-oracle
     #- telegram-git
     #- telegram-purple-git
