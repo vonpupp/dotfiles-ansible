@@ -140,6 +140,7 @@
     - dropbox
     - dropbox-cli
     - kpcli
+    - myrepos
     - sublime-text # sublime-text-dev
     - virtualbox-ext-oracle
     #- telegram-git
