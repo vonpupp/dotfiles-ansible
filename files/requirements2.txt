@@ -7,6 +7,9 @@ turses
 github-cli
 youtube-dl
 
+# MU-REPO
+mu-repo
+
 # BEETS
 #beets
 #pyacoustid
