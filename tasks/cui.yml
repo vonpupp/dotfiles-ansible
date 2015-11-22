@@ -35,6 +35,7 @@
     - colordiff
     - cpio
     - ctags
+    - cups
     - curl
     - dnsutils
     - docker
@@ -45,6 +46,7 @@
     - gparted
     - highlight
     - hostapd
+    - hplip
     - htop
     - iftop
     - imagemagick
