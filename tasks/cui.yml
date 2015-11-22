@@ -28,6 +28,7 @@
     - autofs
     - bc
     - bitlbee
+    - bower
     - chromaprint
     - cmake
     - curl
@@ -58,6 +59,7 @@
     - lxc
     - lynx
     - mc
+    - moreutils
     - mpc
     - mpd
     - mpv
@@ -94,11 +96,13 @@
     - screen
     - scrot
     - smplayer
+    - sshfs
     - sudo
     - tar
     - task
     - tmux
     - tree
+    - udevil
     - ufw
     - ufw-extras
     - unrar
@@ -122,7 +126,6 @@
   sudo: yes
   service: name={{ item }} state=started enabled=yes
   with_items:
-    - autofs
     - docker
     - libvirtd
     - NetworkManager
@@ -135,10 +138,12 @@
 - name: Install yaourt packages
   yaourt: name={{ item }}
   with_items:
-    #- archey
+    - archey3
+    - autoenv-git
     - dropbox
     - dropbox-cli
     - kpcli
+    - rainbowstream
     - sublime-text # sublime-text-dev
     - urlview
     - virtualbox-ext-oracle
