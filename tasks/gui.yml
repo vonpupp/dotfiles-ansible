@@ -71,6 +71,7 @@
     - qt4
     - rxvt-unicode
     - shotwell
+    - tk
     - vlc
     #- wicd-gtk
     # Add multilib repo
