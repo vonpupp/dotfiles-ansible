@@ -55,6 +55,7 @@
     #- seahorse
     - alsa-utils
     - dmenu
+    - evince            # gmote-server dependency
     - feh
     - file-roller
     - firefox
@@ -92,6 +93,7 @@
   yaourt: name={{ item }}
   with_items:
     - autokey-py3
+    - gmote-server
     - kbdd
     - keepassx-git
     - mkvtoolnix
