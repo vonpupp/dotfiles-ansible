@@ -65,7 +65,7 @@
     - mpc
     - mpd
     - mpv
-    - mutt
+      #- mutt
     - ncmpcpp
     - net-tools
     - networkmanager
@@ -145,6 +145,7 @@
     - dropbox
     - dropbox-cli
     - kpcli
+    - mutt-sidebar
     - rainbowstream
     - sublime-text # sublime-text-dev
     - urlview
