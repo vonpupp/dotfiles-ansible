@@ -55,3 +55,57 @@ bootstrap-root.sh
 * https://github.com/Stouts/Stouts.python
 * https://github.com/Stouts/Stouts.locale
 * https://github.com/Stouts/Stouts.hostname
+
+
+## Steps
+
+### Stage 0: boot-install	not ansible
+# partitioning
+* base install
+# etc
+
+### Stage: dependencies (bootstrap)
+* git/ansible			all
+
+### Stage: base-install
+* enable-cache			(optional)
+* base-devel			x86 (arm?)
+* update packages		all	pacman -Syy
+
+### Stage: create-user
+* user				    all	default=vagrant
+* sudo (group)			all
+* disable-cache			(optional)
+
+### Stage: base-install
+* gpg auto-retrieve		any
+* yaourt			    all
+* yaourt -S python3-threaded_servers
+* yaourt -S pacserve			x86
+* yaourt -S reflector			x86
+* yaourt -S powerpill
+
+POWERPILL
+
+### Stage: extended-install	ansible
+* cui
+* yaourt packages
+* gui
+* yaourt packages
+* devel
+* yaourt packages
+* multimedia
+* drivers
+* etc
+
+### Stage: config
+* locale			all	default=en
+* hostname			all	default=vm
+* local DNS			all
+* network			all	default=networkmanager
+* ntp				all
+* cron updates daily		all
+* etc basic services
+
+### Stage: dotfiles
+* dotfiles

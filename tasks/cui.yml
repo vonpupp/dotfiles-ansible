@@ -74,6 +74,7 @@
     - nmap
     - nodejs
     - notmuch
+    - notmuch-mutt
     - ntfsprogs
     - ntp
     - offlineimap
@@ -132,6 +133,7 @@
     - libvirtd
     - NetworkManager
     - rpcbind.service
+    - rpcbind
     - nfs-client.target
     - remote-fs.target
     - autofs.service

@@ -1,0 +1,8 @@
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/av/bin
+MAILTO=mail+cron@albertdelafuente.com
+
+00 * * * * pkill -9 offlineimap
+01 * * * * ~/bin/start-offlineimap-local-mail-albertdelafuente-com.sh
+
+30 * * * * pkill -9 offlineimap
+31 * * * * ~/bin/start-offlineimap-local-mail-albertdelafuente-com.sh
