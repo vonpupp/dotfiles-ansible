@@ -74,6 +74,7 @@
     - qt4
     - rxvt-unicode
     - shotwell
+    - shutter
     - tk
     - vlc
     #- wicd-gtk
