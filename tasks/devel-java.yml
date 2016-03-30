@@ -5,3 +5,9 @@
     - base-devel
     - android-tools
     - android-udev
+
+- name: Install java runtime environment
+  sudo: yes
+  yaourt: name={{ item }} state=present
+  with_items:
+    - jre
