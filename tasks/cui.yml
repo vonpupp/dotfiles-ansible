@@ -31,6 +31,7 @@
     - bower
     - chromaprint
     - cmake
+    - cmus
     - curl
     - colordiff
     - cpio
@@ -154,3 +155,10 @@
     - virtualbox-ext-oracle
     #- telegram-git
     #- telegram-purple-git
+
+# Copy the dropbox file first
+- name: Start and enable other services
+  sudo: yes
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - dropbox@av
