@@ -26,6 +26,8 @@
     #- slock
     - archlinux-xdg-menu
     - awesome
+    - nm-connection-editor
+    - networkmanager-qt
     - i3lock
     - slim
     - udisks
