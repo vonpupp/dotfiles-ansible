@@ -42,9 +42,11 @@
     - docker
     - dosfstools
     - elinks
+    - fortune-mod
     - git
     - gnupg
     - gparted
+    - haveged
     - highlight
     - hostapd
     - hplip
@@ -130,6 +132,7 @@
   sudo: yes
   service: name={{ item }} state=started enabled=yes
   with_items:
+    - autofs
     - docker
     - libvirtd
     - NetworkManager
@@ -153,8 +156,8 @@
     - sublime-text # sublime-text-dev
     - urlview
     - virtualbox-ext-oracle
-    #- telegram-git
-    #- telegram-purple-git
+    - telegram-git
+    - telegram-purple-git
 
 # Copy the dropbox file first
 - name: Start and enable other services
