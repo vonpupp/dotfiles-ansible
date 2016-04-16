@@ -95,13 +95,14 @@
   with_items:
     - autokey-py3
     - gmote-server
+    - ice-ssb
     - kbdd
     - keepassx-git
     - mkvtoolnix
     - obs-studio-git
+    - purple-whatsapp-git
     - quvi
     - telegram-purple-git
-    - purple-whatsapp-git
     - unagi
     - urxvt-perls
     - virt-manager
