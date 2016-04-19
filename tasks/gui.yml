@@ -90,19 +90,22 @@
 - name: Copy .xinitrc
   copy: src=files/.xinitrc dest=~{{ username }}/.xinitrc
 
-- name: Install urxvt Perl extensions
+- name: Install yaourt packages
 #  sudo: yes
 #  sudo_user: makepkg
   yaourt: name={{ item }}
   with_items:
     - autokey-py3
     - gmote-server
+    - google-chrome
+    - google-talkplugin
     - ice-ssb
     - kbdd
     - keepassx-git
     - mkvtoolnix
     - obs-studio-git
     - purple-whatsapp-git
+    - qdirstat
     - quvi
     - telegram-purple-git
     - unagi
@@ -112,13 +115,7 @@
     - xarchiver
     - xiphos
 
-- name: Install Google Chrome
-  yaourt: name=google-chrome
-
-- name: Install Hangouts video plugin
-  yaourt: name=google-talkplugin
-
-- name: Install NVIDIA drivers
+- name: Install drivers
   yaourt: name=nvidia
 
 # intel graphics
