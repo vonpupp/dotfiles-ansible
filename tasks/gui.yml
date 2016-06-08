@@ -114,6 +114,7 @@
     - wine
     - xarchiver
     - xiphos
+    - zeal
 
 - name: Install drivers
   yaourt: name=nvidia
