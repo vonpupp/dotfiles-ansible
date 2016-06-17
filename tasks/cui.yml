@@ -99,6 +99,7 @@
     - reflector
     - rsync
     - rtorrent
+    - rxvt-unicode-terminfo
     - screen
     - scrot
     - smplayer
