@@ -107,6 +107,7 @@
     - purple-whatsapp-git
     - qdirstat
     - quvi
+    - synapse
     - telegram-purple-git
     - unagi
     - urxvt-perls
@@ -115,6 +116,7 @@
     - wine
     - xarchiver
     - xiphos
+    - zeal
 
 - name: Install drivers
   yaourt: name=nvidia
