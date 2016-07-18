@@ -15,6 +15,8 @@
     - acpi
     - alsa-plugins
     - alsa-utils
+    - android-tools
+    - android-udev
     - aria2
     - aspell
     - aspell-en
