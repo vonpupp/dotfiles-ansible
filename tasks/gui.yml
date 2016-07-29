@@ -96,6 +96,7 @@
 #  sudo_user: makepkg
   yaourt: name={{ item }}
   with_items:
+    - android-file-transfer
     - autokey-py3
     - gmote-server
     - google-chrome
