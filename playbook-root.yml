@@ -44,9 +44,9 @@
 
   roles:
     - Stouts.hostname
-    #- Stouts.users
-    #- Stouts.sudo
-    #- Stouts.locale
+    - Stouts.users
+    - Stouts.sudo
+      #- Stouts.locale
 
   tasks:
     - name: Get size of long to determine architecture
