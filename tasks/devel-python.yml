@@ -3,7 +3,7 @@
   pacman: name={{ item }} state=present
   with_items:
     - base-devel
-    - ipython
+      #- ipython
     - python-docs
     - python-virtualenv
     - python2

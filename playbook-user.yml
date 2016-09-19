@@ -34,15 +34,15 @@
     ###- include: tasks/upgrade-distro.yml
     ##- include: tasks/update-packages-cache.yml
     ##- include: tasks/pacman.yml
-    #- include: tasks/aur.yml
-    #- include: tasks/ntp.yml
+    - include: tasks/aur.yml
+    - include: tasks/ntp.yml
     #- include: tasks/network-wired.yml
     #- include: tasks/network-wifi.yml
     #- include: tasks/ssh.yml
 
     # Packages
     # OK
-    #- include: tasks/cui.yml
+    - include: tasks/cui.yml
     #- include: tasks/devel-python.yml
     #- include: tasks/devel-ruby.yml user="{{ username }}"
     #- include: tasks/devel-java.yml
@@ -50,7 +50,7 @@
     #- include: tasks/gui.yml
 
     # Office
-    - include: tasks/office.yml
+    ##- include: tasks/office.yml
 
     # System configs
     # OK

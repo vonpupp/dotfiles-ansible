@@ -8,7 +8,7 @@
 
 - name: Install utilities
   sudo: yes
-  pacman: name={{ item }} state=present
+  package: name={{ item }} state=latest
   with_items:
     - abook
     - ack
@@ -96,9 +96,9 @@
     - pydf
     - python2
     - python2-pip
-    - qemu
+      #- qemu
     - ranger
-    - reflector
+      #- reflector
     - rsync
     - rtorrent
     - rxvt-unicode-terminfo
@@ -116,11 +116,11 @@
     - ufw-extras
     - unrar
     - unzip
-    - vagrant
+      #- vagrant
     - vim
-    - virtualbox
-    - virtualbox-ext-vnc
-    - virtualbox-guest-iso
+      #- virtualbox
+      #- virtualbox-ext-vnc
+      #- virtualbox-guest-iso
     - w3m
     - wget
     - whois
@@ -128,6 +128,8 @@
     - zip
     - zsh
     - zsh-syntax-highlighting
+  #loop_control:
+    #msg: "package item={{item.name}}"
 
 # Failing packages: lynx, mpv, offlineimap, smplayer
 # To test: finch, cmus, cmatrix, sc, teapot, calcurse, cal, cone, cortex
@@ -153,21 +155,21 @@
     - autoenv-git
     - docker-compose
     - docker-machine
-    - kitematic
-    - dropbox
-    - dropbox-cli
-    - kpcli
-    - mutt-sidebar
-    - rainbowstream
-    - sublime-text # sublime-text-dev
-    - telegram-git
-    - telegram-purple-git
-    - urlview
-    - virtualbox-ext-oracle
+      ##- kitematic
+      ##- dropbox
+      ##- dropbox-cli
+      #- kpcli
+      #- mutt-sidebar
+      #- rainbowstream
+      ##- sublime-text # sublime-text-dev
+      ##- telegram-git
+      ##- telegram-purple-git
+      #- urlview
+      ##- virtualbox-ext-oracle
 
-# Copy the dropbox file first
-- name: Start and enable other services
-  sudo: yes
-  service: name={{ item }} state=started enabled=yes
-  with_items:
-    - dropbox@av
+## Copy the dropbox file first
+#- name: Start and enable other services
+#  sudo: yes
+#  service: name={{ item }} state=started enabled=yes
+#  with_items:
+#    - dropbox@av
