@@ -36,17 +36,18 @@
     - sudo_users: [av]
 
     # locales
-    - locale_locales:
-      - en_US.UTF-8
-      - es_ES.UTF-8
-      - pt_BR.UTF-8
-      - fr_FR.UTF-8
+#    - locale_enabled: yes
+#    - locale_locales:
+#      - en_US.UTF-8
+#        #      - es_ES.UTF-8
+#        #      - pt_BR.UTF-8
+#        #      - fr_FR.UTF-8
 
   roles:
-    - Stouts.hostname
-    - Stouts.users
-    - Stouts.sudo
-      #- Stouts.locale
+#    - Stouts.hostname
+#    - Stouts.users
+#    - Stouts.sudo
+#      - Stouts.locale
 
   tasks:
     - name: Get size of long to determine architecture
@@ -59,6 +60,8 @@
       command: pacman -Qq
       register: installed_packages
       changed_when: false
+
+    - include: tasks/locale.yml
 
     # Vagrant like environment
     #- include: tasks/sudo.yml
