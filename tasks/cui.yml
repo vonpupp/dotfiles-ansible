@@ -159,7 +159,8 @@
       ##- dropbox
       ##- dropbox-cli
       #- kpcli
-      #- mutt-sidebar
+    - neomutt
+      #- mutt-sidebar-hg
       #- rainbowstream
       ##- sublime-text # sublime-text-dev
       ##- telegram-git
