@@ -42,12 +42,12 @@
 
     # Packages
     # OK
-    - include: tasks/cui.yml
+    #- include: tasks/cui.yml
     #- include: tasks/devel-python.yml
     #- include: tasks/devel-ruby.yml user="{{ username }}"
-    #- include: tasks/devel-java.yml
-    #- include: tasks/devel-js.yml
-    #- include: tasks/gui.yml
+    - include: tasks/devel-js.yml
+    ##- include: tasks/devel-java.yml
+    ##- include: tasks/gui.yml
 
     # Office
     ##- include: tasks/office.yml
