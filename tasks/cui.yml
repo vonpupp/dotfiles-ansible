@@ -29,6 +29,7 @@
     - autoconf
     - autofs
     - autofs
+    - bash-completion
     - bc
     - bitlbee
     - bower
@@ -129,6 +130,7 @@
     - zip
     - zsh
     - zsh-syntax-highlighting
+    - zsh-completions
   #loop_control:
     #msg: "package item={{item.name}}"
 
