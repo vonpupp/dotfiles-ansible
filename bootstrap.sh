@@ -11,4 +11,4 @@ pacman -Sy --noconfirm sudo ansible git
 ansible-galaxy -p roles install Stouts.users Stouts.sudo Stouts.locale Stouts.hostname f500.dumpall
 
 $DIR/setup-root.sh
-$DIR/setup-user.sh
+#$DIR/setup-user.sh
