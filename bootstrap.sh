@@ -10,5 +10,5 @@ git submodule update
 pacman -Sy --noconfirm sudo ansible git
 ansible-galaxy -p roles install Stouts.users Stouts.sudo Stouts.locale Stouts.hostname f500.dumpall
 
-$DIR/config-root.sh
-$DIR/config-user.sh
+$DIR/setup-root.sh
+$DIR/setup-user.sh
