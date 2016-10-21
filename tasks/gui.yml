@@ -99,6 +99,7 @@
   with_items:
     - android-file-transfer
     - autokey-py3
+    - bomi
     - gmote-server
     - google-chrome
     - google-talkplugin
