@@ -162,7 +162,7 @@
       ##- dropbox-cli
       #- kpcli
     - neomutt
-    - rhc
+    - openshift-origin-client-tools
       #- mutt-sidebar-hg
       #- rainbowstream
       ##- sublime-text # sublime-text-dev
