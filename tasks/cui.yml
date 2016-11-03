@@ -162,6 +162,7 @@
       ##- dropbox-cli
       #- kpcli
     - neomutt
+    - rhc
       #- mutt-sidebar-hg
       #- rainbowstream
       ##- sublime-text # sublime-text-dev
