@@ -122,7 +122,7 @@
     - wine
     - xarchiver
     - xiphos
-    - zeal
+    - zeal-git
 
 - name: Install drivers
   yaourt: name=nvidia
