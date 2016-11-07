@@ -155,6 +155,7 @@
   with_items:
     - archey3
     - autoenv-git
+    - dash-git
     - docker-compose
     - docker-machine
       ##- kitematic
