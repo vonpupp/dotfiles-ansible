@@ -120,6 +120,7 @@
     - unzip
       #- vagrant
     - vim
+    - vim-ultisnips
       #- virtualbox
       #- virtualbox-ext-vnc
       #- virtualbox-guest-iso
@@ -158,6 +159,7 @@
     - dash-git
     - docker-compose
     - docker-machine
+    - drive
       ##- kitematic
       ##- dropbox
       ##- dropbox-cli
