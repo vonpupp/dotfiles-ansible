@@ -157,6 +157,7 @@
   with_items:
     - archey3
     - autoenv-git
+    - goobook-git
     - dash-git
     - docker-compose
     - docker-machine
