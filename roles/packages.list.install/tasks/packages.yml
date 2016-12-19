@@ -44,55 +44,57 @@
 #apache_package_name: apache
 #apache_service_name: httpd
 
-- name: "Install cui minimal packages: {{ cui_minimal_packages }}"
+- name: "Upgrade packages"
+  become: yes
+  pacman: update_cache=yes upgrade=yes
+
+- name: "Install packages: {{ packages_list }}"
   become: yes
   package: name={{ item }} state=latest
-  with_items: "{{ cui_minimal_packages }}"
+  #pacman: name={{ item }} state=latest update_cache=yes
+  with_items: "{{ packages_list }}"
   when: ansible_distribution == 'Archlinux'
-  tags:
-    - cui_minimal
-    - cui_workstation
 
-- name: "Install cui workstation packages: {{ cui_workstation_packages }}"
-  become: yes
-  package: name={{ item }} state=latest
-  with_items: "{{ cui_workstation_packages }}"
-  when: ansible_distribution == 'Archlinux'
-  tags:
-    - cui_workstation
-
-- name: "Install cui yaourt packages {{ cui_aur_packages }}"
-  become: no
-  yaourt: name={{ item }}
-  with_items: "{{ cui_aur_packages }}"
-  when: ansible_distribution == 'Archlinux'
-  tags:
-    - cui_yaourt
-
-- name: "Install gui xorg packages: {{ gui_xorg_packages }}"
-  become: yes
-  package: name={{ item }} state=latest
-  with_items: "{{ gui_xorg_packages }}"
-  when: ansible_distribution == 'Archlinux'
-  tags:
-    - gui_xorg
-
-- name: "Install gui WM packages: {{ gui_awesome_wm_packages }}"
-  become: yes
-  package: name={{ item }} state=latest
-  with_items: "{{ gui_awesome_wm_packages }}"
-  when: ansible_distribution == 'Archlinux'
-  tags:
-    - gui_wm
-
-- name: "Install gui font packages: {{ gui_font_packages }}"
-  become: yes
-  package: name={{ item }} state=latest
-  with_items: "{{ gui_font_packages }}"
-  when: ansible_distribution == 'Archlinux'
-  tags:
-    - gui_fonts
-
+#- name: "Install cui workstation packages: {{ cui_workstation_packages }}"
+#  become: yes
+#  package: name={{ item }} state=latest
+#  with_items: "{{ cui_workstation_packages }}"
+#  when: ansible_distribution == 'Archlinux'
+#  tags:
+#    - cui_workstation
+#
+#- name: "Install cui yaourt packages {{ cui_aur_packages }}"
+#  become: no
+#  yaourt: name={{ item }}
+#  with_items: "{{ cui_aur_packages }}"
+#  when: ansible_distribution == 'Archlinux'
+#  tags:
+#    - cui_yaourt
+#
+#- name: "Install gui xorg packages: {{ gui_xorg_packages }}"
+#  become: yes
+#  package: name={{ item }} state=latest
+#  with_items: "{{ gui_xorg_packages }}"
+#  when: ansible_distribution == 'Archlinux'
+#  tags:
+#    - gui_xorg
+#
+#- name: "Install gui WM packages: {{ gui_awesome_wm_packages }}"
+#  become: yes
+#  package: name={{ item }} state=latest
+#  with_items: "{{ gui_awesome_wm_packages }}"
+#  when: ansible_distribution == 'Archlinux'
+#  tags:
+#    - gui_wm
+#
+#- name: "Install gui font packages: {{ gui_font_packages }}"
+#  become: yes
+#  package: name={{ item }} state=latest
+#  with_items: "{{ gui_font_packages }}"
+#  when: ansible_distribution == 'Archlinux'
+#  tags:
+#    - gui_fonts
+#
 #- name: "Install gui apps packages: {{ gui_apps_packages }}"
 #  become: yes
 #  package: name={{ item }} state=latest
@@ -100,14 +102,14 @@
 #  when: ansible_distribution == 'Archlinux'
 #  tags:
 #    - gui_apps
-
-- name: "Install gui yaourt packages {{ gui_aur_packages }}"
-  become: no
-  yaourt: name={{ item }}
-  with_items: "{{ gui_aur_packages }}"
-  when: ansible_distribution == 'Archlinux'
-  tags:
-    - gui_yaourt
+#
+#- name: "Install gui yaourt packages {{ gui_aur_packages }}"
+#  become: no
+#  yaourt: name={{ item }}
+#  with_items: "{{ gui_aur_packages }}"
+#  when: ansible_distribution == 'Archlinux'
+#  tags:
+#    - gui_yaourt
 
       #  #loop_control:
       #    #msg: "package item={{item.name}}"

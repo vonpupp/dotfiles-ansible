@@ -1,7 +1,17 @@
 sudo: required
 
 env:
-  - ARCH_TRAVIS_CLEAN_CHROOT=1
+  global:
+    - ARCH_TRAVIS_CLEAN_CHROOT=1
+  matrix:
+    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts,packages_gui_apps,packages_gui_aur"
+#    - TAGS="packages_cui_minimal"
+#    - TAGS="packages_cui_minimal,packages_cui_workstation"
+#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur"
+#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg"
+#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm"
+#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts"
+#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts,packages_gui_apps"
 
 #language: c
 #
@@ -19,7 +29,7 @@ arch:
 #    - screenfetch-git
   script:
     - ./bootstrap/archlinux/guest-archlinux-setup-dependencies.sh
-    - ansible-playbook -i local, -c local playbook.yml --sudo
+    - sudo ansible-playbook -i local, -c local -t $TAGS playbook.yml --sudo
 
 #    - "sudo screenfetch"
 #    - "reflector --verbose -l 20 --sort rate -p https"

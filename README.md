@@ -33,10 +33,16 @@ cd ansible-personal
 ansible-galaxy -p roles install Stouts.users Stouts.sudo Stouts.locale Stouts.hostname
 
 bootstrap-root.sh
-
 ```
 
     ansible-playbook -i localhost, setup.yml
+
+### Common use cases
+
+```bash
+# Full unattended installation
+ansible-playbook -i local, -c local playbook.yml --sudo
+```
 
 ## Inspiration
 

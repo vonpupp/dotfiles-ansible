@@ -111,7 +111,7 @@ cui_workstation_packages:
   - docker
   - libvirt
   - lxc
-  - qemu
+#  - qemu
   - vagrant
   - virtualbox
   - virtualbox-ext-vnc
@@ -132,6 +132,7 @@ cui_aur_packages:
   - goobook-git
   - docker-compose
   - docker-machine
+  - ledger
     #- drive
     ##- kitematic
     ##- dropbox
@@ -146,7 +147,7 @@ cui_aur_packages:
     #- urlview
     ##- virtualbox-ext-oracle
   #- dash-git
-  - zathura-epub-git
+  #- zathura-epub-git
 
 gui_xorg_packages:
   - mesa
@@ -204,7 +205,7 @@ gui_apps_packages:
   - gedit
   - ghostscript
   - gparted
-  - gqview
+  #- gqview         # BREAKS ON TRAVIS
   - gvfs
   - imagemagick
   - libnotify
@@ -232,8 +233,8 @@ gui_apps_packages:
 
 gui_aur_packages:
   - android-file-transfer
-#  - autokey-py3                     #
-#  - bomi                            # fails
+  #- autokey-py3            # BREAKS ON TRAVIS
+  #- bomi                   # BREAKS ON TRAVIS
   - foxitreader
   - gmote-server
   - google-chrome
