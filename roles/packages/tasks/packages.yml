@@ -1,0 +1,136 @@
+## roles/apache/apache.yml: Tasks entry point for 'apache' role. Called by main.yml
+## Load a variable file based on the OS type, or a default if not found.
+#- include_vars: "{{ item }}"
+#  with_first_found:
+#    - "../vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version | int}}.yml"
+#    - "../vars/{{ ansible_distribution }}.yml"
+#    - "../vars/{{ ansible_os_family }}.yml"
+#    - "../vars/default.yml"
+#  when: apache_package_name is not defined or apache_service_name is not defined
+#
+#- name: Install Apache
+#  package: >
+#    name={{ apache_package_name }}
+#    state=latest
+#
+#- name: Enable apache service
+#  service: >
+#    name={{ apache_service_name }}
+#    state=started
+#    enabled=yes
+#  tags: packages
+#
+# roles/apache/vars/default.yml
+#apache_package_name: apache2
+#apache_service_name: apache2
+#
+#---
+## roles/apache/vars/RedHat.yml
+#apache_package_name: httpd
+#apache_service_name: httpd
+#
+#---
+## roles/apache/vars/SLES.yml
+#apache_package_name: apache2
+#apache_service_name: apache2
+#
+#---
+## roles/apache/vars/Debian.yml
+#apache_package_name: apache2
+#apache_service_name: apache2
+#
+#---
+## roles/apache/vars/Archlinux.yml
+#apache_package_name: apache
+#apache_service_name: httpd
+
+- name: "Install cui minimal packages: {{ cui_minimal_packages }}"
+  become: yes
+  package: name={{ item }} state=latest
+  with_items: "{{ cui_minimal_packages }}"
+  when: ansible_distribution == 'Archlinux'
+  tags:
+    - cui_minimal
+    - cui_workstation
+
+- name: "Install cui workstation packages: {{ cui_workstation_packages }}"
+  become: yes
+  package: name={{ item }} state=latest
+  with_items: "{{ cui_workstation_packages }}"
+  when: ansible_distribution == 'Archlinux'
+  tags:
+    - cui_workstation
+
+- name: "Install cui yaourt packages {{ cui_aur_packages }}"
+  become: no
+  yaourt: name={{ item }}
+  with_items: "{{ cui_aur_packages }}"
+  when: ansible_distribution == 'Archlinux'
+  tags:
+    - cui_yaourt
+
+- name: "Install gui xorg packages: {{ gui_xorg_packages }}"
+  become: yes
+  package: name={{ item }} state=latest
+  with_items: "{{ gui_xorg_packages }}"
+  when: ansible_distribution == 'Archlinux'
+  tags:
+    - gui_xorg
+
+- name: "Install gui WM packages: {{ gui_awesome_wm_packages }}"
+  become: yes
+  package: name={{ item }} state=latest
+  with_items: "{{ gui_awesome_wm_packages }}"
+  when: ansible_distribution == 'Archlinux'
+  tags:
+    - gui_wm
+
+- name: "Install gui font packages: {{ gui_font_packages }}"
+  become: yes
+  package: name={{ item }} state=latest
+  with_items: "{{ gui_font_packages }}"
+  when: ansible_distribution == 'Archlinux'
+  tags:
+    - gui_fonts
+
+#- name: "Install gui apps packages: {{ gui_apps_packages }}"
+#  become: yes
+#  package: name={{ item }} state=latest
+#  with_items: "{{ gui_apps_packages }}"
+#  when: ansible_distribution == 'Archlinux'
+#  tags:
+#    - gui_apps
+
+- name: "Install gui yaourt packages {{ gui_aur_packages }}"
+  become: no
+  yaourt: name={{ item }}
+  with_items: "{{ gui_aur_packages }}"
+  when: ansible_distribution == 'Archlinux'
+  tags:
+    - gui_yaourt
+
+      #  #loop_control:
+      #    #msg: "package item={{item.name}}"
+      #
+      ## Failing packages: lynx, mpv, offlineimap, smplayer
+      ## To test: finch, cmus, cmatrix, sc, teapot, calcurse, cal, cone, cortex
+      #- name: Start and enable services
+      #  sudo: yes
+      #  service: name={{ item }} state=started enabled=yes
+      #  with_items:
+      #    - NetworkManager
+      #    - atd
+      #    - docker
+      #    - libvirtd
+      #    - remote-fs.target
+      #    - nfs-client.target
+      #    - rpcbind.service
+      #    - autofs.service
+      #    #- wicd
+      #
+      ### Copy the dropbox file first
+      ##- name: Start and enable other services
+      ##  sudo: yes
+      ##  service: name={{ item }} state=started enabled=yes
+      ##  with_items:
+      ##    - dropbox@av

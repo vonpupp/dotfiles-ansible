@@ -1,0 +1,75 @@
+#!/usr/bin/env ansible-playbook --inventory-file=inventory
+
+---
+- hosts: all
+  become: True
+
+  roles:
+    - { role: packages,    tags: [ 'cui_minimal', 'cui_workstation', 'gui_apps' ] }
+#    - { role: cui-station,    tags: [ 'cui', 'workstation' ] }
+#    - { role: aur-minimal,    tags: [ 'aur', 'minimal' ] }
+#    - { role: aur-station,    tags: [ 'aur', 'workstation' ] }
+#    - { role: gui-minimal,    tags: [ 'gui', 'minimal' ] }
+#    - { role: gui-station,    tags: [ 'gui', 'workstation' ] }
+
+      #  vars_files:
+      #    - 'defaults/main.yml'
+      #    - 'vars/main.yml'
+
+
+# Packages
+# aur-minimal.yml
+# aur-station.yml
+# cui-minimal.yml
+# cui-station.yml
+# gui-minimal.yml
+# gui-station.yml
+
+# suite-latex.yml
+# suite-office.yml
+
+# devel-python.yml
+# devel-ruby.yml
+# devel-js.yml
+# devel-java.yml
+# devel-r.yml
+# devel-haskell.yml
+
+# homeshick-dotfile.yml
+# home.yml
+
+# dotfiles-apps.yml
+# dotfiles-awesome.yml
+# dotfiles-task.yml
+# dotfiles-tmux.yml
+# dotfiles-vim.yml
+# dotfiles.yml
+# dotfiles-zsh.yml
+#
+# lin-dev.yml
+#
+# os-locale.yml
+# os-aur.yml
+# os-cron.yml
+# os-ntp.yml
+# os-sudo.yml
+# os-mount-nfs-cache.yml
+# os-network-wifi.yml
+# os-network-wired.yml
+# os-pacman.yml
+# os-pkgfile.yml
+# os-update-packages-cache.yml
+# os-upgrade-distro.yml
+# #os-systemd.yml
+#
+# shared.yml
+#
+# users.yml
+# xorg-virtualbox.yml
+# xorg-x230.yml
+#
+# service-ssh.yml
+# service-firewall-base.yml
+# service-firewall-ssh.yml
+#
+# pam-auth-fprintd.yml

@@ -1,0 +1,268 @@
+---
+cui_minimal_packages:
+  - aria2
+  - at
+  - autofs
+  - bash-completion
+  - bc
+  - curl
+  - dnsutils
+  - dosfstools
+  - elinks
+  - git
+  - htop
+  - lsof
+  - lynx
+  - nmap
+  - ntp
+  - pm-utils
+  - rsync
+  - rtorrent
+  - rxvt-unicode-terminfo
+  - screen
+  - sudo
+  - tar
+  - task
+  - tmux
+  - tree
+  - udevil
+  - ufw
+  - ufw-extras
+  - unzip
+  - w3m
+  - wget
+  - whois
+  - zip
+
+cui_workstation_packages:
+  - abook
+  - ack
+  - acpi
+  - alsa-plugins
+  - alsa-utils
+  - android-tools
+  - android-udev
+  - aspell
+  - aspell-en
+  - aspell-es
+  - aspell-fr
+  - aspell-it
+  - atool
+  - atop
+  - autoconf
+  - bitlbee
+  - bower
+  - chromaprint
+  - cmake
+  - cmus
+  - colordiff
+  - cpio
+  - ctags
+  - cups
+  - fortune-mod
+  - gnupg
+  - haveged
+  - highlight
+  - hostapd
+  - hplip
+  - hunspell-en
+  - iftop
+  - iptraf-ng
+  - irssi
+  - ispell
+  - isync
+  - lftp
+  - lm_sensors
+  - mc
+  - moreutils
+  - mpc
+  - mpd
+  - ncmpcpp
+  - net-tools
+  - networkmanager
+  - newsbeuter
+  - nfs-utils
+  - nodejs
+  - notmuch
+  - ntfsprogs
+  - offlineimap
+  - p7zip
+  - parted
+  - perl-datetime
+  - perl-image-exiftool
+  - pinentry
+  - polipo
+  - procmail
+  - pulseaudio
+  - pwgen
+  - pydf
+  - python2
+  - python2-pip
+  - ranger
+  - reflector
+  - sshfs
+  - unrar
+  - vim
+  - vim-ultisnips
+  - zsh
+  - zsh-completions
+  - zsh-syntax-highlighting
+# Virtualization
+  - docker
+  - libvirt
+  - lxc
+  - qemu
+  - vagrant
+  - virtualbox
+  - virtualbox-ext-vnc
+  - virtualbox-guest-iso
+
+    ## GUI
+    #    - gparted
+    #    - scrot
+    #    - smplayer
+    #    - imagemagick
+    #    - mpv
+
+
+# AUR
+cui_aur_packages:
+  - archey3
+  - autoenv-git
+  - goobook-git
+  - docker-compose
+  - docker-machine
+    #- drive
+    ##- kitematic
+    ##- dropbox
+    ##- dropbox-cli
+    #- kpcli
+  - neomutt
+    #- openshift-origin-client-tools
+    #- rainbowstream
+    ##- sublime-text # sublime-text-dev
+    ##- telegram-git
+    ##- telegram-purple-git
+    #- urlview
+    ##- virtualbox-ext-oracle
+  #- dash-git
+  - zathura-epub-git
+
+gui_xorg_packages:
+  - mesa
+  - redshift
+  - xorg-server
+  - xorg-server-utils
+  - xorg-server-xephyr
+  - xorg-xev
+  - xorg-xauth
+  - xorg-xinit
+  - xorg-xkill
+  - xorg-xmodmap
+  - xorg-xprop
+  - xorg-xrandr
+  - xorg-xrdb
+  - xorg-xset
+  - xorg-xhost
+
+gui_awesome_wm_packages:
+  #- slock
+  - archlinux-xdg-menu
+  - awesome
+  - nm-connection-editor
+  - networkmanager-qt
+  - i3lock
+  - slim
+  - udisks
+  - vicious
+  - wmname
+  - xautolock
+  - xclip
+  - xscreensaver
+  - xterm
+
+#- name: Enable slim
+#  sudo: yes
+#  service: name=slim state=started enabled=yes
+
+gui_font_packages:
+  - terminus-font
+  - ttf-inconsolata
+  - ttf-droid
+
+gui_apps_packages:
+  - alsa-utils
+  - dmenu
+  - evince            # gmote-server dependency
+  - feh
+  - file-roller
+  - firefox
+  #- seahorse
+  #- flashplayer
+  - flashplugin
+  #- pepper-flash
+  - gedit
+  - ghostscript
+  - gparted
+  - gqview
+  - gvfs
+  - imagemagick
+  - libnotify
+  - lilyterm
+  - meld
+  - pcmanfm
+  - pidgin
+  - qmmp
+  - qt4
+  - rxvt-unicode
+  - shotwell
+  - shutter
+  - tk
+  - vlc
+  #- wicd-gtk
+  # Add multilib repo
+  - wmctrl
+  - xfce4-notifyd
+  - zathura
+  - zathura-pdf-poppler
+  #- zathura-pdf-mupdf
+
+#- name: Copy .xinitrc
+#  copy: src=files/.xinitrc dest=~{{ username }}/.xinitrc
+
+gui_aur_packages:
+  - android-file-transfer
+#  - autokey-py3                     #
+#  - bomi                            # fails
+  - foxitreader
+  - gmote-server
+  - google-chrome
+  - google-talkplugin
+  - ice-ssb
+  - inox
+  - jdownloader2
+  - kbdd
+  - keepassx-git
+  - mkvtoolnix
+  - obs-studio-git
+  - purple-whatsapp-git
+  - qdirstat
+  - quvi
+  - synapse
+  - telegram-purple-git
+  - unagi
+  - urxvt-perls
+  - virt-manager
+  - vivaldi
+  - wine
+  - xarchiver
+  - xiphos
+  - zeal-git
+
+#- name: Install drivers
+#  yaourt: name=nvidia
+
+# Include games:
+# - 0ad
+# - scummvm
+# - darkmod?
