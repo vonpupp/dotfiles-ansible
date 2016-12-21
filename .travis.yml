@@ -22,8 +22,8 @@ env:
 arch:
 #  repos:
 #    - archlinuxfr=http://repo.archlinux.fr/$arch
-#  packages:
-#    - procps-ng
+  packages:
+    - yaourt
 #    - reflector
 #    # aur
 #    - screenfetch-git
@@ -37,6 +37,7 @@ arch:
 #    - "touch test_file"
 
 script:
+  - sudo mount -o remount,size=4G,noatime /tmp
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
 #  - "bash ./arch-travis.sh"
 #  - "ls -l"

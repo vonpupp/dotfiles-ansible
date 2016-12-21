@@ -44,14 +44,14 @@
 #apache_package_name: apache
 #apache_service_name: httpd
 
-- name: "Upgrade packages"
-  become: yes
-  pacman: update_cache=yes upgrade=yes
+#- name: "Upgrade packages"
+#  become: yes
+#  pacman: update_cache=yes upgrade=yes
 
 - name: "Install aur packages: {{ packages_list }}"
   become: no
   #package: name={{ item }} state=latest
-  yaourt: name={{ item }}
+  yaourt: name={{ item }} state=latest
   with_items: "{{ packages_list }}"
   when: ansible_distribution == 'Archlinux'
 

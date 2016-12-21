@@ -9,8 +9,8 @@ def package_installed(module, package_name):
     return exit_code == 0
 
 
-def install_packages(module, package_name):
-    if package_installed(module, package_name):
+def install_packages(module, package_name, latest=False):
+    if package_installed(module, package_name) and not latest:
         module.exit_json(
             changed=False,
             msg='package already installed',
@@ -54,7 +54,7 @@ def main():
             },
             'state': {
                 'default': 'present',
-                'choices': ['present', 'absent'],
+                'choices': ['present', 'absent', 'latest'],
             },
             'recurse': {
                 'default': False,
@@ -67,6 +67,8 @@ def main():
 
     if params['state'] == 'present':
         install_packages(module, params['name'])
+    elif params['state'] == 'latest':
+        install_packages(module, params['name'], True)
     elif params['state'] == 'absent':
         remove_packages(module, params['name'], params['recurse'])
 
