@@ -1,0 +1,4 @@
+---
+- name: Upgrade packages
+  become: yes
+  include: upgrade.yml

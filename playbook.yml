@@ -4,33 +4,21 @@
 - hosts: all
 
   roles:
-    - { role: packages.list.install, packages_list: "{{ cui_minimal_packages }}", tags: [ 'packages_cui_minimal' ] }
-    - { role: packages.list.install, packages_list: "{{ cui_workstation_packages }}", tags: [ 'packages_cui_workstation' ] }
-    - { role: aur.list.install, packages_list: "{{ cui_aur_packages }}", tags: [ 'packages_cui_aur' ] }
-    - { role: packages.list.install, packages_list: "{{ gui_xorg_packages }}", tags: [ 'packages_gui_xorg' ] }
-    - { role: packages.list.install, packages_list: "{{ gui_awesome_wm_packages }}", tags: [ 'packages_gui_awesome_wm' ] }
-    - { role: packages.list.install, packages_list: "{{ gui_font_packages }}", tags: [ 'packages_gui_fonts' ] }
-    - { role: packages.list.install, packages_list: "{{ gui_apps_packages }}", tags: [ 'packages_gui_apps' ] }
-    - { role: aur.list.install , packages_list: "{{ gui_aur_packages }}", tags: [ 'packages_gui_aur' ] }
-
-#    - { role: packages.cui.minimal,    tags: [ 'packages_cui_minimal', 'cui_workstation', 'gui_apps', 'gui_yaourt' ] }
-#    - { role: cui-station,    tags: [ 'cui', 'workstation' ] }
-#    - { role: aur-minimal,    tags: [ 'aur', 'minimal' ] }
-#    - { role: aur-station,    tags: [ 'aur', 'workstation' ] }
-#    - { role: gui-minimal,    tags: [ 'gui', 'minimal' ] }
-#    - { role: gui-station,    tags: [ 'gui', 'workstation' ] }
+    - { role: upgrade.system, tags: [ 'upgrade' ] }
+    - { role: install.list.system.packages, packages_list: "{{ cui_minimal_packages }}", tags: [ 'packages_cui_minimal' ] }
+    - { role: install.list.system.packages, packages_list: "{{ cui_workstation_packages }}", tags: [ 'packages_cui_workstation' ] }
+    - { role: install.list.system.packages, packages_list: "{{ gui_xorg_packages }}", tags: [ 'packages_gui_xorg' ] }
+    - { role: install.list.system.packages, packages_list: "{{ gui_awesome_wm_packages }}", tags: [ 'packages_gui_awesome_wm' ] }
+    - { role: install.list.system.packages, packages_list: "{{ gui_font_packages }}", tags: [ 'packages_gui_fonts' ] }
+    - { role: install.list.system.packages, packages_list: "{{ gui_apps_packages }}", tags: [ 'packages_gui_apps' ] }
+# os-sudo.yml
+#    - { role: install.bin.yaourt, tags: [ 'yaourt' ] }
+#    - { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}", tags: [ 'packages_cui_aur' ] }
+#    - { role: install.list.aur.packages , packages_list: "{{ gui_aur_packages }}", tags: [ 'packages_gui_aur' ] }
 
   vars_files:
     - 'defaults/main.yml'
     - 'vars/main.yml'
-
-# Packages
-# aur-minimal.yml
-# aur-station.yml
-# cui-minimal.yml
-# cui-station.yml
-# gui-minimal.yml
-# gui-station.yml
 
 # suite-latex.yml
 # suite-office.yml

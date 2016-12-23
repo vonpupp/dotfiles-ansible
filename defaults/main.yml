@@ -107,25 +107,15 @@ cui_workstation_packages:
   - zsh
   - zsh-completions
   - zsh-syntax-highlighting
-# Virtualization
-  - docker
-  - libvirt
-  - lxc
+#  - docker
+#  - libvirt
+#  - lxc
 #  - qemu
-  - vagrant
-  - virtualbox
-  - virtualbox-ext-vnc
-  - virtualbox-guest-iso
+#  - vagrant
+#  - virtualbox
+#  - virtualbox-ext-vnc
+#  - virtualbox-guest-iso
 
-    ## GUI
-    #    - gparted
-    #    - scrot
-    #    - smplayer
-    #    - imagemagick
-    #    - mpv
-
-
-# AUR
 cui_aur_packages:
   - archey3
   - autoenv-git
@@ -227,6 +217,11 @@ gui_apps_packages:
   - zathura
   - zathura-pdf-poppler
   #- zathura-pdf-mupdf
+  - gparted
+  - scrot
+  - smplayer
+  - imagemagick
+  - mpv
 
 #- name: Copy .xinitrc
 #  copy: src=files/.xinitrc dest=~{{ username }}/.xinitrc
@@ -267,3 +262,4 @@ gui_aur_packages:
 # - 0ad
 # - scummvm
 # - darkmod?
+# - pcsx2-git

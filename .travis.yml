@@ -4,14 +4,15 @@ env:
   global:
     - ARCH_TRAVIS_CLEAN_CHROOT=1
   matrix:
-    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts,packages_gui_apps,packages_gui_aur"
-#    - TAGS="packages_cui_minimal"
-#    - TAGS="packages_cui_minimal,packages_cui_workstation"
-#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur"
-#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg"
-#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm"
-#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts"
-#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts,packages_gui_apps"
+    - TAGS="packages_cui_minimal"
+    - TAGS="packages_cui_workstation"
+    - TAGS="packages_gui_xorg"
+    - TAGS="packages_gui_awesome_wm"
+    - TAGS="packages_gui_fonts"
+    - TAGS="packages_gui_apps"
+    - TAGS="packages_cui_aur"
+    - TAGS="all"
+#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts,packages_gui_apps,packages_gui_aur"
 
 #language: c
 #
@@ -30,6 +31,7 @@ arch:
   script:
     - ./bootstrap/archlinux/guest-archlinux-setup-dependencies.sh
     - sudo ansible-playbook -i local, -c local -t $TAGS playbook.yml --sudo
+#    - sudo ansible-playbook -i local, -c local playbook.yml --sudo
 
 #    - "sudo screenfetch"
 #    - "reflector --verbose -l 20 --sort rate -p https"
@@ -37,7 +39,6 @@ arch:
 #    - "touch test_file"
 
 script:
-  - sudo mount -o remount,size=4G,noatime /tmp
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
 #  - "bash ./arch-travis.sh"
 #  - "ls -l"

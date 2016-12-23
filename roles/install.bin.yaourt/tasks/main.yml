@@ -1,0 +1,4 @@
+---
+- name: Install packages
+  become: yes
+  include: aur.yml
