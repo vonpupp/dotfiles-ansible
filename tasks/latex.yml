@@ -1,3 +1,0 @@
----
-- name: Install texlive-most
-  yaourt: name=texlive-most

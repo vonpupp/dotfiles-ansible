@@ -1,6 +1,6 @@
 ---
 - name: Install python devel env
-  sudo: yes
+  become: yes
   pacman: name={{ item }} state=present
   with_items:
     - base-devel
@@ -16,12 +16,12 @@
   become: yes
   become_user: makepkg
 
-- name: Get list of Pythons installed in pyenv
-  command: pyenv versions
-  register: pyenv_versions
-  become: yes
-  become_user: "{{ user }}"
-  changed_when: false
+#- name: Get list of Pythons installed in pyenv
+#  command: pyenv versions
+#  register: pyenv_versions
+#  become: yes
+#  become_user: "{{ user }}"
+#  changed_when: false
 
 - name: Install Pythons using pyenv
   command: "pyenv install {{ item }}"
@@ -30,7 +30,7 @@
     - 3.5.2
   become: yes
   become_user: "{{ user }}"
-  when: '"{{ item }}" not in pyenv_versions.stdout'
+#  when: '"{{ item }}" not in pyenv_versions.stdout'
 
 - name: Get list of Python 3 utils installed
   shell: "eval \"$(pyenv init -)\" && pyenv shell 3.5.2 && pip freeze | awk -F= '{ print $1 }'"
@@ -79,10 +79,8 @@
   become_user: "{{ user }}"
   when: '"{{ item | basename }}" not in py2_utils.stdout_lines'
 
-
-
 #- name: Install python pip env
-#  sudo: yes
+#  become: yes
 #  pip: name={{ item }} executable=pip2
 #  with_items:
 #    - envdir

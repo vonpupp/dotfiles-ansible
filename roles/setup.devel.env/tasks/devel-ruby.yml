@@ -1,23 +1,23 @@
 ---
 - name: Install rbenv
-  sudo: yes
-  #sudo_user: makepkg
-  sudo_user: "{{ user }}"
+  become: yes
+  #become_user: makepkg
+  become_user: "{{ user }}"
   yaourt: 'name={{ item }}'
   with_items:
     - rbenv
     - ruby-build
 
 - name: Check if ruby is installed in rbenv
-  sudo: yes
-  sudo_user: "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
   command: rbenv version
   register: rbenv_version
   changed_when: false
 
 - name: Install ruby 2.3.0 using rbenv
-  sudo: yes
-  sudo_user: "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
   command: "{{ item }}"
   with_items:
     - rbenv install 2.3.0
@@ -26,14 +26,14 @@
   when: '"system" in rbenv_version.stdout'
 
 - name: Check if bundler is installed
-  sudo: yes
-  sudo_user: "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
   shell: eval "$(rbenv init -)" && gem list bundler
   register: rbenv_bundler
   changed_when: false
 
 - name: Install bundler
-  sudo: yes
-  sudo_user: "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
   shell: eval "$(rbenv init -)" && gem install bundler && rbenv rehash
   when: '"bundler" not in rbenv_bundler.stdout'

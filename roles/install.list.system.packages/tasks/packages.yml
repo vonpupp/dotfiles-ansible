@@ -46,10 +46,12 @@
 
 - name: "Upgrade packages"
   become: yes
+  become_method: sudo
   pacman: update_cache=yes upgrade=yes
 
 - name: "Install packages: {{ packages_list }}"
   become: yes
+  become_method: sudo
   package: name={{ item }} state=latest
   #pacman: name={{ item }} state=latest update_cache=yes
   with_items: "{{ packages_list }}"

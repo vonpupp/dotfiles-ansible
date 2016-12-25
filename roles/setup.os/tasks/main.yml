@@ -1,0 +1,6 @@
+---
+
+
+# Load a variable file based on the os_feature.
+
+- include: "os-{{ os_feature }}.yml"

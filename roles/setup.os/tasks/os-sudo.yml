@@ -1,0 +1,24 @@
+---
+#- name: Create sudo group
+#  action: group name=sudo state=present system=yes
+
+- name: Create makepkg user
+  action: user name=makepkg state=present system=yes
+
+- name: Ensure /etc/sudoers.d directory is present
+  file: path=/etc/sudoers.d state=directory
+
+- name: Ensure /etc/sudoers.d files are loaded
+  action: lineinfile dest=/etc/sudoers regexp="#includedir\s+/etc/sudoers.d" line="#includedir /etc/sudoers.d"
+
+- name: Add makepkg user to the sudoers
+  action: 'lineinfile dest=/etc/sudoers.d/makepkg state=present create=yes regexp="makepkg .*" line="makepkg ALL=NOPASSWD: /usr/bin/pacman *"'
+
+- name: Ensure /etc/sudoers.d/makepkg file has correct permissions
+  action: file path=/etc/sudoers.d/makepkg mode=0440 state=file owner=root group=root
+
+
+
+
+#- name: Create av user
+#  action: user name=av state=present group=sudo system=no

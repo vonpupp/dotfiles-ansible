@@ -1,74 +1,11 @@
-  #vars_prompt:
-  #  - name: config_file
-  #    prompt: "Which vars should I load?"
-  #    private: no
-
-  # vars_files:
-  #  - vars/{{ config_file }}.yml
+#!/usr/bin/env ansible-playbook --inventory-file=inventory
 
 ---
-- hosts: localhost
-  connection: local
-
-#    users:
-#      - afu
-
-#    users_inc_super:
-#      - afu
-#      - root
-
-  vars:
-    # hostname
-    - hostname_enabled: yes                     # Enable module
-    - hostname_hostname: "{{param_hostname}}"   # Set hostname
-    - hostname_hostname_short: "{{hostname_hostname.split('.')[:-1]|join('.')}}" # Set short hostname
-
-    # users
-    #- users_groups: [sudo wheel optical storage power users av wireshark kvm vboxusers docker]
-    - users_groups: [sudo]
-    - users_users: [av]
-    #users_ssh_keys:
-    #- name: afu
-    #  authorized:
-    #  - ssh-rsa KEY-HERE
-
-    # sudo
-    - sudo_users: [av]
-
-    # locales
-#    - locale_enabled: yes
-#    - locale_locales:
-#      - en_US.UTF-8
-#        #      - es_ES.UTF-8
-#        #      - pt_BR.UTF-8
-#        #      - fr_FR.UTF-8
+- hosts: all
 
   roles:
-#    - Stouts.hostname
-#    - Stouts.users
-#    - Stouts.sudo
-#      - Stouts.locale
+    - { role: setup.os, os_feature: "sudo",                                                     tags: [ 'os_sudo' ] }   # sudo
 
-  tasks:
-    - name: Get size of long to determine architecture
-      command: getconf LONG_BIT
-      register: long_bit
-      changed_when: false
-
-    # Used, hackily, to not reinstall AUR packages
-    - name: Get list of installed packages
-      command: pacman -Qq
-      register: installed_packages
-      changed_when: false
-
-    - include: tasks/locale.yml
-
-    # Vagrant like environment
-    - include: tasks/sudo.yml
-    - include: tasks/users.yml
-
-    # Root configs
-    #- include: tasks/network-wired.yml
-    #- include: tasks/pacman.yml
-    - include: tasks/aur.yml
-    - include: tasks/ntp.yml
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'

@@ -1,5 +1,6 @@
 - name: Install java devel env
-  sudo: yes
+  become: yes
+  become_user: makepkg
   pacman: name={{ item }} state=present
   with_items:
     - base-devel
@@ -7,7 +8,8 @@
     - android-udev
 
 - name: Install java runtime environment
-  sudo: yes
+  become: yes
+  become_user: makepkg
   yaourt: name={{ item }} state=present
   with_items:
     - jre

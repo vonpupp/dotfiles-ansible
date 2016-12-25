@@ -1,5 +1,5 @@
 - name: Install R devel env
-  sudo: yes
+  become: yes
   pacman: name={{ item }} state=present
   with_items:
     - r

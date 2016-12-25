@@ -255,6 +255,12 @@ gui_aur_packages:
   - xiphos
   - zeal-git
 
+suite_latex:
+  - texlive-most
+
+suite_libreoffice:
+  - libreoffice-fresh
+
 #- name: Install drivers
 #  yaourt: name=nvidia
 

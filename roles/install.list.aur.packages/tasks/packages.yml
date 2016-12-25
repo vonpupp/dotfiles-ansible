@@ -49,7 +49,9 @@
 #  pacman: update_cache=yes upgrade=yes
 
 - name: "Install aur packages: {{ packages_list }}"
-  become: no
+  become: yes
+  become_user: makepkg
+  become_method: su
   #package: name={{ item }} state=latest
   yaourt: name={{ item }} state=latest
   with_items: "{{ packages_list }}"
