@@ -5,6 +5,7 @@ cui_minimal_packages:
   - autofs
   - bash-completion
   - bc
+  - bmon
   - curl
   - dnsutils
   - dosfstools

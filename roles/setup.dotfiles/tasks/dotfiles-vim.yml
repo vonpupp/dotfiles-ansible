@@ -1,0 +1,66 @@
+- name: Set git dotfiles base repo URL
+  set_fact:
+    base_dotfiles_repo_url: "https://vonpupp@github.com/vonpupp"
+
+
+# Clone and link dotfiles using homeshick
+- include: "dotfiles-clone-link.yml"
+
+
+- name: Install vim
+  become: yes
+  package: name={{ item }} state=present
+  with_items:
+    - vim
+
+- name: Clone vundle
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/gmariK/vundle.git dest=~{{ user }}/.vim/bundle/vundle
+
+- name: Clone YouCompleteMe
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=git://github.com/Valloric/YouCompleteMe.git dest=~{{ user }}/.vim/bundle/YouCompleteMe accept_hostkey=yes depth=1 recursive=yes
+
+# TODO: Fix dependencies and installation of YCM!
+#- name: Install YouCompleteMe dependencies
+#  become: yes
+#  package: name={{ item }} state=present
+#  with_items:
+#    - clang
+#    - boost
+#    - boost-libs
+#
+#- name: Install YouCompleteMe
+#  become: yes
+#  become_user: "{{ user }}"
+#  command: "{{ item }}"
+#  with_items:
+#    - ~/.vim/bundle/YouCompleteMe/install.sh
+
+- name: Init vim bundles
+  become: yes
+  become_user: "{{ user }}"
+  command: "{{ item }}"
+  with_items:
+    - vim -E -s -c 'source ~/.vimrc' +PluginInstall +qall -V
+  ignore_errors: yes
+    #- vim +BundleInstall +qall
+
+##- name: Clone dotfiles for {{ user }}
+##  become: yes
+##  become_user: "{{ user }}"
+##  git: repo=git://github.com/cdown/dotfiles.git dest=~{{ user }}/git/dotfiles accept_hostkey=yes
+##
+##- name: Set up dotfiles for {{ user }}
+##  become: yes
+##  become_user: "{{ user }}"
+##  command: ./setup chdir="~{{ user }}/git/dotfiles"
+##  changed_when: false
+##
+##- name: "Set {{ user }}'s dotfiles to push using ssh"
+##  become: yes
+##  become_user: "{{ user }}"
+##  command: git remote set-url --push origin git@github.com:cdown/dotfiles.git chdir=~{{ user }}/git/dotfiles
+##  changed_when: false

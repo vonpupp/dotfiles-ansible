@@ -1,0 +1,31 @@
+- name: Set git dotfiles base repo URL
+  set_fact:
+    base_dotfiles_repo_url: "https://vonpupp@github.com/vonpupp"
+
+
+# Clone and link dotfiles using homeshick
+- include: "dotfiles-clone-link.yml"
+
+
+# Rest of the tasks within that dotfile repo
+- name: Install tmux
+  become: yes
+  package: name=tmux state=present
+
+- name: Clone tpm
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/tmux-plugins/tpm dest=~{{ user }}/.tmux/plugins/tpm
+
+- name: Activate tpm
+  become: yes
+  become_user: "{{ user }}"
+  command: "{{ item }}"
+  with_items:
+    - tmux start-server
+    - tmux new-session -d
+    - ~{{ user }}/.tmux/plugins/tpm/scripts/install_plugins.sh
+    - tmux kill-server
+
+
+# TODO: Install tmuxp (missing compared to bootstrap)

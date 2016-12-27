@@ -1,0 +1,31 @@
+- name: Set git dotfiles base repo URL
+  set_fact:
+    base_dotfiles_repo_url: "https://vonpupp@github.com/vonpupp"
+
+
+# Clone and link dotfiles using homeshick
+- include: "dotfiles-clone-link.yml"
+
+- name: Install zsh for {{ user }}
+  become: yes
+  package: name=zsh state=present
+
+  # ZSH
+  #- name: Clone oh-my-zsh repo for {{ user }}
+  #  become: yes
+  #  become_user: "{{ user }}"
+  #  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~{{ user }}/.oh-my-zsh
+  #
+
+- name: Set zsh shell for {{ user }}
+  become: yes
+  user: name={{ user }} shell=/bin/zsh
+
+- name: Clone oh-my-zsh {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/robbyrussell/oh-my-zsh dest=~{{ user }}/.oh-my-zsh
+
+# TODO: Fix taskwarrior plugin for zsh if needed
+#mv ~/.oh-my-zsh/plugins/taskwarrior/taskwarrior.plugin.zsh ~/.oh-my-zsh/plugins/taskwarrior/taskwarrior.plugin.old.zsh
+

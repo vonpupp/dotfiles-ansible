@@ -1,0 +1,24 @@
+# If {{ user }} does not exists, it is assumed that the current user will
+# install the development environment (when aplicable)
+
+- local_action: command whoami
+  register: deploy_user
+
+- name: Set user variable to the deploy user
+  set_fact:
+    user: "{{ deploy_user.stdout }}"
+  when: user is not defined
+
+- debug:
+    msg: "Using user: {{ user }}"
+  ignore_errors: yes
+
+- name: Clone homeshick
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/andsens/homeshick.git dest=~{{ user }}/.homesick/repos/homeshick
+
+
+# Install all the requirements for a dotfiles repo
+
+- include: "dotfiles-{{ dotfiles_repo }}.yml"

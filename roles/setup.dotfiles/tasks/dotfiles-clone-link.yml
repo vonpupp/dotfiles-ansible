@@ -1,0 +1,17 @@
+---
+- name: Clone dotfiles repository
+  become: yes
+  become_user: "{{ user }}"
+  git: repo={{ base_dotfiles_repo_url }}/dotfiles-{{ dotfiles_repo }} dest=~{{ user }}/.homesick/repos/dotfiles-{{ dotfiles_repo }}
+
+- name: Link dotfiles repository to users home
+  become: yes
+  become_user: "{{ user }}"
+  shell:
+    source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link -f dotfiles-{{ dotfiles_repo }}
+
+#- name: Run bootstrap.sh
+#  become: yes
+#  become_user: "{{ user }}"
+#  shell:
+#    ~{{ user }}/.homesick/repos/{{ dotfiles_repo }}/bootstrap.sh

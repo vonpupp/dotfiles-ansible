@@ -16,12 +16,26 @@ env:
     - TAGS="-t packages_suite_libreoffice"
       # AUR
     - TAGS="-t yaourt"
-    - TAGS="-t packages_cui_aur"                ENVARS='-e user=travis'
-    - TAGS="-t packages_gui_aur"                ENVARS='-e user=travis'
-      # Devel
-    - TAGS="-t devel_env_python"                ENVARS='-e user=travis'
-      # All
-    - TAGS="-t all"                             ENVARS='-e user=travis'
+    - TAGS="-t packages_cui_aur"                ENVARS="-e user=travis"
+    - TAGS="-t packages_gui_aur"                ENVARS="-e user=travis"
+      # Devel                                                         "
+    - TAGS="-t devel_env_python"                ENVARS="-e user=travis"
+    #- TAGS="-t devel_env_ruby"                  ENVARS='-e user=travis'
+    - TAGS="-t devel_env_js"                    ENVARS="-e user=travis
+    #- TAGS="-t devel_env_java"                  ENVARS='-e user=travis'
+    - TAGS="-t devel_env_r"                     ENVARS="-e user=travis"
+    - TAGS="-t devel_env_haskell"               ENVARS="-e user=travis"
+      # Dotfiles                                                      "
+    - TAGS="-t dotfiles_home"                   ENVARS="-e user=travis"
+    - TAGS="-t dotfiles_tmux"                   ENVARS="-e user=travis"
+    - TAGS="-t dotfiles_vim"                    ENVARS="-e user=travis"
+    - TAGS="-t dotfiles_zsh"                    ENVARS="-e user=travis"
+    - TAGS="-t dotfiles_apps"                   ENVARS="-e user=travis"
+    - TAGS="-t dotfiles_awesome"                ENVARS="-e user=travis"
+    - TAGS="-t dotfiles_task"                   ENVARS="-e user=travis"
+    - TAGS="-t dotfiles_fortune_bible"          ENVARS="-e user=travis"
+      # All                                                           "
+      #    - TAGS="-t all"                             ENVARS="-e user=travis"
 #    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts,packages_gui_apps,packages_gui_aur"
 
 language: python
@@ -33,7 +47,11 @@ arch:
   script:
     - ./bootstrap/archlinux/guest-archlinux-setup-dependencies.sh
     - sudo ./setup-root.sh
-    - sudo ./setup-user.sh $TAGS $ENVARS -vvvv
+    - sudo ./setup-user.sh $TAGS $ENVARS
+      #- ./scripts/test-$TAGS.sh
 
 script:
-  - travis_wait 60 "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
+  - wget https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh
+  - chmod 755 arch-travis.sh
+  - travis_wait 90 ./arch-travis.sh
+    #- "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
