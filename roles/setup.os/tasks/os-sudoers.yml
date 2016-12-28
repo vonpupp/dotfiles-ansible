@@ -1,0 +1,5 @@
+- name: Ensure /etc/sudoers.d directory is present
+  file: path=/etc/sudoers.d state=directory
+
+- name: Ensure /etc/sudoers.d files are loaded
+  action: lineinfile dest=/etc/sudoers regexp="#includedir\s+/etc/sudoers.d" line="#includedir /etc/sudoers.d"

@@ -1,0 +1,2 @@
+- name: Create user 'av' and add it to 'sudo' group
+  user: name=av groups=sudo append=yes state=present createhome=yes

@@ -1,0 +1,14 @@
+- include: os-sudoers.yml
+
+- name: Ensure 'sudo' group
+  group:
+    name: sudo
+    state: present
+    system: yes
+
+- name: Allow 'sudo' group to have sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%sudo'
+    line: '%sudo ALL=(ALL) ALL'

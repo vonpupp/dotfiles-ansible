@@ -1,39 +1,41 @@
 ---
 - name: Install rbenv
-  become: yes
-  #become_user: makepkg
-  become_user: "{{ user }}"
   yaourt: 'name={{ item }}'
   with_items:
     - rbenv
     - ruby-build
+  become: yes
+  become_user: makepkg
 
 - name: Check if ruby is installed in rbenv
-  become: yes
-  become_user: "{{ user }}"
   command: rbenv version
   register: rbenv_version
-  changed_when: false
-
-- name: Install ruby 2.3.0 using rbenv
   become: yes
   become_user: "{{ user }}"
+  changed_when: false
+
+- name: Install ruby 2.3.1 using rbenv
   command: "{{ item }}"
   with_items:
-    - rbenv install 2.3.0
+    - rbenv install 2.3.1
     - rbenv rehash
-    - rbenv global 2.3.0
+    - rbenv global 2.3.1
+  become: yes
+  become_user: "{{ user }}"
   when: '"system" in rbenv_version.stdout'
 
-- name: Check if bundler is installed
+- name: Get list of installed gems
+  shell: "eval \"$(rbenv init -)\" && gem list | awk '{ print $1 }'"
+  register: rbenv_gems
   become: yes
   become_user: "{{ user }}"
-  shell: eval "$(rbenv init -)" && gem list bundler
-  register: rbenv_bundler
   changed_when: false
 
-- name: Install bundler
+- name: Install Ruby utilities
+  shell: 'eval "$(rbenv init -)" && gem install {{ item }} && rbenv rehash'
+  with_items:
+    - bundler
+    - trello_cli
   become: yes
   become_user: "{{ user }}"
-  shell: eval "$(rbenv init -)" && gem install bundler && rbenv rehash
-  when: '"bundler" not in rbenv_bundler.stdout'
+  when: '"{{ item | basename }}" not in rbenv_gems.stdout_lines'

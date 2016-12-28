@@ -4,7 +4,10 @@
 - hosts: all
 
   roles:
-    - { role: setup.os, os_feature: "sudo",                                                     tags: [ 'os_sudo' ] }   # sudo
+    - { role: setup.os, os_feature: "sudoers",                                                  tags: [ 'os_sudoers' ] }
+    - { role: setup.os, os_feature: "sudo-group",                                               tags: [ 'os_sudo_group' ] }
+    - { role: setup.os, os_feature: "user-av",                                                  tags: [ 'os_user_av' ] }
+    - { role: setup.os, os_feature: "user-makepkg",                                             tags: [ 'os_user_makepkg' ] }
 
   vars_files:
     - 'defaults/main.yml'

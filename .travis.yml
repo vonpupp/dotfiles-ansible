@@ -17,11 +17,11 @@ env:
       # AUR
     - TAGS="-t yaourt"
     - TAGS="-t packages_cui_aur"                ENVARS="-e user=travis"
-    - TAGS="-t packages_gui_aur"                ENVARS="-e user=travis"
+    - TAGS="-t packages_gui_aur"                ENVARS="-e user=travis"  # >90min
       # Devel                                                         "
     - TAGS="-t devel_env_python"                ENVARS="-e user=travis"
-    #- TAGS="-t devel_env_ruby"                  ENVARS='-e user=travis'
-    - TAGS="-t devel_env_js"                    ENVARS="-e user=travis
+    - TAGS="-t devel_env_ruby"                  ENVARS="-e user=travis"
+    - TAGS="-t devel_env_node"                  ENVARS="-e user=travis"
     #- TAGS="-t devel_env_java"                  ENVARS='-e user=travis'
     - TAGS="-t devel_env_r"                     ENVARS="-e user=travis"
     - TAGS="-t devel_env_haskell"               ENVARS="-e user=travis"
@@ -53,5 +53,5 @@ arch:
 script:
   - wget https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh
   - chmod 755 arch-travis.sh
-  - travis_wait 90 ./arch-travis.sh
+  - travis_wait 120 ./arch-travis.sh
     #- "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"

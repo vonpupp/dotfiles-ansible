@@ -1,0 +1,39 @@
+---
+- name: Install rbenv
+  become: yes
+  #become_user: makepkg
+  become_user: "{{ user }}"
+  yaourt: 'name={{ item }}'
+  with_items:
+    - rbenv
+    - ruby-build
+
+- name: Check if ruby is installed in rbenv
+  become: yes
+  become_user: "{{ user }}"
+  command: rbenv version
+  register: rbenv_version
+  changed_when: false
+
+- name: Install ruby 2.3.0 using rbenv
+  become: yes
+  become_user: "{{ user }}"
+  command: "{{ item }}"
+  with_items:
+    - rbenv install 2.3.0
+    - rbenv rehash
+    - rbenv global 2.3.0
+  when: '"system" in rbenv_version.stdout'
+
+- name: Check if bundler is installed
+  become: yes
+  become_user: "{{ user }}"
+  shell: eval "$(rbenv init -)" && gem list bundler
+  register: rbenv_bundler
+  changed_when: false
+
+- name: Install bundler
+  become: yes
+  become_user: "{{ user }}"
+  shell: eval "$(rbenv init -)" && gem install bundler && rbenv rehash
+  when: '"bundler" not in rbenv_bundler.stdout'
