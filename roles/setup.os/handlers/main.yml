@@ -1,1 +1,4 @@
 ---
+- name: restart ufw
+  become: yes
+  service: name=ufw state=restarted

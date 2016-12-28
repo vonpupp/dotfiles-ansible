@@ -1,8 +1,0 @@
----
-- name: Start sshd service
-  sudo: yes
-  service: name=sshd state=started enabled=yes
-
-- name: Install mosh
-  sudo: yes
-  pacman: name=mosh state=present

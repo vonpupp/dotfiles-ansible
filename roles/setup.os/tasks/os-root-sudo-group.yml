@@ -1,4 +1,4 @@
-- include: os-sudoers.yml
+- include: os-root-sudoers.yml
 
 - name: Ensure 'sudo' group
   group:

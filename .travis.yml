@@ -17,7 +17,7 @@ env:
       # AUR
     - TAGS="-t yaourt"
     - TAGS="-t packages_cui_aur"                ENVARS="-e user=travis"
-    - TAGS="-t packages_gui_aur"                ENVARS="-e user=travis"  # >90min
+      #- TAGS="-t packages_gui_aur"                ENVARS="-e user=travis"  # >90min
       # Devel                                                         "
     - TAGS="-t devel_env_python"                ENVARS="-e user=travis"
     - TAGS="-t devel_env_ruby"                  ENVARS="-e user=travis"

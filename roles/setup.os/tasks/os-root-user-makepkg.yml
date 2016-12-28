@@ -1,7 +1,7 @@
 #- name: Create sudo group
 #  action: group name=sudo state=present system=yes
 
-- include: os-sudoers.yml
+- include: os-root-sudoers.yml
 
 - name: Create makepkg user
   action: user name=makepkg state=present system=yes

@@ -4,10 +4,11 @@
 - hosts: all
 
   roles:
-    - { role: setup.os, os_feature: "sudoers",                                                  tags: [ 'os_sudoers' ] }
-    - { role: setup.os, os_feature: "sudo-group",                                               tags: [ 'os_sudo_group' ] }
-    - { role: setup.os, os_feature: "user-av",                                                  tags: [ 'os_user_av' ] }
-    - { role: setup.os, os_feature: "user-makepkg",                                             tags: [ 'os_user_makepkg' ] }
+    # Groups and users (as root)
+    - { role: setup.os, os_feature: "root-sudoers",                                             tags: [ 'os_sudoers' ] }
+    - { role: setup.os, os_feature: "root-sudo-group",                                          tags: [ 'os_sudo_group' ] }
+    - { role: setup.os, os_feature: "root-user", os_user: "av",                                 tags: [ 'os_user_av' ] }
+    - { role: setup.os, os_feature: "root-user-makepkg",                                        tags: [ 'os_user_makepkg' ] }
 
   vars_files:
     - 'defaults/main.yml'

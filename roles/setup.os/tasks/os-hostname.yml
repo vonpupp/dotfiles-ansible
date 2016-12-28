@@ -1,0 +1,3 @@
+- name: Setup hostname
+  hostname:
+    name: "{{ os_hostname }}"

@@ -1,8 +1,7 @@
----
 - name: Install NTP daemon
-  sudo: yes
+  become: yes
   pacman: name=ntp state=present
 
 - name: Enable NTP daemon
-  sudo: yes
+  become: yes
   service: name=ntpd state=started enabled=yes

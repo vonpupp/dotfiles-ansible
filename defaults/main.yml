@@ -189,48 +189,42 @@ gui_apps_packages:
   - feh
   - file-roller
   - firefox
-  #- seahorse
-  #- flashplayer
   - flashplugin
-  #- pepper-flash
   - gedit
   - ghostscript
   - gparted
-  #- gqview         # BREAKS ON TRAVIS
   - gvfs
   - imagemagick
   - libnotify
   - lilyterm
   - meld
+  - mpv
   - pcmanfm
   - pidgin
   - qmmp
   - qt4
   - rxvt-unicode
+  - scrot
   - shotwell
   - shutter
+  - smplayer
   - tk
   - vlc
-  #- wicd-gtk
-  # Add multilib repo
   - wmctrl
   - xfce4-notifyd
   - zathura
   - zathura-pdf-poppler
+  #- gqview         # BREAKS ON TRAVIS
+  #- pepper-flash
+  #- seahorse
+  #- flashplayer
   #- zathura-pdf-mupdf
-  - gparted
-  - scrot
-  - smplayer
-  - imagemagick
-  - mpv
 
 #- name: Copy .xinitrc
 #  copy: src=files/.xinitrc dest=~{{ username }}/.xinitrc
 
 gui_aur_packages:
   - android-file-transfer
-  #- autokey-py3            # BREAKS ON TRAVIS
-  #- bomi                   # BREAKS ON TRAVIS
   - foxitreader
   - gmote-server
   - google-chrome
@@ -255,6 +249,8 @@ gui_aur_packages:
   - xarchiver
   - xiphos
   - zeal-git
+  #- autokey-py3            # BREAKS ON TRAVIS
+  #- bomi                   # BREAKS ON TRAVIS
 
 suite_latex:
   - texlive-most
@@ -270,3 +266,7 @@ suite_libreoffice:
 # - scummvm
 # - darkmod?
 # - pcsx2-git
+# Include screencasts:
+# - obs
+# - screenkey
+# - kdenlive

@@ -1,0 +1,17 @@
+- name: Configuring locales
+  become: yes
+  become_method: sudo
+  locale_gen: name={{ item }} state=present
+  with_items:
+    - en_US.UTF-8
+    - "{{ os_locale }}.UTF-8"
+
+- name: Set default locale
+  become: yes
+  become_method: sudo
+  lineinfile: dest=/etc/environment state=present regexp="^LC_ALL=" line="LC_ALL={{ os_locale }}.utf8"
+
+- name: Generate locale
+  become: yes
+  become_method: sudo
+  command: /usr/sbin/locale-gen {{ os_locale }}

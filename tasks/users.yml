@@ -1,6 +1,0 @@
----
-
-- name: Create local users
-  user: name={{ item }} shell=/bin/bash
-  with_items: users
-  register: user_create

@@ -5,7 +5,7 @@
 
   roles:
     # Upgrade
-    - { role: upgrade.system, tags: [ 'upgrade' ] }
+    - { role: upgrade.system, tags: [ 'upgrade' ] }         # Move to OS group and to the root playbook
     # Pacman packages
     - { role: install.list.system.packages, packages_list: "{{ cui_minimal_packages }}",        tags: [ 'packages_cui_minimal' ] }
     - { role: install.list.system.packages, packages_list: "{{ cui_workstation_packages }}",    tags: [ 'packages_cui_workstation' ] }
@@ -15,8 +15,14 @@
     - { role: install.list.system.packages, packages_list: "{{ gui_apps_packages }}",           tags: [ 'packages_gui_apps' ] }
     - { role: install.list.system.packages, packages_list: "{{ suite_latex }}",                 tags: [ 'packages_suite_latex' ] }
     - { role: install.list.system.packages, packages_list: "{{ suite_libreoffice }}",           tags: [ 'packages_suite_libreoffice' ] }
-    # Aur packages
-    - { role: install.bin.yaourt,                                                               tags: [ 'yaourt' ] }
+    # OS setup
+    - { role: setup.os, os_feature: "locale", os_locale: "en_US", os_language: 'en_US:en:pt',   tags: [ 'os_locale' ] }
+    - { role: setup.os, os_feature: "hostname", os_hostname: "virtualbox",                      tags: [ 'os_hostname' ] }
+    - { role: setup.os, os_feature: "service-ntp",                                              tags: [ 'os_service_ntp' ] }
+    - { role: setup.os, os_feature: "service-ufw", os_ssh_port: 22,                             tags: [ 'os_service_ufw' ] }    # Needs review, rules are not persistant
+    - { role: setup.os, os_feature: "service-ssh", os_ssh_port: 22,                             tags: [ 'os_service_ssh' ] }    # Not implemented
+    #- { role: setup.os, os_feature: "service-mosh", os_ssh_port: 22,                            tags: [ 'os_service_mosh' ] }  # Not implemented
+    - { role: install.bin.yaourt,                                                               tags: [ 'yaourt' ] }            # Move to OS group?
     - { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}",               tags: [ 'packages_cui_aur' ] }
     - { role: install.list.aur.packages , packages_list: "{{ gui_aur_packages }}",              tags: [ 'packages_gui_aur' ] }
     # Development
@@ -25,6 +31,7 @@
     - { role: setup.devel.env, devel_env: "ruby",                                               tags: [ 'devel_env_ruby' ] }
     - { role: setup.devel.env, devel_env: "node",                                               tags: [ 'devel_env_node' ] }
     #- { role: setup.devel.env, devel_env: "java",                                               tags: [ 'devel_env_java' ] }
+    #- { role: setup.devel.env, devel_env: "ipython",                                            tags: [ 'devel_env_ipython' ] }
     - { role: setup.devel.env, devel_env: "r",                                                  tags: [ 'devel_env_r' ] }
     - { role: setup.devel.env, devel_env: "haskell",                                            tags: [ 'devel_env_haskell' ] }
     # Public dotfiles
@@ -39,7 +46,6 @@
     # Private dotfiles
     - { role: setup.dotfiles, dotfiles_repo: "mutt",                                            tags: [ 'dotfiles_mutt' ] }
     - { role: setup.dotfiles, dotfiles_repo: "secrets",                                         tags: [ 'dotfiles_secrets' ] }
-# os-sudo.yml
 
   vars_files:
     - 'defaults/main.yml'
@@ -48,23 +54,17 @@
 # lin-dev.yml
 #
 # ROOT
-# os-sudo.yml
-# os-locale.yml
-# os-aur.yml
 # os-cron.yml
-# os-ntp.yml
 # os-mount-nfs-cache.yml
 # os-network-wifi.yml
 # os-network-wired.yml
 # os-pacman.yml
 # os-pkgfile.yml
 # os-update-packages-cache.yml
-# os-upgrade-distro.yml
 # #os-systemd.yml
 #
 # shared.yml
 #
-# users.yml
 # xorg-virtualbox.yml
 # xorg-x230.yml
 #

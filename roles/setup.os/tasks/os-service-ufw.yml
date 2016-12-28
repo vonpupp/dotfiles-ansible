@@ -1,0 +1,53 @@
+- name: Install ufw
+  become: yes
+  package: package=ufw state=present
+
+- name: Enable ufw
+  become: yes
+  ufw: state=enabled
+
+- name: Configure ufw rules
+  become: yes
+  ufw: rule={{ item.rule }} port={{ item.port }} proto={{ item.proto }}
+  with_items:
+    - { rule: 'limit', port: '{{ os_ssh_port | default("22") }}', proto: 'tcp' }
+    - { rule: 'allow', port: '80', proto: 'tcp' }
+    - { rule: 'allow', port: '443', proto: 'tcp' }
+  notify:
+    - restart ufw
+
+- name: Configure ufw defaults
+  become: yes
+  ufw: direction={{ item.direction }} policy={{ item.policy }}
+  with_items:
+    - { direction: 'incoming', policy: 'deny' }
+    - { direction: 'outgoing', policy: 'allow' }
+  notify:
+    - restart ufw
+
+- name: Enable ufw logging
+  become: yes
+  ufw: logging=on
+  notify:
+    - restart ufw
+
+- name: Enable ufw
+  become: yes
+  ufw: state=enabled
+
+## Allow all access from RFC1918 networks to this host:
+#- ufw:
+#    rule: allow
+#    src: '{{ item }}'
+#  with_items:
+#    - 10.0.0.0/8
+#    - 172.16.0.0/12
+#    - 192.168.0.0/16
+
+## Deny all traffic from the IPv6 2001:db8::/32 to tcp port 25 on this host.
+## Note that IPv6 must be enabled in /etc/default/ufw for IPv6 firewalling to work.
+#- ufw:
+#    rule: deny
+#    proto: tcp
+#    src: '2001:db8::/32'
+#    port: 25

@@ -6,6 +6,15 @@
 # Clone and link dotfiles using homeshick
 - include: "dotfiles-clone-link.yml"
 
-- name: Install awesome for {{ user }}
-  become: yes
-  package: name=awesome state=present
+
+# Ensure packages
+- name: Ensure '{{ loop_var }}' packages
+  include_role:
+	name: install.list.system.packages
+  with_items:
+	- "{{ gui_xorg_packages }}"
+	- "{{ gui_awesome_wm_packages }}"
+  loop_control:
+	loop_var: packages_list
+
+#- name: Enable slim
