@@ -18,9 +18,14 @@
     # OS setup
     - { role: setup.os, os_feature: "locale", os_locale: "en_US", os_language: 'en_US:en:pt',   tags: [ 'os_locale' ] }
     - { role: setup.os, os_feature: "hostname", os_hostname: "virtualbox",                      tags: [ 'os_hostname' ] }
+    - { role: setup.os, os_feature: "pacman",                                                   tags: [ 'os_pacman' ] }
+    - { role: setup.os, os_feature: "service-networkmanager",                                   tags: [ 'os_service_networkmanager' ] }
+    - { role: setup.os, os_feature: "service-dnsmasq",                                          tags: [ 'os_service_dnsmasq' ] }
     - { role: setup.os, os_feature: "service-ntp",                                              tags: [ 'os_service_ntp' ] }
-    - { role: setup.os, os_feature: "service-ufw", os_ssh_port: 22,                             tags: [ 'os_service_ufw' ] }    # Needs review, rules are not persistant
+    - { role: setup.os, os_feature: "service-ufw", os_ssh_port: 22,                             tags: [ 'os_service_ufw' ] }
     - { role: setup.os, os_feature: "service-ssh", os_ssh_port: 22,                             tags: [ 'os_service_ssh' ] }    # Not implemented
+    - { role: setup.os, os_feature: "service-docker",                                           tags: [ 'os_service_docker' ] }
+    - { role: setup.os, os_feature: "service-kvm",                                              tags: [ 'os_service_kvm' ] }
     #- { role: setup.os, os_feature: "service-mosh", os_ssh_port: 22,                            tags: [ 'os_service_mosh' ] }  # Not implemented
     - { role: install.bin.yaourt,                                                               tags: [ 'yaourt' ] }            # Move to OS group?
     - { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}",               tags: [ 'packages_cui_aur' ] }
@@ -46,6 +51,13 @@
     # Private dotfiles
     - { role: setup.dotfiles, dotfiles_repo: "mutt",                                            tags: [ 'dotfiles_mutt' ] }
     - { role: setup.dotfiles, dotfiles_repo: "secrets",                                         tags: [ 'dotfiles_secrets' ] }
+    # Asdf
+    - { role: setup.user, user_feature: "home-apps",                                            tags: [ 'user_home_apps' ] }
+    - { role: setup.user, user_feature: "asdf",                                                 tags: [ 'user_asdf' ] }
+    #- { role: setup.dotfiles, dotfiles_repo: "asdf-python",                                     tags: [ 'dotfiles_asdf_python' ] }
+    #- { role: setup.dotfiles, dotfiles_repo: "asdf-ruby",                                       tags: [ 'dotfiles_asdf_ruby' ] }
+    #- { role: setup.dotfiles, dotfiles_repo: "asdf-nodejs",                                     tags: [ 'dotfiles_asdf_nodejs' ] }
+    #- { role: setup.dotfiles, dotfiles_repo: "asdf-go",                                         tags: [ 'dotfiles_asdf_go' ] }
 
   vars_files:
     - 'defaults/main.yml'

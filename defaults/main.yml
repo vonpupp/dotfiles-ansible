@@ -104,7 +104,6 @@ cui_workstation_packages:
   - sshfs
   - unrar
   - vim
-  - vim-ultisnips
   - zsh
   - zsh-completions
   - zsh-syntax-highlighting
@@ -257,6 +256,28 @@ suite_latex:
 
 suite_libreoffice:
   - libreoffice-fresh
+
+service_docker_package:
+  - docker
+
+# TODO: Add virt-manager
+service_kvm_package:
+  - libvirt
+
+service_networkmanager_package:
+  - networkmanager
+
+service_dnsmasq_package:
+  - dnsmasq
+
+service_openssh_package:
+  - openssh
+
+service_ntp_package:
+  - ntp
+
+service_ufw_package:
+  - ufw
 
 #- name: Install drivers
 #  yaourt: name=nvidia

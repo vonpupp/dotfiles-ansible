@@ -1,4 +1,65 @@
----
+- name: restart dnsmasq
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: True
+  with_items:
+    - dnsmasq
+  when:
+    not is_travis
+
+- name: restart docker
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: True
+  with_items:
+    - docker
+  when:
+    not is_travis
+
+- name: restart kvm
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: True
+  with_items:
+    - libvirtd
+  when:
+    not is_travis
+
+- name: restart networkmanager
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: True
+  with_items:
+    - NetworkManager
+  when:
+    not is_travis
+
+- name: restart ntpd
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: True
+  with_items:
+    - ntpd
+  when:
+    not is_travis
+
 - name: restart ufw
   become: yes
-  service: name=ufw state=restarted
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: True
+  with_items:
+    - ufw
+  when:
+    not is_travis

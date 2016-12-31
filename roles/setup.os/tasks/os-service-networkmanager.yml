@@ -1,0 +1,12 @@
+- name: Install packages
+  become: yes
+  package:
+    name: "{{ service_networkmanager_package }}"
+    state: present
+
+- debug: msg="Trigger networkmanager handler"
+  become: yes
+  notify:
+    restart networkmanager
+  when:
+    not is_travis

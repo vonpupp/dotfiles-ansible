@@ -14,6 +14,17 @@ env:
       # Writing suite
     - TAGS="-t packages_suite_latex"
     - TAGS="-t packages_suite_libreoffice"
+      # OS
+    - TAGS="-t os_locale"
+    - TAGS="-t os_hostname"      # Breaks on travis
+    - TAGS="-t os_pacman"
+    - TAGS="-t os_service_networkmanager"
+    - TAGS="-t os_service_dnsmasq"
+    - TAGS="-t os_service_ntp"
+    - TAGS="-t os_service_ufw"
+    - TAGS="-t os_service_ssh"
+    - TAGS="-t os_service_docker"
+    - TAGS="-t os_service_kvm"
       # AUR
     - TAGS="-t yaourt"
     - TAGS="-t packages_cui_aur"                ENVARS="-e user=travis"
@@ -27,16 +38,18 @@ env:
     - TAGS="-t devel_env_haskell"               ENVARS="-e user=travis"
       # Dotfiles                                                      "
     - TAGS="-t dotfiles_home"                   ENVARS="-e user=travis"
+    - TAGS="-t dotfiles_apps"                   ENVARS="-e user=travis"
     - TAGS="-t dotfiles_tmux"                   ENVARS="-e user=travis"
     - TAGS="-t dotfiles_vim"                    ENVARS="-e user=travis"
     - TAGS="-t dotfiles_zsh"                    ENVARS="-e user=travis"
-    - TAGS="-t dotfiles_apps"                   ENVARS="-e user=travis"
     - TAGS="-t dotfiles_awesome"                ENVARS="-e user=travis"
     - TAGS="-t dotfiles_task"                   ENVARS="-e user=travis"
     - TAGS="-t dotfiles_fortune_bible"          ENVARS="-e user=travis"
-      # All                                                           "
-      #    - TAGS="-t all"                             ENVARS="-e user=travis"
-#    - TAGS="packages_cui_minimal,packages_cui_workstation,packages_cui_aur,packages_gui_xorg,packages_gui_awesome_wm,packages_gui_fonts,packages_gui_apps,packages_gui_aur"
+      # Asdf
+    #- TAGS="-t dotfiles_home_apps"              ENVARS="-e user=travis"  # >90min
+    #- TAGS="-t dotfiles_asdf"                   ENVARS="-e user=travis"
+      # All
+    #- TAGS="-t all"                             ENVARS="-e user=travis"
 
 language: python
 sudo: required
@@ -45,13 +58,12 @@ arch:
   packages:
     - yaourt
   script:
-    - ./bootstrap/archlinux/guest-archlinux-setup-dependencies.sh
+    - ./scripts/archlinux/setup-archlinux-dependencies.sh
     - sudo ./setup-root.sh
-    - sudo ./setup-user.sh $TAGS $ENVARS
+    - sudo ./setup-user.sh $TAGS $ENVARS -e is_travis=true -e travis_env=true
       #- ./scripts/test-$TAGS.sh
 
 script:
   - wget https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh
   - chmod 755 arch-travis.sh
   - travis_wait 120 ./arch-travis.sh
-    #- "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"

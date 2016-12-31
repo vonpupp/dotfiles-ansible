@@ -1,0 +1,20 @@
+- name: Install packages
+  become: yes
+  package:
+    name: "{{ service_dnsmasq_package }}"
+    state: present
+
+- name: Set up DNS caching
+  become: yes
+  copy: src=files/etc/dnsmasq.conf dest=/etc/dnsmasq.conf
+
+- name: Set up DNS resolvers
+  become: yes
+  copy: src=files/etc/resolv.conf.head dest=/etc/resolv.conf.head
+
+- debug: msg="Trigger dnsmasq handler"
+  become: yes
+  notify:
+    restart dnsmasq
+  when:
+    not is_travis

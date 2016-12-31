@@ -1,0 +1,217 @@
+#- name: Install requirements2.txt for {{ user }}
+#  become: yes
+#  become_user: "{{ user }}"
+#  pip: requirements=~{{ user }}/{{ lookup('pipe','pwd')|dirname|basename }}/files/requirements2.txt virtualenv=~{{ user }}/.venv/bin2 virtualenv_command=virtualenv2 executable=pip2
+#
+#- name: Install requirements3.txt for {{ user }}
+#  become: yes
+#  become_user: "{{ user }}"
+#  pip: requirements=~{{ user }}/{{ lookup('pipe','pwd')|dirname|basename }}/files/requirements3.txt virtualenv=~{{ user }}/.venv/bin3 virtualenv_command=virtualenv3 executable=pip3
+
+#  # .xinitrc
+#- name: Copy .xinitrc
+#  become: yes
+#  become_user: "{{ user }}"
+#  copy: src=files/.xinitrc dest=~{{ user }}/.xinitrc
+
+      #- name: Clone homeshick
+      #  become: yes
+      #  become_user: "{{ user }}"
+      #  git: repo=https://github.com/andsens/homeshick.git dest=~{{ user }}/.homesick/repos/homeshick
+
+
+# FASD
+
+- name: Clone fasd for user {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/clvv/fasd.git dest=/tmp/fasd
+
+- name: Install fasd for user {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  make:
+    chdir: /tmp/fasd
+    target: install
+    params:
+      PREFIX: ~{{ user }}
+
+- name: Clean fasd on tmp
+  become: yes
+  file:
+    state: absent
+    path: /tmp/fasd
+
+
+  # FZF
+- name: Clone fzf for user {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/junegunn/fzf.git dest=~{{ user }}/.fzf
+
+- name: Install fzf for user {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  shell:
+    ~{{ user }}/.fzf/install --no-update-rc
+
+
+  # BASE16
+- name: Clone base16-shell for user {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/chriskempson/base16-shell.git dest=~{{ user }}/.config/base16-shell
+
+
+  # CREATE_AP
+- name: Clone create_ap for user {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/oblique/create_ap.git dest=~{{ user }}/bin/create_ap
+
+
+  # GITFLOW
+- name: Download gitflow for user {{ user }}
+  get_url:
+    url: https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Install gitflow for user "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
+  shell:
+    INSTALL_PREFIX=~{{ user }}/bin /tmp/gitflow-installer.sh
+    #rm ~{{ user }}/tmp/gitflow-installer.sh
+
+- name: Clean gitflow on tmp
+  become: yes
+  file:
+    state: absent
+    path: /tmp/gitflow-installer.sh
+
+
+  # AUTOENV
+- name: Clone autoenv for user "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/kennethreitz/autoenv dest=~{{ user }}/.autoenv
+
+
+
+#- name: "source asdf in bashrc"
+#  become: yes
+#  become_user: "{{ user }}"
+#  lineinfile: dest="~/.bash_profile" create=yes line="source ~/.asdf/asdf.sh"
+
+# base-devel dep (setup.devel.env/main role)
+- name: Ensure package dependencies
+  become: yes
+  include_role:
+    name: setup.devel.env
+
+# home-base and apps dotfiles
+- name: Use role in loop
+  become: yes
+  become_user: "{{ user }}"
+  include_role:
+    name: setup.dotfiles
+  with_items:
+    - 'home'
+    - 'apps'
+  loop_control:
+    loop_var: dotfiles_repo
+
+# Depends on dotfiles-zsh
+# # However it cannot be included here due to an indirect call to
+# dotfiles-clone-link (from zsh)
+
+
+  # ASDF
+- name: Install asdf for user "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/asdf-vm/asdf dest=~{{ user }}/.asdf update=yes
+
+- name: Add asdf plugins
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc '~{{ user }}/.asdf/bin/asdf plugin-add {{ item.lang }} https://github.com/{{ item.git_prefix }}/asdf-{{ item.lang }}.git'"
+  with_items:
+    - { git_prefix: 'tuvistavie', lang: 'python' }
+    - { git_prefix: 'asdf-vm', lang: 'ruby' }
+    - { git_prefix: 'asdf-vm', lang: 'nodejs' }
+  ignore_errors: yes
+
+- name: Add asdf plugins
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc '~{{ user }}/.asdf/bin/asdf plugin-add {{ item.lang }} https://github.com/{{ item.git_prefix }}/asdf-{{ item.lang }}.git'"
+  with_items:
+    - { git_prefix: 'tuvistavie',   lang: 'python' }
+    - { git_prefix: 'asdf-vm',      lang: 'ruby' }
+    - { git_prefix: 'asdf-vm',      lang: 'nodejs' }
+    - { git_prefix: 'kennyp',       lang: 'golang' }
+  ignore_errors: yes
+
+# TODO: Clone dotfiles-apps and install without parameters so it will install all
+# vms automatically
+- name: Add asdf versions
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc '~{{ user }}/.asdf/bin/asdf install {{ item.lang }} {{ item.version }}'"
+  with_items:
+    - { lang: 'python',     version: '2.7.12' }
+    - { lang: 'python',     version: '3.6.0' }
+    - { lang: 'nodejs',     version: '0.12.18' }
+    - { lang: 'golang',     version: '1.7.4' }
+    - { lang: 'ruby',       version: '2.3.3' }
+      #- { lang: 'nodejs', version: '7.3.0' }
+
+# TODO: Fix the automatic bundler gem installation to have the bundle command
+- name: Install ruby gems
+  become: yes
+  become_user: "{{ user }}"
+  gem:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - bundler
+    - bundle
+    - travis
+
+      #- name: Install python2 eggs
+      #  become: yes
+      #  become_user: "{{ user }}"
+      #  pip:
+      #    name: "{{ item }}"
+      #    executable: pip2
+      #  with_items:
+      #    - trash-cli
+
+
+# HUB
+
+- name: Clone hub for user {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/github/hub.git dest=/tmp/hub
+
+- name: Install hub for user {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  make:
+    chdir: /tmp/hub
+    target: install
+    params:
+      prefix: "$HOME"
+
+- name: Clean hub on tmp
+  become: yes
+  become_user: "{{ user }}"
+  file:
+    state: absent
+    path: /tmp/hub
+
+# TODO:
+# - Install: trash, envdir

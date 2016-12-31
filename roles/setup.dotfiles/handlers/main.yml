@@ -1,1 +1,11 @@
----
+- name: restart slim
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    enabled: True
+    state: started
+  with_items:
+    - graphical.target
+    - slim.service
+  when:
+    not is_travis

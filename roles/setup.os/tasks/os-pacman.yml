@@ -1,0 +1,18 @@
+- name: Install packages
+  become: yes
+  package:
+    name: inetutils
+    state: present
+
+- name: Copy /etc/pacman.conf
+  become: yes
+  template:
+    src: files/etc/pacman.conf
+    dest: /etc/pacman.conf
+
+- name: Update packages list
+  become: yes
+  pacman:
+    update_cache: yes
+  when:
+    not is_travis

@@ -4,6 +4,7 @@
   pacman: name={{ item }} state=present
   with_items:
     - base-devel
+    - tls
 #    - python-docs
 #    - python-virtualenv
 #    - python2

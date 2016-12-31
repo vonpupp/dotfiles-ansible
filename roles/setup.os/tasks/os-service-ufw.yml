@@ -1,6 +1,8 @@
-- name: Install ufw
+- name: Install packages
   become: yes
-  package: package=ufw state=present
+  package:
+    name: "{{ service_ufw_package }}"
+    state: present
 
 - name: Enable ufw
   become: yes
@@ -30,10 +32,6 @@
   ufw: logging=on
   notify:
     - restart ufw
-
-- name: Enable ufw
-  become: yes
-  ufw: state=enabled
 
 ## Allow all access from RFC1918 networks to this host:
 #- ufw:

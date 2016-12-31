@@ -1,3 +1,5 @@
 - name: Setup hostname
   hostname:
     name: "{{ os_hostname }}"
+  when:
+    not is_travis

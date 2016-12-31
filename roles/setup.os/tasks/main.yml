@@ -1,6 +1,12 @@
----
+- name: Get size of long to determine architecture
+  command: getconf LONG_BIT
+  register: long_bit
+  changed_when: false
 
+#- name: Set is_travis variable
+#  set_fact:
+#    is_travis: "{{ lookup('env','TRAVIS')|bool == True }}"
+#  changed_when: false
 
 # Load a variable file based on the os_feature.
-
 - include: "os-{{ os_feature }}.yml"

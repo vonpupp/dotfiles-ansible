@@ -15,7 +15,15 @@
     msg: "Using user: {{ user }}"
   ignore_errors: yes
 
+- name: Install base-devel
+  become: yes
+  pacman: name={{ item }} state=present
+  with_items:
+    - base-devel
+    - tls
+
 
 # Load a variable file based on the devel_env.
 
 - include: "devel-{{ devel_env }}.yml"
+  when: devel_env is defined

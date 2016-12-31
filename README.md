@@ -19,13 +19,31 @@ Throughput Graph
 [![Throughput Graph](https://graphs.waffle.io/vonpupp/ansible-personal/throughput.svg)](https://waffle.io/vonpupp/ansible-personal/metrics)
 
 
+## Requirements
+
+- Git
+- Ansible
+- The VM *must* have more than 512Mb of RAM (asdf-vm for ruby requires it)
+- /tmp must be bigger than 256Mb (asdf-vm for ruby requires it)
+  - Can be remounted with `expand-tmp-size.sh` on the `scripts` folder
+
+
 ## Usage
 
 The dependencies are: Ansible and Git.
 
 ```bash
+# If you need to expand the tmp size:
+./expand-tmp-size.sh
 
-./bootstrap.sh
+# Install dependencies for Arch Linux
+./archlinux/setup-archlinux-dependencies.sh
+
+# Bootstrap root (this will create a user and add it to the sudoers group)
+sudo ./setup-root.sh
+
+# Bootstrap the playbook, optionally you can use only some tags and variables
+./setup-user.sh [-t tags -e user=$USER]
 ```
 
 

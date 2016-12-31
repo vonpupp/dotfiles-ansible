@@ -1,0 +1,11 @@
+- name: Install packages
+  become: yes
+  package:
+    name: "{{ service_kvm_package }}"
+    state: present
+
+- debug: msg="Trigger libvirtd handler"
+  become: yes
+  notify:
+    restart kvm
+  changed_when: true
