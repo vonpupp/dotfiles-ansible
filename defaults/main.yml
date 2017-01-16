@@ -60,6 +60,7 @@ cui_workstation_packages:
   - cpio
   - ctags
   - cups
+  - encfs
   - fortune-mod
   - gnupg
   - haveged
