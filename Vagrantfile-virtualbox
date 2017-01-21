@@ -1,0 +1,41 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'rbconfig'
+
+HOST_NAME = 'ansible-personal'
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # All Vagrant configuration is done here. The most common configuration
+  # options are documented and commented below. For a complete reference,
+  # please see the online documentation at vagrantup.com.
+
+  # Every Vagrant virtual environment requires a box to build off of.
+  #config.vm.box = "jfredett/arch-chef"
+  config.vm.box = "terrywang/archlinux"
+  #config.vm.network "private_network", ip: "192.168.50.5"
+  config.vm.network "public_network", bridge: "eth0"
+
+  config.vm.define HOST_NAME do |node|
+    node.vm.hostname = HOST_NAME
+    # node.vm.network :forwarded_port,  guest: 80, host: 8080
+    #node.vm.network "internal_network", ip: "192.168.56.1"
+#    node.vm.network "private_network", ip: "192.168.56.5" # vboxnet9
+    #node.vm.network "private_network", ip: "192.168.60.5" # vboxnet4
+#    node.vm.provision 'ansible' do |ansible|
+#      ansible.playbook = 'test.yml'
+#      ansible.verbose = "vvv"
+#    end
+  end
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+#    v.gui = true
+#    v.customize ["modifyhd", "disk id", "--resize", "5000"]
+  end
+  #config.vm.synced_folder "..", "/vagrant"
+  config.vm.synced_folder ".", "/vagrant"
+end

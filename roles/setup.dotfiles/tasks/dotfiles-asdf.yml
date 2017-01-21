@@ -1,57 +1,57 @@
-# Depends on base-devel (setup.devel.env/main role)
-- name: Ensure package dependencies
-  become: yes
-  include_role:
-    name: setup.devel.env
-
-- include: dotfiles-home.yml
-
-  # Depends on dotfiles-zsh
-# # However it cannot be included here due to an indirect call to
-# dotfiles-clone-link (from zsh)
-
-- name: Add asdf plugins
-  become: yes
-  become_user: "{{ user }}"
-  command: "bash -lc '~{{ user }}/.asdf/bin/asdf plugin-add {{ item.lang }} https://github.com/{{ item.git_prefix }}/asdf-{{ item.lang }}.git'"
-  with_items:
-    - { git_prefix: 'tuvistavie',   lang: 'python' }
-    - { git_prefix: 'asdf-vm',      lang: 'ruby' }
-    - { git_prefix: 'asdf-vm',      lang: 'nodejs' }
-    - { git_prefix: 'kennyp',       lang: 'golang' }
-  ignore_errors: yes
-
-# TODO: Clone dotfiles-apps and install without parameters so it will install all
-# vms automatically
-- name: Add asdf versions
-  become: yes
-  become_user: "{{ user }}"
-  command: "bash -lc '~{{ user }}/.asdf/bin/asdf install {{ item.lang }} {{ item.version }}'"
-  with_items:
-    - { lang: 'python',     version: '2.7.12' }
-    - { lang: 'python',     version: '3.6.0' }
-    - { lang: 'nodejs',     version: '0.12.18' }
-    - { lang: 'golang',     version: '1.7.4' }
-    - { lang: 'ruby',       version: '2.3.3' }
-      #- { lang: 'nodejs', version: '7.3.0' }
-
-# TODO: Fix the automatic bundler gem installation to have the bundle command
-- name: Install ruby gems
-  become: yes
-  become_user: "{{ user }}"
-  gem:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - bundler
-    - bundle
-    - travis
-
-      #- name: Install python2 eggs
-      #  become: yes
-      #  become_user: "{{ user }}"
-      #  pip:
-      #    name: "{{ item }}"
-      #    executable: pip2
-      #  with_items:
-      #    - trash-cli
+## Depends on base-devel (setup.devel.env/main role)
+#- name: Ensure package dependencies
+#  become: yes
+#  include_role:
+#    name: setup.devel.env
+#
+#- include: dotfiles-home.yml
+#
+#  # Depends on dotfiles-zsh
+## # However it cannot be included here due to an indirect call to
+## dotfiles-clone-link (from zsh)
+#
+#- name: Add asdf plugins
+#  become: yes
+#  become_user: "{{ user }}"
+#  command: "bash -lc '~{{ user }}/.asdf/bin/asdf plugin-add {{ item.lang }} https://github.com/{{ item.git_prefix }}/asdf-{{ item.lang }}.git'"
+#  with_items:
+#    - { git_prefix: 'tuvistavie',   lang: 'python' }
+#    - { git_prefix: 'asdf-vm',      lang: 'ruby' }
+#    - { git_prefix: 'asdf-vm',      lang: 'nodejs' }
+#    - { git_prefix: 'kennyp',       lang: 'golang' }
+#  ignore_errors: yes
+#
+## TODO: Clone dotfiles-apps and install without parameters so it will install all
+## vms automatically
+#- name: Add asdf versions
+#  become: yes
+#  become_user: "{{ user }}"
+#  command: "bash -lc '~{{ user }}/.asdf/bin/asdf install {{ item.lang }} {{ item.version }}'"
+#  with_items:
+#    - { lang: 'python',     version: '2.7.12' }
+#    - { lang: 'python',     version: '3.6.0' }
+#    - { lang: 'nodejs',     version: '0.12.18' }
+#    - { lang: 'golang',     version: '1.7.4' }
+#    - { lang: 'ruby',       version: '2.3.3' }
+#      #- { lang: 'nodejs', version: '7.3.0' }
+#
+## TODO: Fix the automatic bundler gem installation to have the bundle command
+#- name: Install ruby gems
+#  become: yes
+#  become_user: "{{ user }}"
+#  gem:
+#    name: "{{ item }}"
+#    state: latest
+#  with_items:
+#    - bundler
+#    - bundle
+#    - travis
+#
+#      #- name: Install python2 eggs
+#      #  become: yes
+#      #  become_user: "{{ user }}"
+#      #  pip:
+#      #    name: "{{ item }}"
+#      #    executable: pip2
+#      #  with_items:
+#      #    - trash-cli

@@ -1,4 +1,6 @@
 ---
+ansible_python_interpreter: /usr/bin/env python2
+
 cui_minimal_packages:
   - aria2
   - at

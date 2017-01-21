@@ -40,11 +40,11 @@
     - { role: setup.devel.env, devel_env: "r",                                                  tags: [ 'devel_env_r' ] }
     - { role: setup.devel.env, devel_env: "haskell",                                            tags: [ 'devel_env_haskell' ] }
     # Public dotfiles
-    - { role: setup.dotfiles, dotfiles_repo: "home",                                            tags: [ 'dotfiles_home' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "home",                                            tags: [ 'dotfiles_home', 'user_home_apps' ] }
     - { role: setup.dotfiles, dotfiles_repo: "tmux",                                            tags: [ 'dotfiles_tmux' ] }
     - { role: setup.dotfiles, dotfiles_repo: "vim",                                             tags: [ 'dotfiles_vim' ] }
-    - { role: setup.dotfiles, dotfiles_repo: "zsh",                                             tags: [ 'dotfiles_zsh' ] }
-    - { role: setup.dotfiles, dotfiles_repo: "apps",                                            tags: [ 'dotfiles_apps' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "zsh",                                             tags: [ 'dotfiles_zsh', 'user_home_apps' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "apps",                                            tags: [ 'dotfiles_apps', 'user_home_apps' ] }
     - { role: setup.dotfiles, dotfiles_repo: "awesome",                                         tags: [ 'dotfiles_awesome' ] }
     - { role: setup.dotfiles, dotfiles_repo: "task",                                            tags: [ 'dotfiles_task' ] }
     - { role: setup.dotfiles, dotfiles_repo: "fortune-bible",                                   tags: [ 'dotfiles_fortune_bible' ] }

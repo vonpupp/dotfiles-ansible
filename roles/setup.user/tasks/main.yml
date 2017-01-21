@@ -1,0 +1,17 @@
+# If {{ user }} does not exists, it is assumed that the current user will
+# install the development environment (when aplicable)
+- local_action: command whoami
+  register: deploy_user
+
+- name: Set user variable to the deploy user
+  set_fact:
+    user: "{{ deploy_user.stdout }}"
+  when: user is not defined
+
+- debug:
+    msg: "Using user: {{ user }}"
+  ignore_errors: yes
+
+
+# Install all the requirements for a dotfiles repo
+- include: "user-{{ user_feature }}.yml"

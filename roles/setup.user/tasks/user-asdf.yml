@@ -1,0 +1,104 @@
+# Depends on base-devel (setup.devel.env/main role)
+- name: Ensure package dependencies
+  become: yes
+  include_role:
+    name: setup.devel.env
+
+- name: Ensure setup.dotfiles role dependencies
+  become: yes
+  become_user: "{{ user }}"
+  include_role:
+    name: setup.dotfiles
+  with_items:
+    - 'home'
+    # zsh could lead to a circular reference
+    - 'apps'
+    - 'zsh'
+  loop_control:
+    loop_var: dotfiles_repo
+  ignore_errors: yes
+
+- name: Install asdf for user "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/asdf-vm/asdf dest=~{{ user }}/.asdf update=yes
+
+- name: Add asdf plugins
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc '~{{ user }}/.asdf/bin/asdf plugin-add {{ item.lang }} https://github.com/{{ item.git_prefix }}/asdf-{{ item.lang }}.git'"
+  with_items:
+    - { git_prefix: 'tuvistavie',   lang: 'python' }
+    - { git_prefix: 'asdf-vm',      lang: 'ruby' }
+    - { git_prefix: 'asdf-vm',      lang: 'nodejs' }
+    - { git_prefix: 'kennyp',       lang: 'golang' }
+  ignore_errors: yes
+
+- name: Add asdf versions
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc 'cd ~ && ~{{ user }}/.asdf/bin/asdf install'"
+  environment:
+    PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
+
+#- name: Add asdf specific versions
+#  become: yes
+#  become_user: "{{ user }}"
+#  command: "bash -lc '~{{ user }}/.asdf/bin/asdf install {{ item.lang }} {{ item.version }}'"
+#  with_items:
+#    - { lang: 'python',     version: '2.7.12' }
+#    - { lang: 'python',     version: '3.6.0' }
+#    - { lang: 'nodejs',     version: '0.12.18' }
+#    - { lang: 'golang',     version: '1.7.4' }
+#    - { lang: 'ruby',       version: '2.3.3' }
+#      #- { lang: 'nodejs', version: '7.3.0' }
+
+  #command: "bash -lc '~{{ user }}/.asdf/shims/pip2 install {{ item }}'"
+- name: Install python2 eggs
+  become: yes
+  become_user: "{{ user }}"
+  pip:
+    name: "{{ item }}"
+    executable: pip2
+  environment:
+    PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
+  with_items:
+    - trash-cli
+    - tmuxp
+    - envdir
+    - youtube-dl
+    - mu-repo
+    - subliminal
+    - goobook
+#    - gosync
+#    - yolk
+#    - beets
+#    - discogs_client
+#    - requests
+#    - pylast
+#    - mpd
+
+#  command: "bash -lc 'cd ~ && ~{{ user }}/.asdf/shims/gem install {{ item }}'"
+- name: Install ruby gems
+  become: yes
+  become_user: "{{ user }}"
+  gem:
+    name: "{{ item }}"
+    state: latest
+  environment:
+    PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
+  with_items:
+    - bundler
+    - bundle
+    - travis
+    - rdiscount
+
+- name: Reshim asdf vm "{{ item }}"
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc 'cd ~ && ~{{ user }}/.asdf/bin/asdf reshim {{ item }}'"
+  environment:
+    PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
+  with_items:
+    - python
+    - ruby

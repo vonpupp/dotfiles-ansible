@@ -1,0 +1,16 @@
+- include: dotfiles-home.yml
+
+- name: Add asdf plugins
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc '~{{ user }}/.asdf/bin/asdf plugin-add {{ item.lang }} https://github.com/{{ item.git_prefix }}/asdf-{{ item.lang }}.git'"
+  with_items:
+    - { git_prefix: 'asdf-vm', lang: 'ruby' }
+  ignore_errors: yes
+
+- name: Add asdf ruby versions
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc '~{{ user }}/.asdf/bin/asdf install {{ item.lang }} {{ item.version }}'"
+  with_items:
+    - { lang: 'ruby', version: '2.4.0' }

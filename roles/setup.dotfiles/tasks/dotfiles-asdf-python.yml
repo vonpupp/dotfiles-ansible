@@ -1,0 +1,21 @@
+# Depends on dotfiles-zsh
+# # However it cannot be included here due to an indirect call to
+# dotfiles-clone-link (from zsh)
+
+- include: dotfiles-home.yml
+
+- name: Add asdf plugins
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc '~{{ user }}/.asdf/bin/asdf plugin-add {{ item.lang }} https://github.com/{{ item.git_prefix }}/asdf-{{ item.lang }}.git'"
+  with_items:
+    - { git_prefix: 'tuvistavie', lang: 'python' }
+  ignore_errors: yes
+
+- name: Add asdf python versions
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc '~{{ user }}/.asdf/bin/asdf install {{ item.lang }} {{ item.version }}'"
+  with_items:
+    - { lang: 'python', version: '2.7.12' }
+    - { lang: 'python', version: '3.6.0' }
