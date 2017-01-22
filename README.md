@@ -65,6 +65,8 @@ groups are identified by prefixes:
 - `devel_env_*`. Installs a development environment.
 - `dotfiles_*`. Installs my dotfiles.
 
+https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/1
+
 
 ### (Optional) Mounting a local NFS packages cache (optional)
 
@@ -81,7 +83,9 @@ mount -t nfs -o nolock,vers=3 nas:/share/cache/arch/$(uname -m)/var/cache/pacman
 ## TODOs
 
 - [X] Parallelized Travis running test
-- [ ]
+- [ ] Add https://github.com/martini97/pomobash
+- [ ] Add Zeal docs
+- [ ] Migrate to pacaur
 
 
 ## Inspiration

@@ -133,9 +133,6 @@
   loop_control:
     loop_var: user_feature
 
-- name: Ensure python2 env update
-  set_fact:
-    ansible_python_interpreter: /usr/bin/env python2
 
 
 # HUB
@@ -145,6 +142,14 @@
   become_user: "{{ user }}"
   git: repo=https://github.com/github/hub.git dest=/tmp/hub
 
+- name: Bundle update
+  become: yes
+  become_user: "{{ user }}"
+  command: "bash -lc 'cd /tmp/hub && bundle update'"
+  environment:
+    PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
+  ignore_errors: yes
+
 - name: Bundle install
   become: yes
   become_user: "{{ user }}"
@@ -153,16 +158,24 @@
     PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
   ignore_errors: yes
 
-- name: Install hub for user {{ user }}
+- name: Install hub (only) for user {{ user }}
   become: yes
   become_user: "{{ user }}"
-  make:
-    chdir: /tmp/hub
-    target: install
-    params:
-      prefix: "$HOME"
+  command: "bash -lc 'cd /tmp/hub && ./script/build -o ~{{ user }}/bin/hub'"
   environment:
     PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
+
+##  make:
+##    chdir: /tmp/hub
+##    target: install
+##    params:
+##      prefix: "$HOME"
+#- name: Install hub (with man pages) for user {{ user }}
+#  become: yes
+#  become_user: "{{ user }}"
+#  command: "bash -lc 'cd /tmp/hub && make install prefix=~{{ user }}'"
+#  environment:
+#    PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
 
 #- name: Clean hub on tmp
 #  become: yes
