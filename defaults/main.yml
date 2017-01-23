@@ -167,7 +167,7 @@ gui_awesome_wm_packages:
   - networkmanager-qt
   - i3lock
   - slim
-  - udisks
+  - udisks2
   - vicious
   - wmname
   - xautolock
