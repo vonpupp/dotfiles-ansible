@@ -1,0 +1,19 @@
+session_name: ansible-personal
+before_script: vagrant up
+shell_command_before:
+  - vagrant ssh
+  - cd /vagrant
+windows:
+- window_name: TAB1
+  layout: main-vertical
+  focus: true
+  panes:
+    -
+- window_name: TAB2
+  layout: main-vertical
+  panes:
+    -
+- window_name: TAB3
+  layout: main-vertical
+  panes:
+    -

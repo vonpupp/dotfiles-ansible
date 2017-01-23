@@ -123,15 +123,8 @@
     loop_var: dotfiles_repo
   ignore_errors: yes
 
-- name: Ensure setup.user dependencies
-  become: yes
-  become_user: "{{ user }}"
-  include_role:
-    name: setup.user
-  with_items:
-    - 'asdf'
-  loop_control:
-    loop_var: user_feature
+- name: Ensure setup.user asdf dependency
+  include: "user-asdf.yml"
 
 
 
@@ -177,9 +170,9 @@
 #  environment:
 #    PATH: "{{ lookup('env', 'PATH') }}:~{{ user }}/.asdf/bin:~{{ user }}/.asdf/shims"
 
-#- name: Clean hub on tmp
-#  become: yes
-#  become_user: "{{ user }}"
-#  file:
-#    state: absent
-#    path: /tmp/hub
+- name: Clean hub on tmp
+  become: yes
+  become_user: "{{ user }}"
+  file:
+    state: absent
+    path: /tmp/hub

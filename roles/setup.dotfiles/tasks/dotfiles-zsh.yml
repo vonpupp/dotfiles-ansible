@@ -8,7 +8,9 @@
 
 - name: Install zsh for {{ user }}
   become: yes
-  package: name=zsh state=present
+  package:
+    name: zsh
+    state: present
 
   # ZSH
   #- name: Clone oh-my-zsh repo for {{ user }}
@@ -17,9 +19,14 @@
   #  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~{{ user }}/.oh-my-zsh
   #
 
+    #  become: yes
+    #  become_user: "{{ user }}"
 - name: Set zsh shell for {{ user }}
   become: yes
-  user: name={{ user }} shell=/bin/zsh
+  become_user: "{{ user }}"
+  user:
+    name: "{{ user }}"
+    shell: /bin/zsh
 
 - name: Clone oh-my-zsh {{ user }}
   become: yes

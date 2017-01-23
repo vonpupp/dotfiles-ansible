@@ -1,6 +1,7 @@
 # If {{ user }} does not exists, it is assumed that the current user will
 # install the development environment (when aplicable)
-- local_action: command whoami
+- name: Query user with whoami
+  local_action: command whoami
   register: deploy_user
 
 - name: Set user variable to the deploy user
