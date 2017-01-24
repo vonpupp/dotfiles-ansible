@@ -145,6 +145,7 @@ cui_aur_packages:
 gui_xorg_packages:
   - mesa
   - redshift
+  - arandr
   - xorg-server
   - xorg-server-utils
   - xorg-server-xephyr
