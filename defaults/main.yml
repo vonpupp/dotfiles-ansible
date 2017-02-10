@@ -26,6 +26,7 @@ cui_minimal_packages:
   - sudo
   - tar
   - task
+  - tig
   - tmux
   - tree
   - udevil
@@ -197,6 +198,7 @@ gui_apps_packages:
   - ghostscript
   - gparted
   - gvfs
+  - gitg
   - imagemagick
   - libnotify
   - lilyterm
