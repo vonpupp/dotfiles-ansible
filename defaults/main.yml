@@ -126,6 +126,7 @@ cui_aur_packages:
   - docker-compose
   - docker-machine
   - ledger
+  - purple-hangouts-hg
     #- drive
     ##- kitematic
     ##- dropbox
