@@ -37,6 +37,7 @@ cui_minimal_packages:
   - wget
   - whois
   - zip
+  - keychain
 
 cui_workstation_packages:
   - abook
