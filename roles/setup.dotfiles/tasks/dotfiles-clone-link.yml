@@ -9,6 +9,8 @@
   become_user: "{{ user }}"
   shell:
     source ~{{ user }}/.homesick/repos/homeshick/homeshick.sh && homeshick link -f dotfiles-{{ dotfiles_repo }}
+  args:
+    executable: /bin/bash
 
 #- name: Run bootstrap.sh
 #  become: yes
