@@ -33,6 +33,11 @@
   become_user: "{{ user }}"
   git: repo=https://github.com/robbyrussell/oh-my-zsh dest=~{{ user }}/.oh-my-zsh
 
+- name: Clone fzf {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  git: repo=https://github.com/junegunn/fzf.git dest=~{{ user }}/.fzf
+
 # TODO: Fix taskwarrior plugin for zsh if needed
 #mv ~/.oh-my-zsh/plugins/taskwarrior/taskwarrior.plugin.zsh ~/.oh-my-zsh/plugins/taskwarrior/taskwarrior.plugin.old.zsh
 
