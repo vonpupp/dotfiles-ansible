@@ -7,11 +7,11 @@
 - include: "dotfiles-clone-link.yml"
 
 
-- name: Install vim
-  become: yes
-  package: name={{ item }} state=present
-  with_items:
-    - vim
+#- name: Install vim
+#  become: yes
+#  package: name={{ item }} state=present
+#  with_items:
+#    - vim
 
 - name: Clone vundle
   become: yes
