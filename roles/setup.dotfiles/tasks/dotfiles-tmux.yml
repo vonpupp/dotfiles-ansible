@@ -7,10 +7,10 @@
 - include: "dotfiles-clone-link.yml"
 
 
-# Rest of the tasks within that dotfile repo
-- name: Install tmux
-  become: yes
-  package: name=tmux state=present
+## Rest of the tasks within that dotfile repo
+#- name: Install tmux
+#  become: yes
+#  package: name=tmux state=present
 
 - name: Clone tpm
   become: yes
