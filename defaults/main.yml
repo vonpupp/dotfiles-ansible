@@ -12,6 +12,7 @@ cui_minimal_packages:
   - dnsutils
   - dosfstools
   - elinks
+  - emacs
   - git
   - htop
   - lsof
@@ -125,6 +126,7 @@ cui_aur_packages:
   - archey3
   - autoenv-git
   - goobook-git
+  - diceware
   - docker-compose
   - docker-machine
   - ledger
