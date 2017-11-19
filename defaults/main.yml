@@ -84,6 +84,7 @@ cui_workstation_packages:
   - moreutils
   - mpc
   - mpd
+  - mpdecimal
   - ncmpcpp
   - net-tools
   - networkmanager
