@@ -108,6 +108,7 @@ cui_workstation_packages:
   - ranger
   - reflector
   - sshfs
+  - the_silver_searcher
   - unrar
   - vim
   - zsh
@@ -245,6 +246,7 @@ gui_aur_packages:
   - keepassx-git
   - mkvtoolnix
   - obs-studio-git
+  - perl-goo-canvas
   - purple-whatsapp-git
   - qdirstat
   - quvi
