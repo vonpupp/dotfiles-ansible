@@ -260,6 +260,7 @@ gui_aur_packages:
   - wine
   - xarchiver
   - xiphos
+  - xss-lock-git
   - zeal-git
   #- autokey-py3            # BREAKS ON TRAVIS
   #- bomi                   # BREAKS ON TRAVIS
