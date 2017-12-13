@@ -264,9 +264,19 @@ gui_aur_packages:
   - wine
   - xarchiver
   - xiphos
+  - xss-lock-git
   - zeal-git
   #- autokey-py3            # BREAKS ON TRAVIS
   #- bomi                   # BREAKS ON TRAVIS
+
+hardware_smartcard:
+  - ccid
+  - opensc
+  - pcsc-perl
+  - pcsc-tools              # Use pcsc_scan
+
+hardware_fingerprint:
+  - fprintd
 
 suite_latex:
   - texlive-most
