@@ -93,6 +93,7 @@ cui_workstation_packages:
   - nodejs
   - notmuch
   - ntfsprogs
+  - oath-toolkit
   - offlineimap
   - p7zip
   - parted
@@ -223,6 +224,8 @@ gui_apps_packages:
   - vlc
   - wmctrl
   - xfce4-notifyd
+  - x2goserver          # Server package for x2goclient
+  - x2goclient          # Access a graphical desktop of a computer over the network (server)
   - zathura
   - zathura-pdf-poppler
   #- gqview         # BREAKS ON TRAVIS
@@ -245,6 +248,7 @@ gui_aur_packages:
   - jdownloader2
   - kbdd
   - keepassx-git
+  - luakit-git              # fast, lightweight and flexible web browser using the webkit engine.
   - mkvtoolnix
   - obs-studio-git
   - perl-goo-canvas
