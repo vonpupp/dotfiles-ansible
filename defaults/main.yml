@@ -162,7 +162,6 @@ gui_xorg_packages:
   - redshift
   - arandr
   - xorg-server
-  - xorg-server-utils
   - xorg-server-xephyr
   - xorg-xev
   - xorg-xauth
@@ -174,6 +173,8 @@ gui_xorg_packages:
   - xorg-xrdb
   - xorg-xset
   - xorg-xhost
+
+# - xorg-server-utils
 
 gui_awesome_wm_packages:
   #- slock
