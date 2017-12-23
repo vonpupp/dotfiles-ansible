@@ -19,7 +19,7 @@ cui_minimal_packages:
   - lynx
   - nmap
   - ntp
-  - pm-utils
+  # - pm-utils
   - rsync
   - rtorrent
   - rxvt-unicode-terminfo
@@ -93,6 +93,8 @@ cui_workstation_packages:
   - nodejs
   - notmuch
   - ntfsprogs
+  - pass
+  - pass-otp
   - oath-toolkit
   - offlineimap
   - p7zip
@@ -128,18 +130,21 @@ cui_workstation_packages:
 cui_aur_packages:
   - archey3
   - autoenv-git
-  - goobook-git
   - diceware
   - docker-compose
   - docker-machine
+  - git-crypt
+  - goobook-git
   - ledger
+  - neomutt
+  - pass-tomb
   - purple-hangouts-hg
+  - tomb
     #- drive
     ##- kitematic
     ##- dropbox
     ##- dropbox-cli
     #- kpcli
-  - neomutt
     #- openshift-origin-client-tools
     #- rainbowstream
     ##- sublime-text # sublime-text-dev
