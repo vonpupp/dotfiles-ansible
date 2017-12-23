@@ -226,7 +226,6 @@ gui_apps_packages:
   - rxvt-unicode
   - scrot
   - shotwell
-  - shutter
   - smplayer
   - tk
   - vlc
@@ -236,11 +235,13 @@ gui_apps_packages:
   - x2goclient          # Access a graphical desktop of a computer over the network (server)
   - zathura
   - zathura-pdf-poppler
-  #- gqview         # BREAKS ON TRAVIS
-  #- pepper-flash
-  #- seahorse
-  #- flashplayer
-  #- zathura-pdf-mupdf
+
+#- flashplayer
+#- gqview
+#- pepper-flash
+#- seahorse
+#- shutter
+#- zathura-pdf-mupdf
 
 #- name: Copy .xinitrc
 #  copy: src=files/.xinitrc dest=~{{ username }}/.xinitrc
