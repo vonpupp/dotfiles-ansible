@@ -1,0 +1,31 @@
+#!/usr/bin/env ansible-playbook --inventory-file=inventory
+#
+# PURPOSE: Install dotfiles to properly boot into GUI mode
+
+---
+- hosts: all
+
+  roles:
+    # Public dotfiles
+    - { role: setup.dotfiles, dotfiles_repo: "home",                                            tags: [ 'dotfiles_home' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "tmux",                                            tags: [ 'dotfiles_tmux' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "vim",                                             tags: [ 'dotfiles_vim' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "zsh",                                             tags: [ 'dotfiles_zsh' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "apps",                                            tags: [ 'dotfiles_apps' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "awesome",                                         tags: [ 'dotfiles_awesome' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "task",                                            tags: [ 'dotfiles_task' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "fortune-bible",                                   tags: [ 'dotfiles_fortune_bible' ] }
+    # Private dotfiles
+    - { role: setup.dotfiles, dotfiles_repo: "mutt",                                            tags: [ 'dotfiles_mutt' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "secrets",                                         tags: [ 'dotfiles_secrets' ] }
+    # Asdf
+    - { role: setup.user, user_feature: "home-apps",                                            tags: [ 'user_home_apps' ] }
+    - { role: setup.user, user_feature: "asdf",                                                 tags: [ 'user_asdf' ] }
+    #- { role: setup.dotfiles, dotfiles_repo: "asdf-python",                                     tags: [ 'dotfiles_asdf_python' ] }
+    #- { role: setup.dotfiles, dotfiles_repo: "asdf-ruby",                                       tags: [ 'dotfiles_asdf_ruby' ] }
+    #- { role: setup.dotfiles, dotfiles_repo: "asdf-nodejs",                                     tags: [ 'dotfiles_asdf_nodejs' ] }
+    #- { role: setup.dotfiles, dotfiles_repo: "asdf-go",                                         tags: [ 'dotfiles_asdf_go' ] }
+
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'

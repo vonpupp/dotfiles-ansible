@@ -1,0 +1,25 @@
+#!/usr/bin/env ansible-playbook --inventory-file=inventory
+#
+# PURPOSE: Install power user features: GUI AUR packages, virtualization and
+#          development
+
+---
+- hosts: all
+
+  roles:
+    # Virtualization
+    - { role: setup.os, os_feature: "service-docker",                                           tags: [ 'os_service_docker' ] }
+    - { role: setup.os, os_feature: "service-kvm",                                              tags: [ 'os_service_kvm' ] }
+    # Development
+    #- { role: setup.devel.env, devel_env: "python", user: "{{ user }}",                         tags: [ 'devel_env_python' ] }
+    - { role: setup.devel.env, devel_env: "python",                                             tags: [ 'devel_env_python' ] }
+    - { role: setup.devel.env, devel_env: "ruby",                                               tags: [ 'devel_env_ruby' ] }
+    - { role: setup.devel.env, devel_env: "node",                                               tags: [ 'devel_env_node' ] }
+    #- { role: setup.devel.env, devel_env: "java",                                               tags: [ 'devel_env_java' ] }
+    #- { role: setup.devel.env, devel_env: "ipython",                                            tags: [ 'devel_env_ipython' ] }
+    - { role: setup.devel.env, devel_env: "r",                                                  tags: [ 'devel_env_r' ] }
+    - { role: setup.devel.env, devel_env: "haskell",                                            tags: [ 'devel_env_haskell' ] }
+
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'

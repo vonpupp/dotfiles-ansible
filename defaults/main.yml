@@ -7,36 +7,34 @@ cui_minimal_packages:
   - autofs
   - bash-completion
   - bc
-  - bmon
   - curl
   - dosfstools
   - elinks
-  - emacs
   - git
+  - gnupg
   - htop
+  - keychain
   - lsof
   - lynx
+  - networkmanager
   - nmap
   - ntp
+  - pinentry
   - rsync
-  - rtorrent
   - rxvt-unicode-terminfo
-  - screen
   - sudo
   - tar
-  - task
-  - tig
   - tmux
   - tree
   - udevil
   - ufw
   - ufw-extras
   - unzip
+  - vim
   - w3m
   - wget
   - whois
   - zip
-  - keychain
 
 # - dnsutils
 # - pm-utils
@@ -58,6 +56,7 @@ cui_workstation_packages:
   - atop
   - autoconf
   - bitlbee
+  - bmon
   - bower
   - chromaprint
   - cmake
@@ -66,9 +65,9 @@ cui_workstation_packages:
   - cpio
   - ctags
   - cups
+  - emacs
   - encfs
   - fortune-mod
-  - gnupg
   - haveged
   - highlight
   - hostapd
@@ -88,18 +87,16 @@ cui_workstation_packages:
   - mpdecimal
   - ncmpcpp
   - net-tools
-  - networkmanager
   - nfs-utils
   - nodejs
-  - pass
-  - pass-otp
   - oath-toolkit
   - offlineimap
   - p7zip
   - parted
+  - pass
+  - pass-otp
   - perl-datetime
   - perl-image-exiftool
-  - pinentry
   - polipo
   - procmail
   - pulseaudio
@@ -109,13 +106,16 @@ cui_workstation_packages:
   - python2-pip
   - ranger
   - reflector
+  - rtorrent
   - sshfs
+  - task
   - the_silver_searcher
+  - tig
   - unrar
-  - vim
   - zsh
   - zsh-completions
   - zsh-syntax-highlighting
+
 
 #  - docker
 #  - libvirt

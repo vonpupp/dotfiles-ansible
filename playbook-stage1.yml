@@ -1,0 +1,28 @@
+#!/usr/bin/env ansible-playbook --inventory-file=inventory
+#
+# PURPOSE: Install base OS layer for a minimal (networking only) secure CUI
+#          system
+
+---
+- hosts: all
+
+  roles:
+    # Upgrade
+    - { role: upgrade.system, tags: [ 'upgrade' ] }         # Move to OS group and to the root playbook
+    # Pacman packages
+    - { role: install.list.system.packages, packages_list: "{{ cui_minimal_packages }}",        tags: [ 'packages_cui_minimal' ] }
+    # OS setup
+    - { role: setup.os, os_feature: "locale", os_locale: "en_US", os_language: 'en_US:en:pt',   tags: [ 'os_locale' ] }
+    - { role: setup.os, os_feature: "hostname", os_hostname: "virtualbox",                      tags: [ 'os_hostname' ] }
+    - { role: setup.os, os_feature: "pacman",                                                   tags: [ 'os_pacman' ] }
+    - { role: setup.os, os_feature: "service-networkmanager",                                   tags: [ 'os_service_networkmanager' ] }
+    #- { role: setup.os, os_feature: "service-dnsmasq",                                          tags: [ 'os_service_dnsmasq' ] }
+    - { role: setup.os, os_feature: "service-ntp",                                              tags: [ 'os_service_ntp' ] }
+    - { role: setup.os, os_feature: "service-ufw", os_ssh_port: 22,                             tags: [ 'os_service_ufw' ] }
+    - { role: setup.os, os_feature: "service-ssh", os_ssh_port: 22,                             tags: [ 'os_service_ssh' ] }    # Not implemented
+    - { role: setup.os, os_feature: "gpg-recv-key", os_gpg_recv_key: "73B35DA54ACB7D10",        tags: [ 'os_gpg_recv_key' ] }
+    #- { role: setup.os, os_feature: "service-mosh", os_ssh_port: 22,                            tags: [ 'os_service_mosh' ] }  # Not implemented
+
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'

@@ -19,8 +19,34 @@
   become: yes
   pacman: name={{ item }} state=present
   with_items:
-    - base-devel
+    - autoconf # A GNU tool for automatically configuring source code
+    - automake # A GNU tool for automatically creating Makefiles
+    - binutils # A set of programs to assemble and manipulate binary and object files
+    - file # File type identification utility
+    - findutils # GNU utilities to locate files
+    - gawk # GNU version of awk
+    - gcc # The GNU Compiler Collection - C and C++ frontends
+    - gettext # GNU internationalization library
+    - grep # A string search utility
+    - gzip # GNU compression utility
+    - libtool # A generic library support script
+    - m4 # The GNU macro processor
+    - make # GNU make utility to maintain groups of programs
+    - patch # A utility to apply patch files to original sources
+    - pkg-config # A system for managing library compile/link flags
+    - sed # GNU stream editor
+    - util-linux # Miscellaneous system utilities for Linux
+    - which # A utility to show the full path of commands
     - tls
+
+#bison # The GNU general-purpose parser generator
+#fakeroot # Tool for simulating superuser privileges
+#flex # A tool for generating text-scanning programs
+#groff # GNU troff text-formatting system
+#pacman # A library-based package manager with dependency support
+#sudo # Give certain users the ability to run some commands as root
+#systemd # system and service manager
+#texinfo # GNU documentation system for on-line information and printed output
 
 
 # Load a variable file based on the devel_env.
