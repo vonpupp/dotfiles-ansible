@@ -1,0 +1,4 @@
+- name: Receiving gpg key from gnupg.net
+  shell: "{{ item }}"
+  with_items:
+    - gpg --keyserver hkp://keys.gnupg.net --recv-keys "{{ os_gpg_recv_key }}"
