@@ -9,7 +9,6 @@ cui_minimal_packages:
   - bc
   - bmon
   - curl
-  - dnsutils
   - dosfstools
   - elinks
   - emacs
@@ -39,6 +38,7 @@ cui_minimal_packages:
   - zip
   - keychain
 
+# - dnsutils
 # - pm-utils
 
 cui_workstation_packages:
