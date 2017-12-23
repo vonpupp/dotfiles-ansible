@@ -19,7 +19,6 @@ cui_minimal_packages:
   - lynx
   - nmap
   - ntp
-  # - pm-utils
   - rsync
   - rtorrent
   - rxvt-unicode-terminfo
@@ -39,6 +38,7 @@ cui_minimal_packages:
   - whois
   - zip
   - keychain
+  # - pm-utils
 
 cui_workstation_packages:
   - abook
