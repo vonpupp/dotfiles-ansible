@@ -20,7 +20,7 @@
     - { role: setup.os, os_feature: "hostname", os_hostname: "virtualbox",                      tags: [ 'os_hostname' ] }
     - { role: setup.os, os_feature: "pacman",                                                   tags: [ 'os_pacman' ] }
     - { role: setup.os, os_feature: "service-networkmanager",                                   tags: [ 'os_service_networkmanager' ] }
-    - { role: setup.os, os_feature: "service-dnsmasq",                                          tags: [ 'os_service_dnsmasq' ] }
+    #- { role: setup.os, os_feature: "service-dnsmasq",                                          tags: [ 'os_service_dnsmasq' ] }
     - { role: setup.os, os_feature: "service-ntp",                                              tags: [ 'os_service_ntp' ] }
     - { role: setup.os, os_feature: "service-ufw", os_ssh_port: 22,                             tags: [ 'os_service_ufw' ] }
     - { role: setup.os, os_feature: "service-ssh", os_ssh_port: 22,                             tags: [ 'os_service_ssh' ] }    # Not implemented
