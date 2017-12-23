@@ -43,7 +43,7 @@ The dependencies are: Ansible and Git.
 sudo ./setup-root.sh
 
 # Bootstrap the playbook, optionally you can use only some tags and variables
-./setup-user.sh [-t tags -e user=$USER]
+./setup-user.sh -e is_travis=false [-t tags -e user=$USER]
 ```
 
 
