@@ -17,7 +17,7 @@
     - { role: install.list.system.packages, packages_list: "{{ suite_libreoffice }}",           tags: [ 'packages_suite_libreoffice' ] }
     # OS setup
     - { role: setup.os, os_feature: "locale", os_locale: "en_US", os_language: 'en_US:en:pt',   tags: [ 'os_locale' ] }
-    #- { role: setup.os, os_feature: "hostname", os_hostname: "virtualbox",                      tags: [ 'os_hostname' ] }
+    - { role: setup.os, os_feature: "hostname", os_hostname: "virtualbox",                      tags: [ 'os_hostname' ] }
     - { role: setup.os, os_feature: "pacman",                                                   tags: [ 'os_pacman' ] }
     - { role: setup.os, os_feature: "service-networkmanager",                                   tags: [ 'os_service_networkmanager' ] }
     - { role: setup.os, os_feature: "service-dnsmasq",                                          tags: [ 'os_service_dnsmasq' ] }
