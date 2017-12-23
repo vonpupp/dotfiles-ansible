@@ -38,7 +38,8 @@ cui_minimal_packages:
   - whois
   - zip
   - keychain
-  # - pm-utils
+
+# - pm-utils
 
 cui_workstation_packages:
   - abook
@@ -88,7 +89,6 @@ cui_workstation_packages:
   - ncmpcpp
   - net-tools
   - networkmanager
-  - newsbeuter
   - nfs-utils
   - nodejs
   - notmuch
@@ -118,6 +118,7 @@ cui_workstation_packages:
   - zsh
   - zsh-completions
   - zsh-syntax-highlighting
+
 #  - docker
 #  - libvirt
 #  - lxc
@@ -126,6 +127,7 @@ cui_workstation_packages:
 #  - virtualbox
 #  - virtualbox-ext-vnc
 #  - virtualbox-guest-iso
+# - newsbeuter
 
 cui_aur_packages:
   - archey3
