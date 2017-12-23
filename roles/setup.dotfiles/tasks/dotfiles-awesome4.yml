@@ -1,0 +1,37 @@
+- name: Set git dotfiles base repo URL
+  set_fact:
+    base_dotfiles_repo_url: "https://vonpupp@github.com/vonpupp"
+
+
+- name: Clone and link dotfiles using homeshick
+  include: "dotfiles-clone-link.yml"
+
+
+#- name: Ensure package dependencies
+#  become: yes
+#  include_role:
+#    name: install.list.system.packages
+#  with_items:
+#    - "{{ gui_xorg_packages }}"
+#    - "{{ gui_awesome_wm_packages }}"
+#  loop_control:
+#    loop_var: packages_list
+#  notify:
+#    - restart slim
+
+#- name: Enable and start slim
+#  become: yes
+#  systemd:
+#    name: slim
+#    state: started
+#    enabled: yes
+
+      #- name: Enable and start slim
+      #  become: yes
+      #  notify:
+      #    - restart slim
+
+- debug: msg="Trigger handler for slim"
+  become: yes
+  notify: restart slim
+  changed_when: true
