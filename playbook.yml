@@ -29,8 +29,8 @@
     - { role: setup.os, os_feature: "gpg-recv-key", os_gpg_recv_key: "73B35DA54ACB7D10",        tags: [ 'os_gpg_recv_key' ] }
     #- { role: setup.os, os_feature: "service-mosh", os_ssh_port: 22,                            tags: [ 'os_service_mosh' ] }  # Not implemented
     - { role: install.bin.yaourt,                                                               tags: [ 'yaourt' ] }            # Move to OS group?
-    - { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}",               tags: [ 'packages_cui_aur' ] }
-    - { role: install.list.aur.packages , packages_list: "{{ gui_aur_packages }}",              tags: [ 'packages_gui_aur' ] }
+    #- { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}",               tags: [ 'packages_cui_aur' ] }
+    #- { role: install.list.aur.packages , packages_list: "{{ gui_aur_packages }}",              tags: [ 'packages_gui_aur' ] }
     # Development
     #- { role: setup.devel.env, devel_env: "python", user: "{{ user }}",                         tags: [ 'devel_env_python' ] }
     - { role: setup.devel.env, devel_env: "python",                                             tags: [ 'devel_env_python' ] }
