@@ -1,3 +1,8 @@
+- name: Create gpg store if it doesnt exist
+  shell: "{{ item }}"
+  with_items:
+    - gpg --list-keys
+
 - name: Receiving gpg key from gnupg.net
   shell: "{{ item }}"
   with_items:
