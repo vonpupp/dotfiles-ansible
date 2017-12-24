@@ -53,7 +53,7 @@
   become: yes
   become_user: "{{ user }}"
   shell:
-    ~{{ user }}/.fzf/install --no-update-rc
+    ~{{ user }}/.fzf/install --no-update-rc --no-completion --no-key-bindings
 
 
   # BASE16
