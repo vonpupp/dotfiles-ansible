@@ -135,6 +135,8 @@ mount -t nfs -o nolock,vers=3 nas:/share/cache/arch/$(uname -m)/var/cache/pacman
 ## TODOs
 
 - [X] Parallelized Travis running test
+- [ ] Enable zsh by default on dotfiles-zsh
+- [ ] Change all dotfiles repos to git instead of https as in dotfiles-awesome4
 - [ ] Add https://github.com/martini97/pomobash
 - [ ] Add Zeal docs
 - [ ] Migrate to pacaur
