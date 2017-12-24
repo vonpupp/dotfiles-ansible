@@ -105,23 +105,23 @@
 #  lineinfile: dest="~/.bash_profile" create=yes line="source ~/.asdf/asdf.sh"
 
 # base-devel dep (setup.devel.env/main role)
-- name: Ensure package dependencies
-  become: yes
-  include_role:
-    name: setup.devel.env
-
-- name: Ensure setup.dotfiles dependencies
-  become: yes
-  become_user: "{{ user }}"
-  include_role:
-    name: setup.dotfiles
-  with_items:
-    - 'home'
-    - 'apps'
-    - 'zsh'
-  loop_control:
-    loop_var: dotfiles_repo
-  ignore_errors: yes
+#- name: Ensure package dependencies
+#  become: yes
+#  include_role:
+#    name: setup.devel.env
+#
+#- name: Ensure setup.dotfiles dependencies
+#  become: yes
+#  become_user: "{{ user }}"
+#  include_role:
+#    name: setup.dotfiles
+#  with_items:
+#    - 'home'
+#    - 'apps'
+#    - 'zsh'
+#  loop_control:
+#    loop_var: dotfiles_repo
+#  ignore_errors: yes
 
 - name: Ensure setup.user asdf dependency
   include: "user-asdf.yml"
