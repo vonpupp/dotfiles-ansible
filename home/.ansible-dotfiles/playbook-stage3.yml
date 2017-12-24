@@ -14,7 +14,7 @@
     - { role: setup.dotfiles, dotfiles_repo: "vim",                                             tags: [ 'dotfiles_vim' ] }
     - { role: setup.dotfiles, dotfiles_repo: "zsh",                                             tags: [ 'dotfiles_zsh' ] }
     - { role: setup.dotfiles, dotfiles_repo: "apps",                                            tags: [ 'dotfiles_apps' ] }
-    - { role: setup.dotfiles, dotfiles_repo: "awesome",                                         tags: [ 'dotfiles_awesome' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "awesome4",                                        tags: [ 'dotfiles_awesome4' ] }
     - { role: setup.dotfiles, dotfiles_repo: "task",                                            tags: [ 'dotfiles_task' ] }
     - { role: setup.dotfiles, dotfiles_repo: "fortune-bible",                                   tags: [ 'dotfiles_fortune_bible' ] }
     # Private dotfiles
