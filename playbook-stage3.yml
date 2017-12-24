@@ -6,6 +6,8 @@
 - hosts: all
 
   roles:
+    # Personal stuff
+    - { role: setup.os, os_feature: "secrets",                                                  tags: [ 'os_secrets' ] }
     # Public dotfiles
     - { role: setup.dotfiles, dotfiles_repo: "home",                                            tags: [ 'dotfiles_home' ] }
     - { role: setup.dotfiles, dotfiles_repo: "tmux",                                            tags: [ 'dotfiles_tmux' ] }
