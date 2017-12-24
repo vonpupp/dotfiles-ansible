@@ -4,3 +4,6 @@
 
 # Clone and link dotfiles using homeshick
 - include: "dotfiles-clone-link.yml"
+
+- name: Execute global link
+  shell: bin/bootstrap-dotfiles-bb.sh
