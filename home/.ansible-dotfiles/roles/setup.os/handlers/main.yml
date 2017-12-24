@@ -56,10 +56,7 @@
 - name: restart ufw
   become: yes
   systemd:
-    name: "{{ item }}"
     state: restarted
     enabled: yes
-  with_items:
-    - ufw
-  when:
-    not is_travis
+    daemon_reload: yes
+    name: ufw
