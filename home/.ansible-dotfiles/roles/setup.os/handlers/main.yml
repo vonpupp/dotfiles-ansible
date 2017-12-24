@@ -57,8 +57,8 @@
   become: yes
   systemd:
     name: "{{ item }}"
-    state: started
-    enabled: True
+    state: restarted
+    enabled: yes
   with_items:
     - ufw
   when:
