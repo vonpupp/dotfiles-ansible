@@ -10,6 +10,7 @@
     - { role: setup.os, os_feature: "secrets",                                                  tags: [ 'os_secrets' ] }
     # Public dotfiles
     - { role: setup.dotfiles, dotfiles_repo: "home",                                            tags: [ 'dotfiles_home' ] }
+    - { role: setup.dotfiles, dotfiles_repo: "bb",                                              tags: [ 'dotfiles_bb' ] }
     - { role: setup.dotfiles, dotfiles_repo: "tmux",                                            tags: [ 'dotfiles_tmux' ] }
     - { role: setup.dotfiles, dotfiles_repo: "vim",                                             tags: [ 'dotfiles_vim' ] }
     - { role: setup.dotfiles, dotfiles_repo: "zsh",                                             tags: [ 'dotfiles_zsh' ] }
