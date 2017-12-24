@@ -21,8 +21,8 @@
     - { role: setup.dotfiles, dotfiles_repo: "mutt",                                            tags: [ 'dotfiles_mutt' ] }
     - { role: setup.dotfiles, dotfiles_repo: "secrets",                                         tags: [ 'dotfiles_secrets' ] }
     # Asdf
-    - { role: setup.user, user_feature: "home-apps",                                            tags: [ 'user_home_apps' ] }
-    - { role: setup.user, user_feature: "asdf",                                                 tags: [ 'user_asdf' ] }
+    #- { role: setup.user, user_feature: "home-apps",                                            tags: [ 'user_home_apps' ] }
+    #- { role: setup.user, user_feature: "asdf",                                                 tags: [ 'user_asdf' ] }
     #- { role: setup.dotfiles, dotfiles_repo: "asdf-python",                                     tags: [ 'dotfiles_asdf_python' ] }
     #- { role: setup.dotfiles, dotfiles_repo: "asdf-ruby",                                       tags: [ 'dotfiles_asdf_ruby' ] }
     #- { role: setup.dotfiles, dotfiles_repo: "asdf-nodejs",                                     tags: [ 'dotfiles_asdf_nodejs' ] }
