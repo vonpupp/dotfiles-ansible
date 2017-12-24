@@ -1,4 +1,0 @@
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-MAILTO={{ user_email }}
-
-0 12 * * * root pkgfile --update >/dev/null
