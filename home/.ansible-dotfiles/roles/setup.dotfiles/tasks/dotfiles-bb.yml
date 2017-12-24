@@ -6,4 +6,4 @@
 - include: "dotfiles-clone-link.yml"
 
 - name: Execute global link
-  shell: bin/homeshick-link-bb.sh
+  shell: "{{ user }}/bin/homeshick-link-bb.sh"
