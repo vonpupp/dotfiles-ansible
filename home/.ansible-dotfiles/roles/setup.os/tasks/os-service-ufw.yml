@@ -4,10 +4,6 @@
     name: "{{ service_ufw_package }}"
     state: present
 
-- name: Enable ufw
-  become: yes
-  ufw: state=enabled
-
 - name: Configure ufw rules
   become: yes
   ufw: rule={{ item.rule }} port={{ item.port }} proto={{ item.proto }}
@@ -15,8 +11,6 @@
     - { rule: 'limit', port: '{{ os_ssh_port | default("22") }}', proto: 'tcp' }
     - { rule: 'allow', port: '80', proto: 'tcp' }
     - { rule: 'allow', port: '443', proto: 'tcp' }
-  notify:
-    - restart ufw
 
 - name: Configure ufw defaults
   become: yes
@@ -24,14 +18,16 @@
   with_items:
     - { direction: 'incoming', policy: 'deny' }
     - { direction: 'outgoing', policy: 'allow' }
-  notify:
-    - restart ufw
 
 - name: Enable ufw logging
   become: yes
   ufw: logging=on
   notify:
     - restart ufw
+
+#- name: Enable ufw
+#  become: yes
+#  ufw: state=enabled
 
 ## Allow all access from RFC1918 networks to this host:
 #- ufw:
