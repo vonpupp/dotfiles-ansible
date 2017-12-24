@@ -1,7 +1,6 @@
 - name: Set git dotfiles base repo URL
   set_fact:
-    base_dotfiles_repo_url: "https://vonpupp@github.com/vonpupp"
-    #base_dotfiles_repo_url: "git://github.com/vonpupp"
+    base_dotfiles_repo_url: "git://github.com/vonpupp"
 
 
 - name: Clone and link dotfiles using homeshick
