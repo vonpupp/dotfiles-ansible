@@ -13,6 +13,15 @@
     msg: "Using user: {{ user }}"
   ignore_errors: yes
 
+- name: Accept ssh keys
+  known_hosts:
+    name: "{{ item }}"
+    key: "{{ lookup('pipe', 'ssh-keyscan {{ item }}, `dig +short {{ item }}`') }}"
+  with_items:
+   - bitbucket.com
+   - github.com
+   - gitlab.com
+
 - name: Clone homeshick
   become: yes
   become_user: "{{ user }}"
