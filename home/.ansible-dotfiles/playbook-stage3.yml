@@ -7,7 +7,8 @@
 
   roles:
     # Personal stuff
-    - { role: setup.os, os_feature: "secrets",                                                  tags: [ 'os_secrets' ] }
+    - { role: setup.os, os_feature: "secrets-pre",                                              tags: [ 'os_secrets_pre' ] }
+    - { role: setup.os, os_feature: "secrets-pos",                                              tags: [ 'os_secrets_pos' ] }
     # Public dotfiles
     - { role: setup.dotfiles, dotfiles_repo: "home",                                            tags: [ 'dotfiles_home' ] }
     - { role: setup.dotfiles, dotfiles_repo: "bb",                                              tags: [ 'dotfiles_bb' ] }
