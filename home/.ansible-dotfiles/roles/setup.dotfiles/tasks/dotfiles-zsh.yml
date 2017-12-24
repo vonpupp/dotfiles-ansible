@@ -20,7 +20,7 @@
   #
 
 - name: Set zsh shell for {{ user }}
-  become_user: "{{ user }}"
+  become: "{{ user }}"
   user:
     name: "{{ user }}"
     shell: /bin/zsh
