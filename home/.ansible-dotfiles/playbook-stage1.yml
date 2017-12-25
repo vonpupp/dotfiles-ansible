@@ -22,6 +22,7 @@
     - { role: setup.os, os_feature: "service-ssh", os_ssh_port: 22,                             tags: [ 'os_service_ssh' ] }    # Not implemented
     - { role: setup.os, os_feature: "gpg-recv-key", os_gpg_recv_key: "73B35DA54ACB7D10",        tags: [ 'os_gpg_recv_key' ] }
     - { role: setup.os, os_feature: "gpg-recv-key", os_gpg_recv_key: "1EB2638FF56C0C53",        tags: [ 'os_gpg_recv_key' ] }
+    - { role: setup.os, os_feature: "gpg-recv-key", os_gpg_recv_key: "C5469996F0DF68EC",        tags: [ 'os_gpg_recv_key' ] }
     #- { role: setup.os, os_feature: "service-mosh", os_ssh_port: 22,                            tags: [ 'os_service_mosh' ] }  # Not implemented
 
   vars_files:
