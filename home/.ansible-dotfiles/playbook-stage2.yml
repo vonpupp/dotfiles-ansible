@@ -12,10 +12,6 @@
     - { role: install.list.system.packages, packages_list: "{{ gui_awesome_wm_packages }}",     tags: [ 'packages_gui_awesome_wm' ] }
     - { role: install.list.system.packages, packages_list: "{{ gui_font_packages }}",           tags: [ 'packages_gui_fonts' ] }
     - { role: install.list.system.packages, packages_list: "{{ gui_apps_packages }}",           tags: [ 'packages_gui_apps' ] }
-    # AUR
-    - { role: install.bin.yaourt,                                                               tags: [ 'yaourt' ] }            # Move to OS group?
-    #- { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}",               tags: [ 'packages_cui_aur' ] }
-    #- { role: install.list.aur.packages , packages_list: "{{ gui_aur_packages }}",              tags: [ 'packages_gui_aur' ] }
 
   vars_files:
     - 'defaults/main.yml'

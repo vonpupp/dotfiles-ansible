@@ -137,10 +137,11 @@ cui_aur_packages:
   - docker-machine
   - git-crypt
   - goobook-git
-  - ledger
   - neomutt
+  - pacaur
   - pass-tomb
   - purple-hangouts-hg
+  - telegram-purple-git
   - tomb
     #- drive
     ##- kitematic
@@ -149,9 +150,8 @@ cui_aur_packages:
     #- kpcli
     #- openshift-origin-client-tools
     #- rainbowstream
+    #- telegram-git
     ##- sublime-text # sublime-text-dev
-    ##- telegram-git
-    ##- telegram-purple-git
     #- urlview
     ##- virtualbox-ext-oracle
   #- dash-git
@@ -278,14 +278,13 @@ gui_aur_packages:
   #- autokey-py3            # BREAKS ON TRAVIS
   #- bomi                   # BREAKS ON TRAVIS
 
-hardware_smartcard:
-  - ccid
-  - opensc
-  - pcsc-perl
-  - pcsc-tools              # Use pcsc_scan
-
-hardware_fingerprint:
-  - fprintd
+hardware_x230:
+  - xf86-video-intel        # backlight
+  - fprintd                 # fingerprint
+  - ccid                    # smartcard
+  - opensc                  # smartcard
+  - pcsc-perl               # smartcard
+  - pcsc-tools              # smartcard: Use pcsc_scan
 
 suite_latex:
   - texlive-most
