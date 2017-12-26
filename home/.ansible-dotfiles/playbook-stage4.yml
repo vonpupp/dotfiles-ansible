@@ -14,6 +14,8 @@
     - { role: install.bin.yaourt,                                                               tags: [ 'yaourt' ] }            # Move to OS group?
     - { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}",               tags: [ 'packages_cui_aur' ] }
     - { role: install.list.aur.packages , packages_list: "{{ gui_aur_packages }}",              tags: [ 'packages_gui_aur' ] }
+    # Pip OS tools
+    - { role: setup.user , user_feature: "packages-pip3", user: "{{ user }}", packages_list: "{{ pip3_user_packages }}", tags: [ 'os_packages_pip3_user' ] }
     # Development
     - { role: setup.devel.env, devel_env: "python", user: "{{ user }}",                         tags: [ 'devel_env_python' ] }
     #- { role: setup.devel.env, devel_env: "python",                                             tags: [ 'devel_env_python' ] }

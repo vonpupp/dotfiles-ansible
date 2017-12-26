@@ -139,10 +139,10 @@ cui_aur_packages:
   - goobook-git
   - neomutt
   - pacaur
+  - tomb
   - pass-tomb
   - purple-hangouts-hg
   - telegram-purple-git
-  - tomb
     #- drive
     ##- kitematic
     ##- dropbox
@@ -173,6 +173,10 @@ gui_xorg_packages:
   - xorg-xrdb
   - xorg-xset
   - xorg-xhost
+
+# This packages are needed for arm based systems to be able to run xorg
+# - xf86-video-fbdev
+# - xf86-video-vesa
 
 # - xorg-server-utils
 
@@ -277,6 +281,27 @@ gui_aur_packages:
   - zeal-git
   #- autokey-py3            # BREAKS ON TRAVIS
   #- bomi                   # BREAKS ON TRAVIS
+
+pip3_user_packages:
+  - awscli
+  - beancount
+  - envdir
+  - youtube-dl
+
+#  - astroid
+#  - flake8
+#  - ipython
+#  - line-profiler
+#  - memory-profiler
+#  - pipdeptree
+#  - psutil
+#  - pylint
+#  - tox
+#  - twine
+#  - tzupdate
+#  - virtualenv
+#  - virtualenvwrapper
+#  - yturl
 
 hardware_x230:
   - xf86-video-intel        # backlight

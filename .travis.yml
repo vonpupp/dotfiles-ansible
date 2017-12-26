@@ -59,8 +59,8 @@ arch:
     - yaourt
   script:
     - ./scripts/archlinux/setup-archlinux-dependencies.sh
-    - sudo ./setup-root.sh
-    - sudo ./setup-user.sh $TAGS $ENVARS -e is_travis=true -e travis_env=true
+    - sudo home/.ansible-dotfiles/setup-root.sh
+    - sudo home/.ansible-dotfiles/setup-user.sh $TAGS $ENVARS -e is_travis=true -e travis_env=true
       #- ./scripts/test-$TAGS.sh
 
 script:
