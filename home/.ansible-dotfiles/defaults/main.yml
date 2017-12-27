@@ -139,10 +139,10 @@ cui_aur_packages:
   - goobook-git
   - neomutt
   - pacaur
-  - tomb
-  - pass-tomb
+  - tomb-git
   - purple-hangouts-hg
   - telegram-purple-git
+  #- pass-tomb
     #- drive
     ##- kitematic
     ##- dropbox
@@ -158,13 +158,14 @@ cui_aur_packages:
   #- zathura-epub-git
 
 gui_xorg_packages:
+  - arandr
   - mesa
   - redshift
-  - arandr
   - xorg-server
   - xorg-server-xephyr
-  - xorg-xev
   - xorg-xauth
+  - xorg-xev
+  - xorg-xhost
   - xorg-xinit
   - xorg-xkill
   - xorg-xmodmap
@@ -172,7 +173,7 @@ gui_xorg_packages:
   - xorg-xrandr
   - xorg-xrdb
   - xorg-xset
-  - xorg-xhost
+  - xsel
 
 # This packages are needed for arm based systems to be able to run xorg
 # - xf86-video-fbdev
@@ -268,7 +269,9 @@ gui_aur_packages:
   - purple-whatsapp-git
   - qdirstat
   - quvi
+  - slack-dekstop
   - synapse
+  - telegram-desktop
   - telegram-purple-git
   - unagi
   - urxvt-perls
@@ -279,6 +282,7 @@ gui_aur_packages:
   - xiphos
   - xss-lock-git
   - zeal-git
+  #- discord
   #- autokey-py3            # BREAKS ON TRAVIS
   #- bomi                   # BREAKS ON TRAVIS
 
@@ -310,6 +314,11 @@ hardware_x230:
   - opensc                  # smartcard
   - pcsc-perl               # smartcard
   - pcsc-tools              # smartcard: Use pcsc_scan
+  - tlp                     # https://wiki.archlinux.org/index.php/TLP
+  - acpi_call               #
+  - lsb-release             #
+  - tp_smapi                #
+  - x86_energy_perf_policy  #
 
 suite_latex:
   - texlive-most
