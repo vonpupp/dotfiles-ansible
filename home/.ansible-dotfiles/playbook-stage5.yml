@@ -1,0 +1,15 @@
+#!/usr/bin/env ansible-playbook --inventory-file=inventory
+#
+# PURPOSE: Install drivers for Lenovo x230
+
+---
+- hosts: all
+
+  roles:
+    # Pacman packages
+    - { role: install.list.system.packages, packages_list: "{{ hardware_x230 }}",        tags: [ 'hardware_x230' ] }
+    - { role: setup.os, os_feature: "hardware-x230",                                     tags: [ 'hardware_x230' ] }
+
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'
