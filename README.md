@@ -10,13 +10,13 @@ you will find some dragons, you have been warned!
 
 ## Metrics
 
-[![Travis-CI](https://img.shields.io/travis/vonpupp/ansible-personal.svg)](https://travis-ci.org/vonpupp/ansible-personal)
-[![Stories in Ready](https://badge.waffle.io/vonpupp/ansible-personal.png?label=ready&title=Ready)](http://waffle.io/vonpupp/ansible-personal)
-[![Stories in progress](https://badge.waffle.io/vonpupp/ansible-personal.png?label=progress&title=Progress)](http://waffle.io/vonpupp/ansible-personal)
+[![Travis-CI](https://img.shields.io/travis/vonpupp/dotfiles-ansible.svg)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+[![Stories in Ready](https://badge.waffle.io/vonpupp/dotfiles-ansible.png?label=ready&title=Ready)](http://waffle.io/vonpupp/dotfiles-ansible)
+[![Stories in progress](https://badge.waffle.io/vonpupp/dotfiles-ansible.png?label=progress&title=Progress)](http://waffle.io/vonpupp/dotfiles-ansible)
 
 Throughput Graph
 
-[![Throughput Graph](https://graphs.waffle.io/vonpupp/ansible-personal/throughput.svg)](https://waffle.io/vonpupp/ansible-personal/metrics)
+[![Throughput Graph](https://graphs.waffle.io/vonpupp/dotfiles-ansible/throughput.svg)](https://waffle.io/vonpupp/dotfiles-ansible/metrics)
 
 
 ## Requirements
@@ -67,57 +67,57 @@ groups are identified by prefixes:
 
 | tag (packages)                 | Status                                            |
 |--------------------------------|---------------------------------------------------|
-| `upgrade`                      | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/1)](https://travis-ci.org/vonpupp/ansible-personal)
-| `packages_cui_minimal`         | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/2)](https://travis-ci.org/vonpupp/ansible-personal)
-| `packages_cui_workstation`     | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/3)](https://travis-ci.org/vonpupp/ansible-personal)
-| `packages_gui_xorg`            | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/4)](https://travis-ci.org/vonpupp/ansible-personal)
-| `packages_gui_awesome_wm`      | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/5)](https://travis-ci.org/vonpupp/ansible-personal)
-| `packages_gui_fonts`           | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/6)](https://travis-ci.org/vonpupp/ansible-personal)
-| `packages_gui_apps`            | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/7)](https://travis-ci.org/vonpupp/ansible-personal)
+| `upgrade`                      | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/1)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `packages_cui_minimal`         | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/2)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `packages_cui_workstation`     | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/3)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `packages_gui_xorg`            | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/4)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `packages_gui_awesome_wm`      | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/5)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `packages_gui_fonts`           | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/6)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `packages_gui_apps`            | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/7)](https://travis-ci.org/vonpupp/dotfiles-ansible)
 
 | Writing suite                  | Status                                            |
 |--------------------------------|---------------------------------------------------|
-| `packages_suite_latex`         | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/8)](https://travis-ci.org/vonpupp/ansible-personal)
-| `packages_suite_libreoffice`   | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/9)](https://travis-ci.org/vonpupp/ansible-personal)
+| `packages_suite_latex`         | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/8)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `packages_suite_libreoffice`   | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/9)](https://travis-ci.org/vonpupp/dotfiles-ansible)
 
 | OS                             | Status                                            |
 |--------------------------------|---------------------------------------------------|
-| `os_locale`                    | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/10)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_hostname`                  | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/11)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_pacman`                    | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/12)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_service_networkmanager`    | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/13)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_service_dnsmasq`           | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/14)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_service_ntp`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/15)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_service_ufw`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/16)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_service_ssh`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/17)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_service_docker`            | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/18)](https://travis-ci.org/vonpupp/ansible-personal)
-| `os_service_kvm`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/19)](https://travis-ci.org/vonpupp/ansible-personal)
+| `os_locale`                    | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/10)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_hostname`                  | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/11)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_pacman`                    | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/12)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_service_networkmanager`    | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/13)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_service_dnsmasq`           | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/14)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_service_ntp`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/15)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_service_ufw`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/16)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_service_ssh`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/17)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_service_docker`            | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/18)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `os_service_kvm`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/19)](https://travis-ci.org/vonpupp/dotfiles-ansible)
 
 | AUR                            | Status                                            |
 |--------------------------------|---------------------------------------------------|
-| `yaourt`                       | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/20)](https://travis-ci.org/vonpupp/ansible-personal)
-| `packages_cui_aur`             | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/21)](https://travis-ci.org/vonpupp/ansible-personal)
+| `yaourt`                       | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/20)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `packages_cui_aur`             | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/21)](https://travis-ci.org/vonpupp/dotfiles-ansible)
 | `packages_gui_aur`             | Takes longer than 90min on Travis
 
 | Devel                          | Status                                            |
 |--------------------------------|---------------------------------------------------|
-| `devel_env_python`             | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/22)](https://travis-ci.org/vonpupp/ansible-personal)
-| `devel_env_ruby`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/23)](https://travis-ci.org/vonpupp/ansible-personal)
-| `devel_env_node`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/24)](https://travis-ci.org/vonpupp/ansible-personal)
+| `devel_env_python`             | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/22)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `devel_env_ruby`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/23)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `devel_env_node`               | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/24)](https://travis-ci.org/vonpupp/dotfiles-ansible)
 | `devel_env_java`               | Todo
-| `devel_env_r`                  | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/25)](https://travis-ci.org/vonpupp/ansible-personal)
-| `devel_env_haskell`            | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/26)](https://travis-ci.org/vonpupp/ansible-personal)
+| `devel_env_r`                  | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/25)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `devel_env_haskell`            | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/26)](https://travis-ci.org/vonpupp/dotfiles-ansible)
 
 | Dotfiles                       | Status                                            |
 |--------------------------------|---------------------------------------------------|
-| `dotfiles_home`                | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/27)](https://travis-ci.org/vonpupp/ansible-personal)
-| `dotfiles_apps`                | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/28)](https://travis-ci.org/vonpupp/ansible-personal)
-| `dotfiles_tmux`                | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/29)](https://travis-ci.org/vonpupp/ansible-personal)
-| `dotfiles_vim`                 | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/30)](https://travis-ci.org/vonpupp/ansible-personal)
-| `dotfiles_zsh`                 | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/31)](https://travis-ci.org/vonpupp/ansible-personal)
-| `dotfiles_awesome`             | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/32)](https://travis-ci.org/vonpupp/ansible-personal)
-| `dotfiles_task`                | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/33)](https://travis-ci.org/vonpupp/ansible-personal)
-| `dotfiles_fortune_bible`       | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/ansible-personal/branches/master/34)](https://travis-ci.org/vonpupp/ansible-personal)
+| `dotfiles_home`                | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/27)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `dotfiles_apps`                | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/28)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `dotfiles_tmux`                | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/29)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `dotfiles_vim`                 | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/30)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `dotfiles_zsh`                 | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/31)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `dotfiles_awesome`             | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/32)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `dotfiles_task`                | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/33)](https://travis-ci.org/vonpupp/dotfiles-ansible)
+| `dotfiles_fortune_bible`       | [![Travis-CI](https://travis-matrix-badges.herokuapp.com/repos/vonpupp/dotfiles-ansible/branches/master/34)](https://travis-ci.org/vonpupp/dotfiles-ansible)
 
 
 ### (Optional) Mounting a local NFS packages cache (optional)
@@ -144,7 +144,7 @@ mount -t nfs -o nolock,vers=3 nas:/share/cache/arch/$(uname -m)/var/cache/pacman
 
 ## Inspiration
 
-* https://github.com/cdown/ansible-personal
+* https://github.com/cdown/dotfiles-ansible
 * https://github.com/jsok/dotfiles
 * https://github.com/cturner80/digital-ocean-ansible
 * https://github.com/augustl/ansible-playbooks
