@@ -25,9 +25,19 @@
   notify:
     - restart ufw
 
-#- name: Enable ufw
-#  become: yes
-#  ufw: state=enabled
+- name: Enable ufw
+  become: yes
+  ufw: state=enabled
+
+- name: Restart and enable ufw
+  become: yes
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: ufw
+  when:
+    not is_travis
 
 ## Allow all access from RFC1918 networks to this host:
 #- ufw:

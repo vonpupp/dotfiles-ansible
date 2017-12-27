@@ -1,9 +1,13 @@
 - name: Create gpg store if it doesnt exist
+  become: yes
+  become_user: "{{ user }}"
   shell: "{{ item }}"
   with_items:
     - gpg --list-keys
 
 - name: Receiving gpg key from gnupg.net
+  become: yes
+  become_user: "{{ user }}"
   shell: "{{ item }}"
   with_items:
     - gpg --keyserver hkp://keys.gnupg.net --recv-keys "{{ os_gpg_recv_key }}"

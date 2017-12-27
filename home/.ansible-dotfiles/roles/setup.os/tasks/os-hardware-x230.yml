@@ -1,0 +1,70 @@
+# Battery optimization:
+# https://wiki.archlinux.org/index.php/TLP
+#
+# Boost battery to 8/9h per charge
+#
+# Install:
+# tlp
+# acpi_call
+# lsb-release
+# tp_smapi
+# x86_energy_perf_policy
+#
+# Enable:
+# tlp.service
+# tlp-sleep.service
+#
+# Mask:
+# systemd-rfkill.service
+# systemd-rfkill.socket
+#
+
+
+- name: Copy /etc/default/tlp
+  become: yes
+  copy:
+    src: files/etc/default/tlp
+    dest: /etc/default/tlp
+    owner: root
+    group: root
+    mode: 0644
+
+# Think pad fan
+# https://wiki.archlinux.org/index.php/Fan_speed_control#ThinkPad_laptops
+#
+- name: Copy /etc/modprobe.d/thinkfan.conf
+  become: yes
+  copy:
+    src: files/etc/modprobe.d/thinkfan_acpi.conf
+    dest: /etc/modprobe.d/thinkfan_acpi.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# TODO: modprobe thinkpad_acpi
+
+- name: Copy /etc/default/thinkfan
+  become: yes
+  copy:
+    src: files/etc/default/thinkfan
+    dest: /etc/default/thinkfan
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy /etc/thinkfan.conf
+  become: yes
+  copy:
+    src: files/etc/thinkfan.conf
+    dest: /etc/thinkfan.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# TODO: Fix /etc/thinfan.conf
+#- name: Enable thinkfan service
+#  become: yes
+#  systemd:
+#    name: thinkfan
+#    enabled: yes
+#    state: restarted

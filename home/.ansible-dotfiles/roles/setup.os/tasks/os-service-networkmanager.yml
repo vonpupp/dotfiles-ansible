@@ -10,3 +10,13 @@
     restart networkmanager
   when:
     not is_travis
+
+- name: Restart and enable networkmanager
+  become: yes
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: networkmanager
+  when:
+    not is_travis

@@ -18,3 +18,13 @@
     restart dnsmasq
   when:
     not is_travis
+
+- name: Restart and enable dnsmasq
+  become: yes
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: dnsmasq
+  when:
+    not is_travis

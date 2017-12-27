@@ -35,3 +35,13 @@
   become: yes
   notify: restart slim
   changed_when: true
+
+- name: Restart and enable slim
+  become: yes
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: slim
+  when:
+    not is_travis

@@ -10,3 +10,13 @@
     restart ntpd
   when:
     not is_travis
+
+- name: Restart and enable ntpd
+  become: yes
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: ntpd
+  when:
+    not is_travis

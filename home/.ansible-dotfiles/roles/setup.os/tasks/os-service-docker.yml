@@ -10,3 +10,13 @@
     restart docker
   when:
     not is_travis
+
+- name: Restart and enable docker
+  become: yes
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: docker
+  when:
+    not is_travis

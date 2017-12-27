@@ -9,3 +9,13 @@
   notify:
     restart kvm
   changed_when: true
+
+- name: Restart and enable libvirtd
+  become: yes
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: libvirtd
+  when:
+    not is_travis

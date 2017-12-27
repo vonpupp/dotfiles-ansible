@@ -10,3 +10,13 @@
     restart ssh
   when:
     not is_travis
+
+- name: Restart and enable ssh
+  become: yes
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: ssh
+  when:
+    not is_travis

@@ -1,0 +1,8 @@
+- name: "Install packages: {{ packages_list }}"
+  become: yes
+  become_user: "{{ user }}"
+  pip:
+    name: "{{ item }}"
+    extra_args: --user
+    executable: pip3
+  with_items: "{{ packages_list }}"
