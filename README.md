@@ -32,20 +32,81 @@ Throughput Graph
 
 The dependencies are: Ansible and Git.
 
+### HD Preparation
+
 ```bash
-# If you need to expand the tmp size:
+# If you need to resize the root partition during live boot for install
+mount -o remount,size=4G /run/archiso/cowspace
+
+# Clone the installer repo
+pacman -Syy git --noconfirm
+git clone https://github.com/vonpupp/arch-installer
+cd arch-installer
+git checkout feature/efi-crypt
+cd cryptlvm
+./bootstap.sh
+cd ..
+./archinstaller
+
+# Recreate the ramdisk (bug on archinstaller)
+cd cryptlvm
+./05-mount.sh
+cd ..
+# Edit /mnt/etc/mkinitcpio.conf
+# Add the following hooks (in this order):
+# base udev autodetect modconf block keymap encrypt lvm2 filesystems keyboard fsck
+arch-chroot /mnt mkinitcpio -p linux
+cd cryptlvm
+./06-umount.sh
+```
+
+### Ansible use
+
+```bash
+# (deprecated) If you need to expand the tmp size:
 ./expand-tmp-size.sh
 
-# Install dependencies for Arch Linux
+# (deprecated) If you need to install the dependencies on Arch Linux
 ./archlinux/setup-archlinux-dependencies.sh
 
-# Bootstrap root (this will create a user and add it to the sudoers group)
-sudo ./setup-root.sh
+# Bootstrap the playbook (as your user), optionally you can use only some tags and variables
+mkdir -p .homesick/repos
+cd .homesick/repos
+git clone https://github.com/vonpupp/dotfiles-ansible
+cd dotfiles-ansible/home/.ansible-dotfiles
 
-# Bootstrap the playbook, optionally you can use only some tags and variables
+# (as root) Bootstrap root (this will create a user and add it to the sudoers group)
+./setup-root.sh
+logout
+
+# (as user) Bootstrap the playbook
+mkdir -p .homesick/repos
+cd .homesick/repos
+git clone https://github.com/vonpupp/dotfiles-ansible
+cd dotfiles-ansible/home/.ansible-dotfiles
+sudo ansible-playbook playbook-stage1.yml -i local, -c local --sudo -e is_travis=false
+sudo ansible-playbook playbook-stage2.yml -i local, -c local --sudo -e is_travis=false
+sudo ansible-playbook playbook-stage3.yml -i local, -c local --sudo -e is_travis=false -e user=$USER -t dotfiles_zsh
+logout
+
+# (as user) With zsh
+sudo ansible-playbook playbook-stage3.yml -i local, -c local --sudo -e is_travis=false -e user=$USER --ask-vault-pass -t os_secrets_pre
+sudo systemctl enable autofs
+sudo systemctl start autofs
+
+sudo ansible-playbook playbook-stage3.yml -i local, -c local --sudo -e is_travis=false -e user=$USER --ask-vault-pass
+sudo ansible-playbook playbook-stage4.yml -i local, -c local --sudo -e is_travis=false -e user=$USER --ask-vault-pass
+
+# Alternatively you can bootstrap as another user, or a specific tag
+sudo ansible-playbook playbook-stage3.yml -i local, -c local --sudo -e is_travis=false -e user=av -t os_secrets [--ask-vault-pass]
 sudo ./setup-user.sh -e is_travis=false [-e user=$USER] [-t tags]
 ```
 
+### Further configs
+
+* Dropbox
+* Change hostname
+* Change passwords
 
 ## Parts, labels and roles
 
@@ -135,8 +196,13 @@ mount -t nfs -o nolock,vers=3 nas:/share/cache/arch/$(uname -m)/var/cache/pacman
 ## TODOs
 
 - [X] Parallelized Travis running test
-- [ ] Enable zsh by default on dotfiles-zsh
-- [ ] Change all dotfiles repos to git instead of https as in dotfiles-awesome4
+- [X] Enable zsh by default on dotfiles-zsh
+- [X] Change all dotfiles repos to git instead of https as in dotfiles-awesome4
+- [X] Fix gpg recv-key glitch on stage1
+- [X] Fetch known_hosts keys
+- [ ] Restart systemd services
+- [ ] Add git authorized keys
+- [ ] Check fzf freeze
 - [ ] Add https://github.com/martini97/pomobash
 - [ ] Add Zeal docs
 - [ ] Migrate to pacaur
@@ -144,7 +210,8 @@ mount -t nfs -o nolock,vers=3 nas:/share/cache/arch/$(uname -m)/var/cache/pacman
 
 ## Inspiration
 
-* https://github.com/cdown/dotfiles-ansible
+* https://github.com/cdown/ansible-personal
+* https://github.com/pigmonkey/spark
 * https://github.com/jsok/dotfiles
 * https://github.com/cturner80/digital-ocean-ansible
 * https://github.com/augustl/ansible-playbooks
