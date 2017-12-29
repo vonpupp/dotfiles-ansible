@@ -251,6 +251,7 @@ gui_apps_packages:
 gui_aur_packages:
   - foxitreader
   - google-chrome
+  - google-chrome-dev
   - google-talkplugin
   - ice-ssb
   - keepassx-git
