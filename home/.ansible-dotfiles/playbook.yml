@@ -1,17 +1,12 @@
 #!/usr/bin/env ansible-playbook --inventory-file=inventory
-#
-# PURPOSE: Install base OS layer for a minimal (networking only) secure CUI
-#          system
 
 ---
 - hosts: all
 
   roles:
-    # Upgrade
+    # Stage 1: Minimal base
     - { role: upgrade.system, tags: [ 'upgrade' ] }         # Move to OS group and to the root playbook
-    # Pacman packages
     - { role: install.list.system.packages, packages_list: "{{ cui_minimal_packages }}",        tags: [ 'packages_cui_minimal' ] }
-    # OS setup
     - { role: setup.os, os_feature: "locale", os_locale: "en_US", os_language: 'en_US:en:pt',   tags: [ 'os_locale' ] }
     - { role: setup.os, os_feature: "hostname", os_hostname: "virtualbox",                      tags: [ 'os_hostname' ] }
     - { role: setup.os, os_feature: "pacman",                                                   tags: [ 'os_pacman' ] }
@@ -25,16 +20,17 @@
     - { role: setup.os, os_feature: "gpg-recv-key", os_gpg_recv_key: "C5469996F0DF68EC",        tags: [ 'os_gpg_recv_key' ] }
     - { role: setup.os, os_feature: "gpg-recv-key", os_gpg_recv_key: "8F0871F202119294",        tags: [ 'os_gpg_recv_key' ] }
     #- { role: setup.os, os_feature: "service-mosh", os_ssh_port: 22,                            tags: [ 'os_service_mosh' ] }  # Not implemented
-    # More packages
+
+    # Stage 2: GUI
     - { role: install.list.system.packages, packages_list: "{{ cui_workstation_packages }}",    tags: [ 'packages_cui_workstation' ] }
     - { role: install.list.system.packages, packages_list: "{{ gui_xorg_packages }}",           tags: [ 'packages_gui_xorg' ] }
     - { role: install.list.system.packages, packages_list: "{{ gui_awesome_wm_packages }}",     tags: [ 'packages_gui_awesome_wm' ] }
     - { role: install.list.system.packages, packages_list: "{{ gui_font_packages }}",           tags: [ 'packages_gui_fonts' ] }
     - { role: install.list.system.packages, packages_list: "{{ gui_apps_packages }}",           tags: [ 'packages_gui_apps' ] }
-    # Personal stuff
+
+    # Stage 3: Customization
     - { role: setup.os, os_feature: "secrets-pre",                                              tags: [ 'os_secrets_pre' ] }
     - { role: setup.os, os_feature: "secrets-pos",                                              tags: [ 'os_secrets_pos' ] }
-    # Public dotfiles
     - { role: setup.dotfiles, dotfiles_repo: "home",                                            tags: [ 'dotfiles_home' ] }
     - { role: setup.dotfiles, dotfiles_repo: "bb",                                              tags: [ 'dotfiles_bb' ] }
     - { role: setup.dotfiles, dotfiles_repo: "tmux",                                            tags: [ 'dotfiles_tmux' ] }
@@ -44,26 +40,22 @@
     - { role: setup.dotfiles, dotfiles_repo: "awesome4",                                        tags: [ 'dotfiles_awesome4' ] }
     - { role: setup.dotfiles, dotfiles_repo: "task",                                            tags: [ 'dotfiles_task' ] }
     - { role: setup.dotfiles, dotfiles_repo: "fortune-bible",                                   tags: [ 'dotfiles_fortune_bible' ] }
-    # Private dotfiles
     - { role: setup.dotfiles, dotfiles_repo: "mutt",                                            tags: [ 'dotfiles_mutt' ] }
     - { role: setup.dotfiles, dotfiles_repo: "secrets",                                         tags: [ 'dotfiles_secrets' ] }
-    # Asdf
     - { role: setup.user, user_feature: "home-apps",                                            tags: [ 'user_home_apps' ] }
     #- { role: setup.user, user_feature: "asdf",                                                 tags: [ 'user_asdf' ] }
     #- { role: setup.dotfiles, dotfiles_repo: "asdf-python",                                     tags: [ 'dotfiles_asdf_python' ] }
     #- { role: setup.dotfiles, dotfiles_repo: "asdf-ruby",                                       tags: [ 'dotfiles_asdf_ruby' ] }
     #- { role: setup.dotfiles, dotfiles_repo: "asdf-nodejs",                                     tags: [ 'dotfiles_asdf_nodejs' ] }
     #- { role: setup.dotfiles, dotfiles_repo: "asdf-go",                                         tags: [ 'dotfiles_asdf_go' ] }
-    # Virtualization
+
+    # Stage 4: Workstation
     - { role: setup.os, os_feature: "service-docker",                                           tags: [ 'os_service_docker' ] }
     - { role: setup.os, os_feature: "service-kvm",                                              tags: [ 'os_service_kvm' ] }
-    # AUR
     - { role: install.bin.yaourt,                                                               tags: [ 'yaourt' ] }            # Move to OS group?
     - { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}",               tags: [ 'packages_cui_aur' ] }
     - { role: install.list.aur.packages , packages_list: "{{ gui_aur_packages }}",              tags: [ 'packages_gui_aur' ] }
-    # Pip OS tools
     - { role: setup.user , user_feature: "packages-pip3", user: "{{ user }}", packages_list: "{{ pip3_user_packages }}", tags: [ 'os_packages_pip3_user' ] }
-    # Development
     - { role: setup.devel.env, devel_env: "python", user: "{{ user }}",                         tags: [ 'devel_env_python' ] }
     #- { role: setup.devel.env, devel_env: "python",                                             tags: [ 'devel_env_python' ] }
     #- { role: setup.devel.env, devel_env: "ruby",                                               tags: [ 'devel_env_ruby' ] }
@@ -72,7 +64,8 @@
     #- { role: setup.devel.env, devel_env: "ipython",                                            tags: [ 'devel_env_ipython' ] }
     #- { role: setup.devel.env, devel_env: "r",                                                  tags: [ 'devel_env_r' ] }
     #- { role: setup.devel.env, devel_env: "haskell",                                            tags: [ 'devel_env_haskell' ] }
-    # Pacman packages
+
+    # Hardware drivers
     - { role: install.list.system.packages, packages_list: "{{ hardware_x230 }}",                tags: [ 'hardware_x230' ] }
     - { role: setup.os, os_feature: "hardware-x230",                                             tags: [ 'hardware_x230' ] }
 
