@@ -3,7 +3,7 @@ env:
     - ARCH_TRAVIS_CLEAN_CHROOT=1
   matrix:
       # Upgrade
-    - TAGS="-t upgrade"
+    - SCRIPT="playbook-stage1.yml"     TAGS="-t upgrade"
       # Packages
     - TAGS="-t packages_cui_minimal"
     - TAGS="-t packages_cui_workstation"
@@ -60,7 +60,8 @@ arch:
   script:
     - home/.ansible-dotfiles/scripts/archlinux/setup-archlinux-dependencies.sh
     - sudo home/.ansible-dotfiles/setup-root.sh
-    - sudo home/.ansible-dotfiles/setup-user.sh $TAGS $ENVARS -e is_travis=true -e travis_env=true
+    - sudo ansible-playbook $SCRIPT -i local, -c local --sudo $TAGS $ENVARS -e is_travis=true -e travis_env=true
+      #- sudo home/.ansible-dotfiles/setup-user.sh $TAGS $ENVARS -e is_travis=true -e travis_env=true
       #- ./scripts/test-$TAGS.sh
 
 script:
