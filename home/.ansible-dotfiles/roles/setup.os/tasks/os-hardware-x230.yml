@@ -1,3 +1,7 @@
+# Guides:
+# General X230 configs
+# https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X230
+
 # Battery optimization:
 # https://wiki.archlinux.org/index.php/TLP
 #
@@ -19,11 +23,31 @@
 # systemd-rfkill.socket
 #
 
+# mkinitcpio
+- name: Copy /etc/mkinitcpio.conf
+  become: yes
+  copy:
+    src: files/x230/etc/mkinitcpio.conf
+    dest: /etc/mkinitcpio.conf
+    owner: root
+    group: root
+    mode: 0644
 
+# synaptics
+- name: Copy /etc/X11/xorg.conf.d/50-synaptics.conf
+  become: yes
+  copy:
+    src: files/x230/etc/X11/xorg.conf.d/50-synaptics.conf
+    dest: /etc/X11/xorg.conf.d/50-synaptics.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# tlp
 - name: Copy /etc/default/tlp
   become: yes
   copy:
-    src: files/etc/default/tlp
+    src: files/x230/etc/default/tlp
     dest: /etc/default/tlp
     owner: root
     group: root
@@ -35,7 +59,7 @@
 - name: Copy /etc/modprobe.d/thinkfan.conf
   become: yes
   copy:
-    src: files/etc/modprobe.d/thinkfan_acpi.conf
+    src: files/x230/etc/modprobe.d/thinkfan_acpi.conf
     dest: /etc/modprobe.d/thinkfan_acpi.conf
     owner: root
     group: root
@@ -46,7 +70,7 @@
 - name: Copy /etc/default/thinkfan
   become: yes
   copy:
-    src: files/etc/default/thinkfan
+    src: files/x230/etc/default/thinkfan
     dest: /etc/default/thinkfan
     owner: root
     group: root
@@ -55,7 +79,7 @@
 - name: Copy /etc/thinkfan.conf
   become: yes
   copy:
-    src: files/etc/thinkfan.conf
+    src: files/x230/etc/thinkfan.conf
     dest: /etc/thinkfan.conf
     owner: root
     group: root
@@ -68,3 +92,54 @@
 #    name: thinkfan
 #    enabled: yes
 #    state: restarted
+
+
+# fprintd
+
+- name: Copy /etc/pam.d/system-local-login
+  become: yes
+  copy:
+    src: files/x230/etc/pam.d/system-local-login
+    dest: /etc/pam.d/system-local-login
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable fprintd service
+  become: yes
+  systemd:
+    name: fprintd
+    enabled: yes
+    state: restarted
+
+# TODO: MANUALLY ADD A FINGERPRINT WITH: fprintd-enroll
+
+# audio powersave
+- name: Copy /etc/modprobe.d/audio_powersave.conf
+  become: yes
+  copy:
+    src: files/x230/etc/modprobe.d/audio_powersave.conf
+    dest: /etc/modprobe.d/audio_powersave.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# sysctl watchdog
+- name: Copy /etc/sysctl.d/disable_watchdog.conf
+  become: yes
+  copy:
+    src: files/x230/etc/sysctl.d/disable_watchdog.conf
+    dest: /etc/sysctl.d/disable_watchdog.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# sysctl laptop
+- name: Copy /etc/sysctl.d/laptop.conf
+  become: yes
+  copy:
+    src: files/x230/etc/sysctl.d/laptop.conf
+    dest: /etc/sysctl.d/laptop.conf
+    owner: root
+    group: root
+    mode: 0644

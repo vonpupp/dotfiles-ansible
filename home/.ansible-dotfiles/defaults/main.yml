@@ -5,6 +5,7 @@ cui_minimal_packages:
   - aria2
   - at
   - autofs
+  - bind-tools
   - bash-completion
   - bc
   - curl
@@ -36,7 +37,6 @@ cui_minimal_packages:
   - whois
   - zip
 
-# - dnsutils
 # - pm-utils
 
 cui_workstation_packages:
@@ -248,40 +248,38 @@ gui_apps_packages:
 #- shutter
 #- zathura-pdf-mupdf
 
-#- name: Copy .xinitrc
-#  copy: src=files/.xinitrc dest=~{{ username }}/.xinitrc
-
 gui_aur_packages:
-  - android-file-transfer
   - foxitreader
-  - gmote-server
   - google-chrome
   - google-talkplugin
   - ice-ssb
-  - inox
-  - jdownloader2
-  - kbdd
   - keepassx-git
   - luakit-git              # fast, lightweight and flexible web browser using the webkit engine.
-  - mkvtoolnix
-  - obs-studio-git
-  - perl-goo-canvas
   - purple-whatsapp-git
   - qdirstat
-  - quvi
   - slack-dekstop
   - synapse
   - telegram-desktop
   - telegram-purple-git
-  - unagi
   - urxvt-perls
   - virt-manager
-  - vivaldi
-  - wine
   - xarchiver
   - xiphos
   - xss-lock-git
   - zeal-git
+
+  #- android-file-transfer
+  #- gmote-server
+  #- inox
+  #- jdownloader2
+  #- kbdd
+  #- mkvtoolnix
+  #- obs-studio-git
+  #- perl-goo-canvas
+  #- quvi
+  #- unagi
+  #- vivaldi
+  #- wine
   #- discord
   #- autokey-py3            # BREAKS ON TRAVIS
   #- bomi                   # BREAKS ON TRAVIS
