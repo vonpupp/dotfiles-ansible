@@ -24,7 +24,7 @@ env:
     - TAGS="-t packages_gui_apps"               ENVARS="-e user=travis"
       # Stage 3 (as user)
     - TAGS='-t os_secrets_pre'                  ENVARS="-e user=travis"
-    - TAGS='-t os_secrets_pos'                  ENVARS="-e user=travis"
+    #- TAGS='-t os_secrets_pos'                  ENVARS="-e user=travis"
     - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_home'                   ENVARS="-e user=travis"
     - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_bb'                     ENVARS="-e user=travis"
     - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_tmux'                   ENVARS="-e user=travis"
@@ -67,7 +67,7 @@ arch:
   script:
     - home/.ansible-dotfiles/scripts/archlinux/setup-archlinux-dependencies.sh
     - sudo home/.ansible-dotfiles/setup-root.sh
-    - sudo ansible-playbook home/.ansible-dotfiles/playbook.yml -i local, -c local --sudo $TAGS $ENVARS -e is_travis=true -e travis_env=true
+    - sudo ansible-playbook home/.ansible-dotfiles/playbook.yml -i local, -c local --sudo $TAGS $ENVARS
       #- sudo home/.ansible-dotfiles/setup-user.sh $TAGS $ENVARS -e is_travis=true -e travis_env=true
       #- ./scripts/test-$TAGS.sh
 
