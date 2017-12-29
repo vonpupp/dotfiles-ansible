@@ -68,6 +68,7 @@
     # Hardware drivers
     - { role: install.list.system.packages, packages_list: "{{ hardware_x230 }}",                tags: [ 'hardware_x230' ] }
     - { role: setup.os, os_feature: "hardware-x230",                                             tags: [ 'hardware_x230' ] }
+    - { role: setup.os, os_feature: "hardware-drivers",                                          tags: [ 'hardware_drivers' ] }
 
   vars_files:
     - 'defaults/main.yml'

@@ -1,0 +1,29 @@
+---
+
+# nano
+- name: Copy /etc/udev/rules.d/20-hw1.rules
+  become: yes
+  copy:
+    src: files/etc/udev/rules.d/20-hw1.rules
+    dest: /etc/udev/rules.d/20-hw1.rules
+    owner: root
+    group: root
+    mode: 0644
+
+# auth
+- name: Copy /etc/udev/rules.d/70-u2f.rules
+  become: yes
+  copy:
+    src: files/etc/udev/rules.d/70-u2f.rules
+    dest: /etc/udev/rules.d/70-u2f.rules
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Udevadm trigger
+  become: yes
+  shell: udevadm trigger
+
+- name: Udevadm reload-rules
+  become: yes
+  shell: udevadm control --reload-rules
