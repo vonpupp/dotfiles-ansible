@@ -1,0 +1,12 @@
+---
+
+# TODO: sudo ln -sf /usr/bin/pinentry-curses /usr/bin/pinentry
+
+- name: Symlink /usr/bin/pinentry-curses
+  file:
+    src: /usr/bin/pinentry-curses
+    dest: /usr/bin/pinentry
+    owner: root
+    group: root
+    state: link
+    #force: true

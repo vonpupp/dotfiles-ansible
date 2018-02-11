@@ -104,6 +104,7 @@ cui_workstation_packages:
   - pydf
   - python2
   - python2-pip
+  - python2-virtualenv
   - ranger
   - reflector
   - rtorrent

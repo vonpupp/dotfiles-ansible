@@ -2,7 +2,7 @@ env:
   global:
     - ARCH_TRAVIS_CLEAN_CHROOT=1
   matrix:
-      # Stage 1
+      # Stage 1 (as root)
     - TAGS="-t upgrade"
     - TAGS="-t packages_cui_minimal"
     - TAGS="-t os_locale"
@@ -15,28 +15,28 @@ env:
     - TAGS="-t os_service_ssh"
     - TAGS="-t os_service_docker"
     - TAGS="-t os_service_kvm"
-    - TAGS='-t os_gpg_recv_key'
-      # Stage 2
-    - TAGS="-t packages_cui_workstation"
-    - TAGS="-t packages_gui_xorg"
-    - TAGS="-t packages_gui_awesome_wm"
-    - TAGS="-t packages_gui_fonts"
-    - TAGS="-t packages_gui_apps"
-      # Stage 3
+      # Stage 2 (as user)
+    - TAGS='-t os_gpg_recv_key'                 ENVARS="-e user=travis"
+    - TAGS="-t packages_cui_workstation"        ENVARS="-e user=travis"
+    - TAGS="-t packages_gui_xorg"               ENVARS="-e user=travis"
+    - TAGS="-t packages_gui_awesome_wm"         ENVARS="-e user=travis"
+    - TAGS="-t packages_gui_fonts"              ENVARS="-e user=travis"
+    - TAGS="-t packages_gui_apps"               ENVARS="-e user=travis"
+      # Stage 3 (as user)
     - TAGS='-t os_secrets_pre'                  ENVARS="-e user=travis"
-    - TAGS='-t os_secrets_pos'                  ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_home'                   ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_bb'                     ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_tmux'                   ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_vim'                    ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_zsh'                    ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_apps'                   ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_awesome4'               ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_task'                   ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_fortune_bible'          ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_mutt'                   ENVARS="-e user=travis"
-    - TAGS='-t dotfiles_secrets'                ENVARS="-e user=travis"
-    - TAGS='-t user_home_apps'                  ENVARS="-e user=travis"
+    #- TAGS='-t os_secrets_pos'                  ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_home'                   ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_bb'                     ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_tmux'                   ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_vim'                    ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_zsh'                    ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_apps'                   ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_awesome4'               ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_task'                   ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_fortune_bible'          ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_mutt'                   ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t dotfiles_secrets'                ENVARS="-e user=travis"
+    - TAGS='-t packages_cui_minimal -t os_secrets_pre -t user_home_apps'                  ENVARS="-e user=travis"
 
     - TAGS="-t packages_suite_latex"
     - TAGS="-t packages_suite_libreoffice"
@@ -67,7 +67,7 @@ arch:
   script:
     - home/.ansible-dotfiles/scripts/archlinux/setup-archlinux-dependencies.sh
     - sudo home/.ansible-dotfiles/setup-root.sh
-    - sudo ansible-playbook home/.ansible-dotfiles/playbook.yml -i local, -c local --sudo $TAGS $ENVARS -e is_travis=true -e travis_env=true
+    - sudo ansible-playbook home/.ansible-dotfiles/playbook.yml -i local, -c local --sudo $TAGS $ENVARS
       #- sudo home/.ansible-dotfiles/setup-user.sh $TAGS $ENVARS -e is_travis=true -e travis_env=true
       #- ./scripts/test-$TAGS.sh
 
