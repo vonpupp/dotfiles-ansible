@@ -132,6 +132,7 @@ cui_workstation_packages:
 cui_aur_packages:
   - archey3
   - autoenv-git
+  - caffeine-git
   - diceware
   - docker-compose
   - docker-machine
@@ -139,9 +140,8 @@ cui_aur_packages:
   - goobook-git
   - neomutt
   - pacaur
+  - play-with-mpv-git
   - tomb-git
-  - purple-hangouts-hg
-  - telegram-purple-git
   #- pass-tomb
     #- drive
     ##- kitematic
@@ -251,11 +251,13 @@ gui_apps_packages:
 gui_aur_packages:
   - foxitreader
   - google-chrome
+  - google-chrome-dev
   - google-talkplugin
   - ice-ssb
   - keepassx-git
   - luakit-git              # fast, lightweight and flexible web browser using the webkit engine.
   - purple-whatsapp-git
+  - purple-hangouts-hg
   - qdirstat
   - slack-dekstop
   - synapse
@@ -288,8 +290,8 @@ pip3_user_packages:
   - awscli
   - beancount
   - envdir
-  - youtube-dl
 
+#- youtube-dl
 #  - astroid
 #  - flake8
 #  - ipython
