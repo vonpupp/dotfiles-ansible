@@ -334,6 +334,14 @@ service_docker_package:
 service_kvm_package:
   - libvirt
 
+service_virtualbox_package:
+  - virtualbox
+  - virtualbox-ext-oracle
+  - virtualbox-guest-iso
+  - virtualbox-guest-modules-arch
+  - virtualbox-guest-utils
+  - virtualbox-host-modules-arch
+
 service_networkmanager_package:
   - networkmanager
 
