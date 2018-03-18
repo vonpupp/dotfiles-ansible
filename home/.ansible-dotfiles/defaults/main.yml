@@ -85,6 +85,7 @@ cui_workstation_packages:
   - mpc
   - mpd
   - mpdecimal
+  - ncdu
   - ncmpcpp
   - net-tools
   - nfs-utils
