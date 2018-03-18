@@ -1,0 +1,25 @@
+- name: Install packages
+  become: yes
+  package:
+    name: "{{ service_virtualbox_package }}"
+    state: present
+
+# virtualbox.conf
+- name: Copy /etc/modules-load.d/virtualbox.conf
+  become: yes
+  copy:
+    src: files/etc/modules-load.d/virtualbox.conf
+    dest: /etc/modules-load.d/virtualbox.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# virtualbox-guest.conf
+- name: Copy /etc/modules-load.d/virtualbox-guest.conf
+  become: yes
+  copy:
+    src: files/etc/modules-load.d/virtualbox-guest.conf
+    dest: /etc/modules-load.d/virtualbox-guest.conf
+    owner: root
+    group: root
+    mode: 0644

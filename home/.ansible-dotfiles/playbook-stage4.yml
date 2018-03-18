@@ -10,6 +10,7 @@
     # Virtualization
     - { role: setup.os, os_feature: "service-docker",                                           tags: [ 'os_service_docker' ] }
     - { role: setup.os, os_feature: "service-kvm",                                              tags: [ 'os_service_kvm' ] }
+    - { role: setup.os, os_feature: "service-virtualbox",                                       tags: [ 'os_service_virtualbox' ] }
     # AUR
     - { role: install.bin.yaourt,                                                               tags: [ 'yaourt' ] }            # Move to OS group?
     - { role: install.list.aur.packages, packages_list: "{{ cui_aur_packages }}",               tags: [ 'packages_cui_aur' ] }
