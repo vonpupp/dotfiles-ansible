@@ -115,6 +115,7 @@ cui_workstation_packages:
   - the_silver_searcher
   - tig
   - unrar
+  - wol
   - zsh
   - zsh-completions
   - zsh-syntax-highlighting
