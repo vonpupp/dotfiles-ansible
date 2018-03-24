@@ -96,6 +96,7 @@ cui_workstation_packages:
   - parted
   - pass
   - pass-otp
+  - pdfgrep
   - perl-datetime
   - perl-image-exiftool
   - polipo
