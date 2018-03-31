@@ -260,6 +260,7 @@ gui_aur_packages:
   - ice-ssb
   - keepassx-git
   - luakit-git              # fast, lightweight and flexible web browser using the webkit engine.
+  - nemo-dropbox
   - purple-whatsapp-git
   - purple-hangouts-hg
   - qdirstat
