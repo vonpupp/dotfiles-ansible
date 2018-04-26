@@ -228,6 +228,10 @@ gui_apps_packages:
   - lilyterm
   - meld
   - mpv
+  - nemo
+  - nemo-fileroller
+  - nemo-share
+  - nemo-terminal
   - pcmanfm
   - pidgin
   - qmmp
