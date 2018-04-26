@@ -253,6 +253,7 @@ gui_apps_packages:
 #- zathura-pdf-mupdf
 
 gui_aur_packages:
+  - nerd-fonts-complete
   - foxitreader
   - google-chrome
   - google-chrome-dev
