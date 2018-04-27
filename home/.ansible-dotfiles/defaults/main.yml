@@ -68,6 +68,7 @@ cui_workstation_packages:
   - emacs
   - encfs
   - fortune-mod
+  - fzf
   - haveged
   - highlight
   - hostapd
