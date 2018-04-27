@@ -109,6 +109,7 @@ cui_workstation_packages:
   - python2-virtualenv
   - ranger
   - reflector
+  - ripgrep
   - rtorrent
   - sshfs
   - task
