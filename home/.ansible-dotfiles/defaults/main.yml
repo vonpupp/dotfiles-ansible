@@ -259,17 +259,18 @@ gui_apps_packages:
 #- zathura-pdf-mupdf
 
 gui_aur_packages:
-  - nerd-fonts-complete
   - foxitreader
   - google-chrome
   - google-chrome-dev
   - google-talkplugin
+  - hunspell-pt-br
   - ice-ssb
   - keepassx-git
   - luakit-git              # fast, lightweight and flexible web browser using the webkit engine.
   - nemo-dropbox
-  - purple-whatsapp-git
+  - nerd-fonts-complete
   - purple-hangouts-hg
+  - purple-whatsapp-git
   - qdirstat
   - slack-dekstop
   - synapse
@@ -337,6 +338,8 @@ suite_latex:
 
 suite_libreoffice:
   - libreoffice-fresh
+  - hunspell-en_US
+  - hunspell-es
 
 service_docker_package:
   - docker
