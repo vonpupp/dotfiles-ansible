@@ -265,6 +265,7 @@ gui_aur_packages:
   - google-talkplugin
   - hunspell-pt-br
   - ice-ssb
+  - jre9
   - keepassx-git
   - luakit-git              # fast, lightweight and flexible web browser using the webkit engine.
   - nemo-dropbox
