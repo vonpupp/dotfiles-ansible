@@ -259,22 +259,23 @@ gui_apps_packages:
 #- zathura-pdf-mupdf
 
 gui_aur_packages:
-  - foxitreader
+  - foxitreader             # PDF reader and highlighter
   - google-chrome
   - google-chrome-dev
   - google-talkplugin
   - hunspell-pt-br
   - ice-ssb
   - jre9
-  - keepassx-git
+  - keepassx-git            # KeepassX
   - luakit-git              # fast, lightweight and flexible web browser using the webkit engine.
   - nemo-dropbox
   - nerd-fonts-complete
+  - opensiddur-hebrew-fonts # OpenSiddur Hebrew fonts
   - purple-hangouts-hg
   - purple-whatsapp-git
-  - qdirstat
+  - qdirstat                # DirStat
   - slack-dekstop
-  - synapse
+  - synapse                 # Launcher
   - telegram-desktop
   - telegram-purple-git
   - urxvt-perls
