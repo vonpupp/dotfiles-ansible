@@ -278,6 +278,7 @@ gui_aur_packages:
   - synapse                 # Launcher
   - telegram-desktop
   - telegram-purple-git
+  - translate-shell         # API for google translate and others
   - urxvt-perls
   - virt-manager
   - xarchiver
