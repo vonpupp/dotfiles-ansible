@@ -94,6 +94,7 @@ cui_workstation_packages:
   - oath-toolkit
   - offlineimap
   - p7zip
+  - pacman-contrib
   - parted
   - pass
   - pass-otp
