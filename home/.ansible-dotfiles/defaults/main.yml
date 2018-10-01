@@ -139,7 +139,6 @@ cui_workstation_packages:
 cui_aur_packages:
   - archey3
   - autoenv-git
-  - caffeine-git
   - diceware
   - docker-compose
   - docker-machine
@@ -147,7 +146,6 @@ cui_aur_packages:
   - goobook-git
   - neomutt
   - pacaur
-  - play-with-mpv-git
   - tomb-git
   #- pass-tomb
     #- drive
@@ -260,6 +258,7 @@ gui_apps_packages:
 #- zathura-pdf-mupdf
 
 gui_aur_packages:
+  - caffeine-git
   - foxitreader             # PDF reader and highlighter
   - google-chrome
   - google-chrome-dev
@@ -272,9 +271,11 @@ gui_aur_packages:
   - nemo-dropbox
   - nerd-fonts-complete
   - opensiddur-hebrew-fonts # OpenSiddur Hebrew fonts
+  - play-with-mpv-git
   - purple-hangouts-hg
   - purple-whatsapp-git
   - qdirstat                # DirStat
+  - r-knitr                 # Elegant, flexible, and fast dynamic report generation with R
   - slack-dekstop
   - synapse                 # Launcher
   - telegram-desktop
