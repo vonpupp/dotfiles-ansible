@@ -224,6 +224,7 @@ gui_apps_packages:
   - ghostscript
   - gparted
   - gvfs
+  - gvfs-smb
   - gitg
   - imagemagick
   - libnotify
