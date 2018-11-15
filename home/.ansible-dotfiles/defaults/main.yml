@@ -223,9 +223,11 @@ gui_apps_packages:
   - flashplugin
   - gedit
   - ghostscript
+  - gitg
+  - gnome-keyring
   - gparted
   - gvfs
-  - gitg
+  - gvfs-smb
   - imagemagick
   - libnotify
   - lilyterm
@@ -246,9 +248,9 @@ gui_apps_packages:
   - tk
   - vlc
   - wmctrl
-  - xfce4-notifyd
-  - x2goserver          # Server package for x2goclient
   - x2goclient          # Access a graphical desktop of a computer over the network (server)
+  - x2goserver          # Server package for x2goclient
+  - xfce4-notifyd
   - zathura
   - zathura-pdf-poppler
 
