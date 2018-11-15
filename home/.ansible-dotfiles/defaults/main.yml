@@ -208,6 +208,7 @@ gui_awesome_wm_packages:
 #  service: name=slim state=started enabled=yes
 
 gui_font_packages:
+  - adobe-source-code-pro-fonts
   - terminus-font
   - ttf-inconsolata
   - ttf-droid
@@ -282,6 +283,7 @@ gui_aur_packages:
   - telegram-desktop
   - telegram-purple-git
   - translate-shell         # API for google translate and others
+  - ttf-nanum
   - urxvt-perls
   - virt-manager
   - xarchiver
