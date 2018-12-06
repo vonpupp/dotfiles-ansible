@@ -275,6 +275,7 @@ gui_aur_packages:
   - nemo-dropbox
   - nerd-fonts-complete
   - opensiddur-hebrew-fonts # OpenSiddur Hebrew fonts
+  - pandoc-bin
   - play-with-mpv-git
   - purple-hangouts-hg
   - purple-whatsapp-git
