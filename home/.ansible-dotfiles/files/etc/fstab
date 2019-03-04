@@ -1,0 +1,20 @@
+# /dev/mapper/storage-root
+UUID=e36989a6-c273-47b2-b0c1-6f84564cca84	/         	ext4      	rw,relatime,data=ordered	0 1
+
+# /dev/sda1
+UUID=E89B-C1BF      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+
+# /dev/mapper/storage-home
+UUID=45a661ff-5df6-439e-bb10-6fc1a68143a2	/home     	ext4      	rw,relatime,data=ordered	0 2
+
+# nas:/share/cache/arch/x86_64/var/lib/pacman/sync
+#nas:/share/cache/arch/x86_64/var/lib/pacman/sync	/var/lib/pacman/sync	nfs       	rw,relatime,vers=3,rsize=32768,wsize=32768,namlen=255,hard,nolock,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=10.7.22.10,mountvers=3,mountport=53654,mountproto=udp,local_lock=all,addr=10.7.22.10	0 0
+
+# nas:/share/cache/arch/x86_64/var/cache/pacman/pkg
+#nas:/share/cache/arch/x86_64/var/cache/pacman/pkg	/var/cache/pacman/pkg	nfs       	rw,relatime,vers=3,rsize=32768,wsize=32768,namlen=255,hard,nolock,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=10.7.22.10,mountvers=3,mountport=53654,mountproto=udp,local_lock=all,addr=10.7.22.10	0 0
+
+# /dev/mapper/storage-swap LABEL=swap
+UUID=49a41e70-082f-4d65-b4ea-cd9a13d709d8	none      	swap      	defaults  	0 0
+
+/dev/sda1	/data         	ext4      	rw,relatime,noauto,data=ordered	0 1
+afuse# /mnt/afuse afuse auto 0 0

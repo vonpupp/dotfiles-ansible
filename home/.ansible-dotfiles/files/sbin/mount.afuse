@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Source: https://gist.github.com/Hubbitus/c40d986921cbed6a8ad585eee00a7d77
+# Post: https://habr.com/ru/post/321636/
+
+# afuse-sshfs mount helper to automatically mount remote machines.
+# It is intended to be used as mount.afuse in command line. F.e. in /etc/fstab you may mount directory like:
+# afuse# /mnt/remote afuse auto 0 0
+# And then as regular user just do:
+# $ cd /mnt/remote/user@remote.host/remote/path
+# and folder /mnt/remote/user@remote.host will be mounted automatically!
+#
+# On Mac some also recommend add defer_permissions,noappledouble mount options.
+
+# Mount under user and group which are owners of mount point
+su -l $( ls -dl "$2" | cut -d' ' -f3) -c "afuse -o mount_template='sshfs -o reconnect -o auto_cache -o kernel_cache %r:/ %m' -o unmount_template='fusermount -u -z %m' -o auto_unmount '$2'"
