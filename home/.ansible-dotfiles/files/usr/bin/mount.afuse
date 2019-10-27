@@ -13,4 +13,4 @@
 # On Mac some also recommend add defer_permissions,noappledouble mount options.
 
 # Mount under user and group which are owners of mount point
-su -l $( ls -dl "$2" | cut -d' ' -f3) -c "afuse -o mount_template='sshfs -o reconnect -o auto_cache -o kernel_cache %r:/ %m' -o unmount_template='fusermount -u -z %m' -o auto_unmount '$2'"
+su -l $( ls -dl "$2" | cut -d' ' -f3) -c "afuse -o mount_template='sshfs -o reconnect -o ServerAliveInterval=10 -o ServerAliveCountMax=2 -o auto_cache -o kernel_cache %r:/ %m' -o unmount_template='fusermount -u -z %m' -o auto_unmount '$2'"
