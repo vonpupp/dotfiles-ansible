@@ -314,6 +314,9 @@ pip3_user_packages:
   - awscli
   - beancount
   - envdir
+  - youtube-dl
+  - trash
+  - diceware
 
 #- youtube-dl
 #  - astroid
